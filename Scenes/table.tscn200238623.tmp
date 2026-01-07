@@ -1,29 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://cwi2n7fauhcs2"]
+[gd_scene load_steps=13 format=3 uid="uid://cwi2n7fauhcs2"]
 
 [ext_resource type="Texture2D" uid="uid://iky7etio4bnp" path="res://Assets/table.png" id="1_ix8et"]
 [ext_resource type="Script" uid="uid://b3e07v14iiaf2" path="res://Scenes/table_logic.gd" id="1_xqsq7"]
 [ext_resource type="Texture2D" uid="uid://bb5k45sakwdl5" path="res://Assets/Player Sprite.png" id="2_4ppvu"]
 [ext_resource type="Texture2D" uid="uid://8yaw1uhu2xa1" path="res://Assets/customer order.png" id="3_r4jc3"]
 [ext_resource type="Texture2D" uid="uid://cwiwwybpk0njs" path="res://Assets/food.png" id="4_0xndo"]
-[ext_resource type="Texture2D" uid="uid://dxywc8yec2wlq" path="res://Assets/Player Sprite-back.png" id="4_5cpa6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ppvu"]
 radius = 8.0
 height = 16.0
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_xqsq7"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_4ppvu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_5cpa6")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r4jc3"]
 radius = 7.0
@@ -78,10 +63,11 @@ shape = SubResource("CapsuleShape2D_4ppvu")
 debug_color = Color(0.6092286, 0.53980887, 0, 0.41960785)
 
 [node name="Customer" type="StaticBody2D" parent="."]
+visible = false
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Customer"]
+[node name="Customer Sprite" type="Sprite2D" parent="Customer"]
 position = Vector2(0, -9)
-sprite_frames = SubResource("SpriteFrames_xqsq7")
+texture = ExtResource("2_4ppvu")
 
 [node name="Customer Colision" type="CollisionShape2D" parent="Customer"]
 position = Vector2(0, -7)
@@ -89,7 +75,6 @@ shape = SubResource("CapsuleShape2D_r4jc3")
 debug_color = Color(0.7703563, 0.44520456, 0, 0.41960785)
 
 [node name="Order" type="Node2D" parent="Customer"]
-visible = false
 
 [node name="Order Background Sprite" type="Sprite2D" parent="Customer/Order"]
 z_index = 1
