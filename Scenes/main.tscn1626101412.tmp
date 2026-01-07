@@ -86,37 +86,29 @@ tile_set = SubResource("TileSet_jjvhh")
 [node name="Tables" type="Node2D" parent="."]
 script = ExtResource("3_kry3j")
 
-[node name="Table1" parent="Tables" groups=["table"] instance=ExtResource("3_8gbba")]
+[node name="Table1" parent="Tables" instance=ExtResource("3_8gbba")]
 position = Vector2(-88, 10)
-is_taken = null
 
-[node name="Table2" parent="Tables" groups=["table"] instance=ExtResource("3_8gbba")]
+[node name="Table2" parent="Tables" instance=ExtResource("3_8gbba")]
 position = Vector2(61, 42)
-is_taken = null
 
-[node name="Table3" parent="Tables" groups=["table"] instance=ExtResource("3_8gbba")]
+[node name="Table3" parent="Tables" instance=ExtResource("3_8gbba")]
 position = Vector2(104, -43)
-is_taken = null
 
-[node name="Table4" parent="Tables" groups=["table"] instance=ExtResource("3_8gbba")]
+[node name="Table4" parent="Tables" instance=ExtResource("3_8gbba")]
 position = Vector2(40, 0)
-is_taken = null
 
-[node name="Table5" parent="Tables" groups=["table"] instance=ExtResource("3_8gbba")]
+[node name="Table5" parent="Tables" instance=ExtResource("3_8gbba")]
 position = Vector2(-57, 39)
-is_taken = null
 
-[node name="Table6" parent="Tables" groups=["table"] instance=ExtResource("3_8gbba")]
+[node name="Table6" parent="Tables" instance=ExtResource("3_8gbba")]
 position = Vector2(63, -30)
-is_taken = null
 
-[node name="Table7" parent="Tables" groups=["table"] instance=ExtResource("3_8gbba")]
+[node name="Table7" parent="Tables" instance=ExtResource("3_8gbba")]
 position = Vector2(86, 6)
-is_taken = null
 
-[node name="Table8" parent="Tables" groups=["table"] instance=ExtResource("3_8gbba")]
+[node name="Table8" parent="Tables" instance=ExtResource("3_8gbba")]
 position = Vector2(-60, -2)
-is_taken = null
 
 [node name="Client_Cooldown" type="Timer" parent="Tables"]
 wait_time = 5.0

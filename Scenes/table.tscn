@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://8yaw1uhu2xa1" path="res://Assets/customer order.png" id="3_r4jc3"]
 [ext_resource type="Texture2D" uid="uid://cwiwwybpk0njs" path="res://Assets/food.png" id="4_0xndo"]
 [ext_resource type="Texture2D" uid="uid://dxywc8yec2wlq" path="res://Assets/Player Sprite-back.png" id="4_5cpa6"]
+[ext_resource type="Texture2D" uid="uid://2hr0a06y8ili" path="res://Assets/water.png" id="7_o4lkm"]
+[ext_resource type="Texture2D" uid="uid://bvsir81uef4jq" path="res://Assets/pizza.png" id="8_xexre"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ppvu"]
 radius = 8.0
@@ -33,14 +35,6 @@ height = 20.0
 atlas = ExtResource("4_0xndo")
 region = Rect2(0, 0, 8, 8)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5cpa6"]
-atlas = ExtResource("4_0xndo")
-region = Rect2(8, 0, 8, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_usajj"]
-atlas = ExtResource("4_0xndo")
-region = Rect2(0, 8, 8, 8)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_o4lkm"]
 atlas = ExtResource("4_0xndo")
 region = Rect2(8, 8, 8, 8)
@@ -52,10 +46,10 @@ animations = [{
 "texture": SubResource("AtlasTexture_xqsq7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5cpa6")
+"texture": ExtResource("7_o4lkm")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_usajj")
+"texture": ExtResource("8_xexre")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_o4lkm")
