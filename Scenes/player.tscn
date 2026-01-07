@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_v0iea"]
 radius = 6.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_cvnsp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -14,3 +14,4 @@ texture = ExtResource("1_v0iea")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_v0iea")
+debug_color = Color(0.22053057, 0.6392518, 0, 0.41960785)

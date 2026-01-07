@@ -1,6 +1,6 @@
 extends CharacterBody2D
 @onready var Player_sprite : Sprite2D = $Sprite2D
-const SPEED = 50.0
+const SPEED = 75.0
 
 func _physics_process(_delta: float) -> void:
 	var dir = Input.get_vector("left", "right", "up", "down")

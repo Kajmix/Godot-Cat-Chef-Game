@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwi2n7fauhcs2"]
+
+[ext_resource type="Texture2D" uid="uid://iky7etio4bnp" path="res://Assets/table.png" id="1_ix8et"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ppvu"]
+radius = 8.0
+height = 16.0
+
+[node name="Table" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ix8et")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_4ppvu")
+debug_color = Color(0.6092286, 0.53980887, 0, 0.41960785)
