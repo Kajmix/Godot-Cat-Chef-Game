@@ -5,12 +5,12 @@ extends StaticBody2D
 @onready var Order_Item : AnimatedSprite2D = $"Customer/Order/Order Sprite"
 @onready var Order : Node2D = $Customer/Order
 @onready var Items : StaticBody2D = $"../../Items"
-
 @onready var player : CharacterBody2D = $"../../Player"
 @onready var label : Label = $"../../ui/Label"
-
+@onready var arrow : Sprite2D = $Arrow
 @export var is_taken = false
 var is_player_nearby = false
+var default_modulate : Color
 func hide_customer():
 	is_taken = false
 	Customer.hide()
@@ -18,15 +18,22 @@ func hide_customer():
 	
 func show_customer(main_body : StaticBody2D):
 	is_taken = true
+	var scale_value = randf_range(0.9, 1.1)
+	Customer.scale = Vector2(scale_value, scale_value)
+	Customer_Colision.scale = Vector2(scale_value, scale_value)
 	Customer.show()
 	Customer_Colision.disabled = false
-	Customer_Sprite.frame = randi_range(0,3)
+	if randi_range(1,30) == 1:
+		Customer_Sprite.frame = 4
+	else:
+		Customer_Sprite.frame = randi_range(0,3)
 	var wanted_food = randi_range(0,2)
 	Items.order_handler(main_body, wanted_food)
 	Order_Item.frame = wanted_food
 	Order.show()
 	
 func _ready() -> void:
+	default_modulate = self.modulate
 	hide_customer()
 
 func _process(delta: float) -> void:
@@ -36,16 +43,20 @@ func _process(delta: float) -> void:
 		player.is_any_item_not_taken = true
 		player.hide_order_sprite()
 		MainGameManager.client_exit()
+		unselect_customer()
 		label.text = "Money: " + str(MainGameManager.money)
 
 func _on_order_area_body_entered(body) -> void:
 	if body.is_in_group("Player"):
-		if body.selected_order_item == Order_Item.frame:
-			print(body.selected_order_item)
-			print(Order_Item.frame)
+		if body.selected_order_item == Order_Item.frame && body.table == self:
 			is_player_nearby = true
 
 
 func _on_order_area_body_exited(body) -> void:
 	if body.is_in_group("Player"):
 		is_player_nearby = false
+
+func select_customer():
+	arrow.show()
+func unselect_customer():
+	arrow.hide()

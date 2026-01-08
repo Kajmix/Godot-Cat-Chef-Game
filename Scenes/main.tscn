@@ -128,31 +128,31 @@ tile_set = SubResource("TileSet_jjvhh")
 script = ExtResource("3_kry3j")
 
 [node name="Table1" parent="Tables" groups=["table"] instance=ExtResource("3_8gbba")]
-position = Vector2(-88, 10)
+position = Vector2(41, 40)
 
 [node name="Table2" parent="Tables" groups=["table"] instance=ExtResource("3_8gbba")]
-position = Vector2(61, 42)
+position = Vector2(100, 40)
 
 [node name="Table3" parent="Tables" groups=["table"] instance=ExtResource("3_8gbba")]
-position = Vector2(104, -43)
+position = Vector2(-89, 39)
 
 [node name="Table4" parent="Tables" groups=["table"] instance=ExtResource("3_8gbba")]
-position = Vector2(40, 0)
+position = Vector2(72, 5)
 
 [node name="Table5" parent="Tables" groups=["table"] instance=ExtResource("3_8gbba")]
 position = Vector2(-57, 39)
 
 [node name="Table6" parent="Tables" groups=["table"] instance=ExtResource("3_8gbba")]
-position = Vector2(63, -30)
+position = Vector2(42, -30)
 
 [node name="Table7" parent="Tables" groups=["table"] instance=ExtResource("3_8gbba")]
-position = Vector2(86, 6)
+position = Vector2(100, -30)
 
 [node name="Table8" parent="Tables" groups=["table"] instance=ExtResource("3_8gbba")]
-position = Vector2(-60, -2)
+position = Vector2(-72, 0)
 
 [node name="Client_Cooldown" type="Timer" parent="Tables"]
-wait_time = 5.0
+wait_time = 3.0
 autostart = true
 
 [node name="Exit" type="Area2D" parent="."]

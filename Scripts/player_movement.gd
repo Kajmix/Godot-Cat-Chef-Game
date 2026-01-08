@@ -22,6 +22,7 @@ func _physics_process(_delta: float) -> void:
 func take_ordered_item_handler(table_body : StaticBody2D, sprite):
 	Order_Sprite.frame=sprite
 	table = table_body
+	table.select_customer()
 	selected_order_item = sprite
 	Order_Sprite.show()
 
