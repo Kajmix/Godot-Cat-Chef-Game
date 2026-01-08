@@ -1,20 +1,22 @@
-[gd_scene load_steps=18 format=4 uid="uid://bfsbomotj4qip"]
+[gd_scene load_steps=22 format=4 uid="uid://bfsbomotj4qip"]
 
 [ext_resource type="Script" uid="uid://dqvsmcl8igj5e" path="res://Scripts/main_game_manager.gd" id="1_344ge"]
 [ext_resource type="PackedScene" uid="uid://baisslgr622gk" path="res://Scenes/player.tscn" id="1_jjgbg"]
 [ext_resource type="Texture2D" uid="uid://c6esu4gaqsvfq" path="res://Assets/Sprite-0002.png" id="2_bo1nx"]
+[ext_resource type="Script" uid="uid://bratauna38j21" path="res://Scenes/ui_manager.gd" id="2_d1ilt"]
 [ext_resource type="FontFile" uid="uid://be7opo235lcnt" path="res://Fonts/Jersey10-Regular.ttf" id="2_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://cwi2n7fauhcs2" path="res://Scenes/table.tscn" id="3_8gbba"]
 [ext_resource type="Script" uid="uid://dwfoxvobpphr4" path="res://Scripts/client_spawner.gd" id="3_kry3j"]
 [ext_resource type="Script" uid="uid://b5042h85utnlg" path="res://Scripts/exit.gd" id="4_jjvhh"]
 [ext_resource type="Script" uid="uid://8ir737pqx3h6" path="res://Scripts/items_spawner.gd" id="6_6bp64"]
 [ext_resource type="PackedScene" uid="uid://bdteynao3kpgl" path="res://Scenes/item.tscn" id="6_21xkr"]
+[ext_resource type="Script" uid="uid://b564k470aweeh" path="res://Scenes/pause.gd" id="10_hptm8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hptm8"]
 font = ExtResource("2_ynf5e")
 font_size = 21
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jjvhh"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hptm8"]
 texture = ExtResource("2_bo1nx")
 0:0/0 = 0
 1:0/0 = 0
@@ -37,9 +39,9 @@ texture = ExtResource("2_bo1nx")
 
 [sub_resource type="TileSet" id="TileSet_kry3j"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_jjvhh")
+sources/0 = SubResource("TileSetAtlasSource_hptm8")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8gbba"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d1ilt"]
 texture = ExtResource("2_bo1nx")
 0:0/0 = 0
 2:0/0 = 0
@@ -66,7 +68,7 @@ texture = ExtResource("2_bo1nx")
 
 [sub_resource type="TileSet" id="TileSet_jjvhh"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_8gbba")
+sources/0 = SubResource("TileSetAtlasSource_d1ilt")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8gbba"]
 size = Vector2(30, 32)
@@ -75,6 +77,12 @@ size = Vector2(30, 32)
 size = Vector2(96, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_21xkr"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ynf5e"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ynf5e"]
+font = ExtResource("2_ynf5e")
+font_size = 31
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_344ge")
@@ -87,6 +95,7 @@ offset_left = -144.0
 offset_top = -81.0
 offset_right = 144.0
 offset_bottom = 81.0
+script = ExtResource("2_d1ilt")
 
 [node name="Label" type="Label" parent="ui"]
 layout_mode = 0
@@ -194,7 +203,58 @@ position = Vector2(-56, -55)
 [node name="Item8" parent="Items/Items Holder" instance=ExtResource("6_21xkr")]
 position = Vector2(-56, -65)
 
+[node name="Pause_ui" type="CanvasLayer" parent="."]
+layer = 7
+visible = false
+script = ExtResource("10_hptm8")
+
+[node name="Control" type="Control" parent="Pause_ui"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Pause_ui/Control"]
+modulate = Color(0.12509455, 0.12509455, 0.12509455, 0.41568628)
+z_index = -5
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_ynf5e")
+
+[node name="CenterContainer" type="CenterContainer" parent="Pause_ui/Control"]
+z_index = 405
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pause_ui/Control/CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Pause_ui/Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Paused"
+label_settings = SubResource("LabelSettings_ynf5e")
+
+[node name="Play" type="Button" parent="Pause_ui/Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="Exit" type="Button" parent="Pause_ui/Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
 [connection signal="timeout" from="Tables/Client_Cooldown" to="Tables" method="_on_client_cooldown_timeout"]
 [connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
 [connection signal="body_entered" from="Items/Items Area" to="Items" method="_on_items_area_body_entered"]
 [connection signal="body_exited" from="Items/Items Area" to="Items" method="_on_items_area_body_exited"]
+[connection signal="pressed" from="Pause_ui/Control/CenterContainer/VBoxContainer/Play" to="Pause_ui" method="_on_play_pressed"]
+[connection signal="pressed" from="Pause_ui/Control/CenterContainer/VBoxContainer/Exit" to="Pause_ui" method="_on_exit_pressed"]

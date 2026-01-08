@@ -1,11 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://cwi2n7fauhcs2"]
+[gd_scene load_steps=19 format=3 uid="uid://cwi2n7fauhcs2"]
 
 [ext_resource type="Texture2D" uid="uid://iky7etio4bnp" path="res://Assets/table.png" id="1_ix8et"]
 [ext_resource type="Script" uid="uid://b3e07v14iiaf2" path="res://Scripts/table_logic.gd" id="1_xqsq7"]
-[ext_resource type="Texture2D" uid="uid://bb5k45sakwdl5" path="res://Assets/Player Sprite.png" id="2_4ppvu"]
 [ext_resource type="Texture2D" uid="uid://8yaw1uhu2xa1" path="res://Assets/customer order.png" id="3_r4jc3"]
+[ext_resource type="Texture2D" uid="uid://cpblsx0txl2aq" path="res://Assets/customers.png" id="3_usajj"]
 [ext_resource type="Texture2D" uid="uid://cwiwwybpk0njs" path="res://Assets/food.png" id="4_0xndo"]
-[ext_resource type="Texture2D" uid="uid://dxywc8yec2wlq" path="res://Assets/Player Sprite-back.png" id="4_5cpa6"]
 [ext_resource type="Texture2D" uid="uid://2hr0a06y8ili" path="res://Assets/water.png" id="7_o4lkm"]
 [ext_resource type="Texture2D" uid="uid://bvsir81uef4jq" path="res://Assets/pizza.png" id="8_xexre"]
 
@@ -13,14 +12,36 @@
 radius = 8.0
 height = 16.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_xexre"]
+atlas = ExtResource("3_usajj")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ntqo"]
+atlas = ExtResource("3_usajj")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0duj"]
+atlas = ExtResource("3_usajj")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_filji"]
+atlas = ExtResource("3_usajj")
+region = Rect2(48, 0, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_xqsq7"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_4ppvu")
+"texture": SubResource("AtlasTexture_xexre")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_5cpa6")
+"texture": SubResource("AtlasTexture_4ntqo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0duj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_filji")
 }],
 "loop": true,
 "name": &"default",

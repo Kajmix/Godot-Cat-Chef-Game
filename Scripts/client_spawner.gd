@@ -1,5 +1,4 @@
 extends Node2D
-
 var tables: Array = []
 var taken_tables : Array = []
 var free_tables : Array = []
