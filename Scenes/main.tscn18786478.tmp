@@ -1,12 +1,10 @@
-[gd_scene load_steps=15 format=4 uid="uid://bfsbomotj4qip"]
+[gd_scene load_steps=11 format=4 uid="uid://bfsbomotj4qip"]
 
 [ext_resource type="PackedScene" uid="uid://baisslgr622gk" path="res://Scenes/player.tscn" id="1_jjgbg"]
 [ext_resource type="Texture2D" uid="uid://c6esu4gaqsvfq" path="res://Assets/Sprite-0002.png" id="2_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://cwi2n7fauhcs2" path="res://Scenes/table.tscn" id="3_8gbba"]
-[ext_resource type="Script" uid="uid://dwfoxvobpphr4" path="res://Scripts/client_spawner.gd" id="3_kry3j"]
-[ext_resource type="Script" uid="uid://b5042h85utnlg" path="res://Scripts/exit.gd" id="4_jjvhh"]
-[ext_resource type="Script" uid="uid://8ir737pqx3h6" path="res://Scenes/items_spawner.gd" id="6_6bp64"]
-[ext_resource type="PackedScene" uid="uid://bdteynao3kpgl" path="res://Scenes/item.tscn" id="6_21xkr"]
+[ext_resource type="Script" uid="uid://dwfoxvobpphr4" path="res://Scenes/client_spawner.gd" id="3_kry3j"]
+[ext_resource type="Script" uid="uid://b5042h85utnlg" path="res://Scenes/exit.gd" id="4_jjvhh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jjvhh"]
 texture = ExtResource("2_bo1nx")
@@ -64,11 +62,6 @@ sources/0 = SubResource("TileSetAtlasSource_8gbba")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8gbba"]
 size = Vector2(30, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kry3j"]
-size = Vector2(96, 48)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_21xkr"]
 
 [node name="Main" type="Node2D"]
 
@@ -128,46 +121,6 @@ script = ExtResource("4_jjvhh")
 position = Vector2(80, -80)
 shape = SubResource("RectangleShape2D_8gbba")
 debug_color = Color(0.8558884, 0.0007698995, 0.8871944, 0.41960785)
-
-[node name="Items" type="StaticBody2D" parent="."]
-script = ExtResource("6_6bp64")
-
-[node name="Items Area" type="Area2D" parent="Items"]
-
-[node name="Items Colision Shape" type="CollisionShape2D" parent="Items/Items Area"]
-position = Vector2(-96, -56)
-shape = SubResource("RectangleShape2D_kry3j")
-debug_color = Color(0.99884444, 0, 0.14337987, 0.41960785)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Items"]
-position = Vector2(-170, -69)
-shape = SubResource("RectangleShape2D_21xkr")
-disabled = true
-
-[node name="Items Holder" type="Node2D" parent="Items"]
-
-[node name="Item1" parent="Items/Items Holder" instance=ExtResource("6_21xkr")]
-
-[node name="Item2" parent="Items/Items Holder" instance=ExtResource("6_21xkr")]
-position = Vector2(-96, -45)
-
-[node name="Item3" parent="Items/Items Holder" instance=ExtResource("6_21xkr")]
-position = Vector2(-86, -45)
-
-[node name="Item4" parent="Items/Items Holder" instance=ExtResource("6_21xkr")]
-position = Vector2(-76, -45)
-
-[node name="Item5" parent="Items/Items Holder" instance=ExtResource("6_21xkr")]
-position = Vector2(-66, -45)
-
-[node name="Item6" parent="Items/Items Holder" instance=ExtResource("6_21xkr")]
-position = Vector2(-56, -45)
-
-[node name="Item7" parent="Items/Items Holder" instance=ExtResource("6_21xkr")]
-position = Vector2(-56, -55)
-
-[node name="Item8" parent="Items/Items Holder" instance=ExtResource("6_21xkr")]
-position = Vector2(-56, -65)
 
 [connection signal="timeout" from="Tables/Client_Cooldown" to="Tables" method="_on_client_cooldown_timeout"]
 [connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]

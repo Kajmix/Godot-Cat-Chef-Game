@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://bdteynao3kpgl"]
+
+[ext_resource type="Texture2D" uid="uid://cwiwwybpk0njs" path="res://Assets/food.png" id="1_btogu"]
+[ext_resource type="Texture2D" uid="uid://bvsir81uef4jq" path="res://Assets/pizza.png" id="1_ys0gr"]
+[ext_resource type="Script" uid="uid://ba33ex3td2k35" path="res://Scripts/item.gd" id="2_76mu4"]
+[ext_resource type="Texture2D" uid="uid://2hr0a06y8ili" path="res://Assets/water.png" id="2_tnst4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqsq7"]
+atlas = ExtResource("1_btogu")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4lkm"]
+atlas = ExtResource("1_btogu")
+region = Rect2(8, 8, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ys0gr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xqsq7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_tnst4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_ys0gr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4lkm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Item1" type="AnimatedSprite2D"]
+position = Vector2(-106, -45)
+sprite_frames = SubResource("SpriteFrames_ys0gr")
+script = ExtResource("2_76mu4")
