@@ -15,6 +15,10 @@ run/main_scene="uid://bfsbomotj4qip"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://Godot-Cat-Cheff-Game/icon.svg"
 
+[autoload]
+
+MainGameManager="*res://Scripts/main_game_manager.gd"
+
 [display]
 
 window/size/viewport_width=288

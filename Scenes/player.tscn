@@ -1,7 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://baisslgr622gk"]
+[gd_scene load_steps=15 format=3 uid="uid://baisslgr622gk"]
 
 [ext_resource type="Script" uid="uid://b4jy1fa0f48lj" path="res://Scripts/player_movement.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://ifvuqauvrxpg" path="res://Assets/player.png" id="2_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://cwiwwybpk0njs" path="res://Assets/food.png" id="3_6t5aa"]
+[ext_resource type="Texture2D" uid="uid://2hr0a06y8ili" path="res://Assets/water.png" id="4_fkybt"]
+[ext_resource type="Texture2D" uid="uid://bvsir81uef4jq" path="res://Assets/pizza.png" id="5_x3wgy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v0iea"]
 radius = 6.0
@@ -42,6 +45,34 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqsq7"]
+atlas = ExtResource("3_6t5aa")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4lkm"]
+atlas = ExtResource("3_6t5aa")
+region = Rect2(8, 8, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8erm5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xqsq7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fkybt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_x3wgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4lkm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_cvnsp")
 
@@ -51,3 +82,8 @@ debug_color = Color(0.22053057, 0.6392518, 0, 0.41960785)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3smsa")
+
+[node name="Order_Sprite" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_8erm5")

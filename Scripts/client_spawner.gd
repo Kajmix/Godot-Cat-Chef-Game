@@ -21,5 +21,3 @@ func _on_client_cooldown_timeout() -> void:
 	if free_tables.size() > 0:
 		var table = free_tables[randi_range(0,free_tables.size() - 1)]
 		table.show_customer(table)
-	else:
-		print("No free table left")

@@ -7,6 +7,7 @@ extends StaticBody2D
 @onready var Items : StaticBody2D = $"../../Items"
 
 @export var is_taken = false
+var is_player_nearby = false
 func hide_customer():
 	is_taken = false
 	Customer.hide()
@@ -24,3 +25,21 @@ func show_customer(main_body : StaticBody2D):
 	
 func _ready() -> void:
 	hide_customer()
+
+func _process(delta: float) -> void:
+	if Input.is_action_pressed("interact") && is_player_nearby:
+		hide_customer()
+		is_player_nearby = false
+		MainGameManager.client_exit()
+
+func _on_order_area_body_entered(body) -> void:
+	if body.is_in_group("Player"):
+		if body.selected_order_item == Order_Item.frame:
+			print(body.selected_order_item)
+			print(Order_Item.frame)
+			is_player_nearby = true
+
+
+func _on_order_area_body_exited(body) -> void:
+	if body.is_in_group("Player"):
+		is_player_nearby = false
