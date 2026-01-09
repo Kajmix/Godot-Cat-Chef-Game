@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Cat Cheff Game"
+config/name="Cat Chef Game"
 run/main_scene="uid://cr55hp1fcbef"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://Godot-Cat-Cheff-Game/icon.svg"
