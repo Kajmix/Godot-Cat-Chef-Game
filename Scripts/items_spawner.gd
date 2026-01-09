@@ -27,7 +27,11 @@ func take_ordered_item():
 		Player.is_any_item_not_taken = false
 		var selected_item = taken_order_items[0]
 		Player.take_ordered_item_handler(selected_item.id, selected_item.frame)
-		shift_taken_items_left()
+		if taken_order_items.size() == 1:
+			selected_item.is_taken = false
+			selected_item.hide()
+		else:
+			shift_taken_items_left()
 
 func shift_taken_items_left():
 	get_taken_order_items()

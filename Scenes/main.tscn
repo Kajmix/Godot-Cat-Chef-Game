@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://bfsbomotj4qip"]
+[gd_scene load_steps=25 format=4 uid="uid://bfsbomotj4qip"]
 
 [ext_resource type="Script" uid="uid://dqvsmcl8igj5e" path="res://Scripts/main_game_manager.gd" id="1_344ge"]
 [ext_resource type="PackedScene" uid="uid://baisslgr622gk" path="res://Scenes/player.tscn" id="1_jjgbg"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://be7opo235lcnt" path="res://Fonts/Jersey10-Regular.ttf" id="2_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://cwi2n7fauhcs2" path="res://Scenes/table.tscn" id="3_8gbba"]
 [ext_resource type="Script" uid="uid://dwfoxvobpphr4" path="res://Scripts/client_spawner.gd" id="3_kry3j"]
+[ext_resource type="Script" uid="uid://c84l60tq75667" path="res://Scenes/alert.gd" id="4_6iyac"]
 [ext_resource type="Script" uid="uid://b5042h85utnlg" path="res://Scripts/exit.gd" id="4_jjvhh"]
 [ext_resource type="Script" uid="uid://8ir737pqx3h6" path="res://Scripts/items_spawner.gd" id="6_6bp64"]
 [ext_resource type="PackedScene" uid="uid://bdteynao3kpgl" path="res://Scenes/item.tscn" id="6_21xkr"]
@@ -14,7 +15,8 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_hptm8"]
 font = ExtResource("2_ynf5e")
-font_size = 21
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hptm8"]
 texture = ExtResource("2_bo1nx")
@@ -40,6 +42,38 @@ texture = ExtResource("2_bo1nx")
 [sub_resource type="TileSet" id="TileSet_kry3j"]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_hptm8")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6iyac"]
+texture = ExtResource("2_bo1nx")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:0/0 = 0
+4:1/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+5:1/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+6:1/0 = 0
+6:2/0 = 0
+4:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_fdnlq"]
+sources/0 = SubResource("TileSetAtlasSource_6iyac")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d1ilt"]
 texture = ExtResource("2_bo1nx")
@@ -103,23 +137,46 @@ offset_left = 8.0
 offset_top = 139.0
 offset_right = 70.0
 offset_bottom = 162.0
-text = "Money: "
+text = "Money: 0"
 label_settings = SubResource("LabelSettings_hptm8")
+
+[node name="Alert" type="Label" parent="ui"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -149.0
+offset_right = 149.0
+offset_bottom = 23.0
+grow_horizontal = 2
+label_settings = SubResource("LabelSettings_hptm8")
+horizontal_alignment = 1
+script = ExtResource("4_6iyac")
+
+[node name="Timer" type="Timer" parent="ui/Alert"]
+wait_time = 3.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("1_jjgbg")]
 z_index = 5
+position = Vector2(-120, -43)
 
 [node name="Tilemap" type="TileMapLayer" parent="."]
 z_index = -1
 
 [node name="Furniture" type="TileMapLayer" parent="Tilemap"]
-z_index = 1
+z_index = -18
 tile_map_data = PackedByteArray("AAD8//v/AAADAAAAAAD8//z/AAADAAAAAAD8//3/AAADAAEAAAD6//3/AAADAAIAAAD5//3/AAADAAIAAAD3//3/AAADAAIAAAD7//3/AAADAAIAAAA=")
 tile_set = SubResource("TileSet_kry3j")
 
+[node name="Floor" type="TileMapLayer" parent="Tilemap"]
+tile_map_data = PackedByteArray("AAAFAPz/AAAGAAIAAAAEAPz/AAAFAAIAAAADAPz/AAAFAAIAAAACAPz/AAAFAAIAAAAAAPz/AAAEAAMAAAD///z/AAAFAAEAAAD///3/AAAFAAEAAAD+//z/AAAEAAEAAAD+//3/AAAEAAEAAAABAPz/AAAFAAIAAAAAAP3/AAAGAAEAAAAAAP7/AAAGAAEAAAAAAP//AAAGAAEAAAAAAAAAAAAGAAEAAAAAAAEAAAAGAAEAAAAAAAIAAAAGAAEAAAAAAAMAAAAGAAIAAAD//wMAAAAFAAIAAAD+/wMAAAAEAAIAAAD+/wIAAAAEAAEAAAD+/wEAAAAEAAEAAAD+/wAAAAAEAAEAAAD+////AAAEAAEAAAD+//7/AAAEAAEAAAD///7/AAAFAAEAAAD/////AAAFAAEAAAD//wAAAAAFAAEAAAD//wEAAAAFAAEAAAD//wIAAAAFAAEAAAA=")
+tile_set = SubResource("TileSet_fdnlq")
+
 [node name="Background" type="TileMapLayer" parent="Tilemap"]
+z_index = -20
 use_parent_material = true
 tile_map_data = PackedByteArray("AAD2//r/AAACAAMAAAD2//v/AAACAAMAAAD2//z/AAACAAMAAAD2//3/AAACAAMAAAD2//7/AAACAAMAAAD2////AAACAAMAAAD2/wAAAAACAAMAAAD2/wEAAAACAAMAAAD2/wIAAAACAAMAAAD2/wMAAAACAAMAAAD2/wQAAAACAAMAAAD2/wUAAAACAAMAAAD3//r/AAACAAAAAAD3//v/AAABAAAAAAD3//z/AAADAAMAAAD3//3/AAADAAMAAAD3//7/AAAAAAEAAAD3////AAAAAAEAAAD3/wAAAAAAAAEAAAD3/wEAAAAAAAEAAAD3/wIAAAAAAAEAAAD3/wMAAAAAAAEAAAD3/wQAAAAAAAEAAAD3/wUAAAACAAMAAAD4//r/AAACAAAAAAD4//v/AAABAAAAAAD4//z/AAADAAMAAAD4//3/AAADAAMAAAD4//7/AAAAAAAAAAD4////AAAAAAAAAAD4/wAAAAAAAAAAAAD4/wEAAAAAAAAAAAD4/wIAAAAAAAAAAAD4/wMAAAAAAAAAAAD4/wQAAAAAAAEAAAD4/wUAAAACAAMAAAD5//r/AAACAAAAAAD5//v/AAABAAAAAAD5//z/AAADAAMAAAD5//3/AAADAAMAAAD5//7/AAAAAAAAAAD5////AAAAAAAAAAD5/wAAAAAAAAAAAAD5/wEAAAAAAAAAAAD5/wIAAAAAAAAAAAD5/wMAAAAAAAAAAAD5/wQAAAAAAAEAAAD5/wUAAAACAAMAAAD6//r/AAACAAAAAAD6//v/AAABAAAAAAD6//z/AAADAAMAAAD6//3/AAADAAMAAAD6//7/AAAAAAIAAAD6////AAAAAAIAAAD6/wAAAAAAAAIAAAD6/wEAAAAAAAIAAAD6/wIAAAAAAAIAAAD6/wMAAAAAAAAAAAD6/wQAAAAAAAEAAAD6/wUAAAACAAMAAAD7//r/AAACAAAAAAD7//v/AAABAAAAAAD7//z/AAADAAMAAAD7//3/AAADAAMAAAD7//7/AAAAAAIAAAD7////AAAAAAIAAAD7/wAAAAAAAAIAAAD7/wEAAAAAAAIAAAD7/wIAAAAAAAIAAAD7/wMAAAAAAAAAAAD7/wQAAAAAAAEAAAD7/wUAAAACAAMAAAD8//r/AAACAAAAAAD8//v/AAABAAAAAAD8//z/AAADAAMAAAD8//3/AAADAAMAAAD8//7/AAAAAAIAAAD8////AAAAAAIAAAD8/wAAAAAAAAIAAAD8/wEAAAAAAAIAAAD8/wIAAAAAAAIAAAD8/wMAAAAAAAAAAAD8/wQAAAAAAAEAAAD8/wUAAAACAAMAAAD9//r/AAACAAAAAAD9//v/AAABAAAAAAD9//z/AAAAAAAAAAD9//3/AAAAAAAAAAD9//7/AAAAAAAAAAD9////AAAAAAAAAAD9/wAAAAAAAAAAAAD9/wEAAAAAAAAAAAD9/wIAAAAAAAAAAAD9/wMAAAAAAAAAAAD9/wQAAAAAAAEAAAD9/wUAAAACAAMAAAD+//r/AAACAAAAAAD+//v/AAABAAAAAAD+//z/AAAAAAAAAAD+//3/AAAAAAAAAAD+//7/AAAAAAAAAAD+////AAAAAAAAAAD+/wAAAAAAAAAAAAD+/wEAAAAAAAAAAAD+/wIAAAAAAAAAAAD+/wMAAAAAAAAAAAD+/wQAAAAAAAEAAAD+/wUAAAACAAMAAAD///r/AAACAAAAAAD///v/AAABAAAAAAD///z/AAAAAAAAAAD///3/AAAAAAAAAAD///7/AAAAAAAAAAD/////AAAAAAAAAAD//wAAAAAAAAAAAAD//wEAAAAAAAAAAAD//wIAAAAAAAAAAAD//wMAAAAAAAAAAAD//wQAAAAAAAEAAAD//wUAAAACAAMAAAAAAPr/AAACAAAAAAAAAPv/AAABAAAAAAAAAPz/AAAAAAAAAAAAAP3/AAAAAAAAAAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAEAAAAAAAUAAAACAAMAAAABAPr/AAACAAAAAAABAPv/AAABAAAAAAABAPz/AAAAAAAAAAABAP3/AAAAAAAAAAABAP7/AAAAAAAAAAABAP//AAAAAAAAAAABAAAAAAAAAAAAAAABAAEAAAAAAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAAAAAABAAQAAAAAAAEAAAABAAUAAAACAAMAAAACAPr/AAACAAAAAAACAPv/AAABAAAAAAACAPz/AAAAAAAAAAACAP3/AAAAAAIAAAACAP7/AAAAAAIAAAACAP//AAAAAAIAAAACAAAAAAAAAAIAAAACAAEAAAAAAAIAAAACAAIAAAAAAAIAAAACAAMAAAAAAAAAAAACAAQAAAAAAAEAAAACAAUAAAACAAMAAAADAPr/AAACAAAAAAADAPv/AAABAAAAAAADAPz/AAAAAAAAAAADAP3/AAAAAAIAAAADAP7/AAAAAAIAAAADAP//AAAAAAIAAAADAAAAAAAAAAIAAAADAAEAAAAAAAIAAAADAAIAAAAAAAIAAAADAAMAAAAAAAAAAAADAAQAAAAAAAEAAAADAAUAAAACAAMAAAAEAPr/AAACAAEAAAAEAPv/AAABAAEAAAAEAPz/AAAAAAAAAAAEAP3/AAAAAAIAAAAEAP7/AAAAAAIAAAAEAP//AAAAAAIAAAAEAAAAAAAAAAIAAAAEAAEAAAAAAAIAAAAEAAIAAAAAAAIAAAAEAAMAAAAAAAAAAAAEAAQAAAAAAAEAAAAEAAUAAAACAAMAAAAFAPr/AAACAAIAAAAFAPv/AAABAAMAAAAFAPz/AAAAAAAAAAAFAP3/AAAAAAIAAAAFAP7/AAAAAAIAAAAFAP//AAAAAAIAAAAFAAAAAAAAAAIAAAAFAAEAAAAAAAIAAAAFAAIAAAAAAAIAAAAFAAMAAAAAAAAAAAAFAAQAAAAAAAEAAAAFAAUAAAACAAMAAAAGAPr/AAACAAAAAAAGAPv/AAABAAIAAAAGAPz/AAAAAAAAAAAGAP3/AAAAAAIAAAAGAP7/AAAAAAIAAAAGAP//AAAAAAIAAAAGAAAAAAAAAAIAAAAGAAEAAAAAAAIAAAAGAAIAAAAAAAIAAAAGAAMAAAAAAAAAAAAGAAQAAAAAAAEAAAAGAAUAAAACAAMAAAAHAPr/AAACAAAAAAAHAPv/AAABAAIAAAAHAPz/AAAAAAAAAAAHAP3/AAAAAAAAAAAHAP7/AAAAAAAAAAAHAP//AAAAAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAQAAAAAAAEAAAAHAAUAAAACAAMAAAAIAPr/AAACAAAAAAAIAPv/AAABAAIAAAAIAPz/AAAAAAEAAAAIAP3/AAAAAAEAAAAIAP7/AAAAAAEAAAAIAP//AAAAAAEAAAAIAAAAAAAAAAEAAAAIAAEAAAAAAAEAAAAIAAIAAAAAAAEAAAAIAAMAAAAAAAEAAAAIAAQAAAAAAAEAAAAIAAUAAAACAAMAAAAJAPr/AAACAAMAAAAJAPv/AAACAAMAAAAJAPz/AAACAAMAAAAJAP3/AAACAAMAAAAJAP7/AAACAAMAAAAJAP//AAACAAMAAAAJAAAAAAACAAMAAAAJAAEAAAACAAMAAAAJAAIAAAACAAMAAAAJAAMAAAACAAMAAAAJAAQAAAACAAMAAAAJAAUAAAACAAMAAAA=")
 tile_set = SubResource("TileSet_jjvhh")
@@ -252,8 +309,16 @@ text = "Play"
 layout_mode = 2
 text = "Exit"
 
+[node name="MilkSection" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="MilkSection"]
+
+[node name="Area2D" type="Area2D" parent="MilkSection"]
+
+[connection signal="timeout" from="ui/Alert/Timer" to="ui/Alert" method="_on_duration_time_out"]
 [connection signal="timeout" from="Tables/Client_Cooldown" to="Tables" method="_on_client_cooldown_timeout"]
 [connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
+[connection signal="body_exited" from="Exit" to="Exit" method="_on_body_exited"]
 [connection signal="body_entered" from="Items/Items Area" to="Items" method="_on_items_area_body_entered"]
 [connection signal="body_exited" from="Items/Items Area" to="Items" method="_on_items_area_body_exited"]
 [connection signal="pressed" from="Pause_ui/Control/CenterContainer/VBoxContainer/Play" to="Pause_ui" method="_on_play_pressed"]

@@ -9,8 +9,11 @@ extends StaticBody2D
 @onready var label : Label = $"../../ui/Label"
 @onready var arrow : Sprite2D = $Arrow
 @export var is_taken = false
+
 var is_player_nearby = false
 var default_modulate : Color
+var order_value = 0
+
 func hide_customer():
 	is_taken = false
 	Customer.hide()
@@ -23,10 +26,15 @@ func show_customer(main_body : StaticBody2D):
 	Customer_Colision.scale = Vector2(scale_value, scale_value)
 	Customer.show()
 	Customer_Colision.disabled = false
-	if randi_range(1,30) == 1:
+	if randi_range(1,30) == 1: #Buisness man
 		Customer_Sprite.frame = 4
-	else:
+		if MainGameManager.money > 10:
+			order_value = randi_range(0, MainGameManager.money/2)
+		else:
+			order_value = randi_range(40, 80)
+	else: #Normal customer
 		Customer_Sprite.frame = randi_range(0,3)
+		order_value = randi_range(10, 20) + MainGameManager.money / 10
 	var wanted_food = randi_range(0,2)
 	Items.order_handler(main_body, wanted_food)
 	Order_Item.frame = wanted_food
@@ -36,13 +44,13 @@ func _ready() -> void:
 	default_modulate = self.modulate
 	hide_customer()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_pressed("interact") && is_player_nearby:
 		hide_customer()
 		is_player_nearby = false
 		player.is_any_item_not_taken = true
 		player.hide_order_sprite()
-		MainGameManager.client_exit()
+		MainGameManager.client_exit(order_value)
 		unselect_customer()
 		label.text = "Money: " + str(MainGameManager.money)
 
