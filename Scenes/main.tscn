@@ -1,20 +1,24 @@
-[gd_scene load_steps=25 format=4 uid="uid://bfsbomotj4qip"]
+[gd_scene load_steps=32 format=4 uid="uid://bfsbomotj4qip"]
 
 [ext_resource type="Script" uid="uid://dqvsmcl8igj5e" path="res://Scripts/main_game_manager.gd" id="1_344ge"]
 [ext_resource type="PackedScene" uid="uid://baisslgr622gk" path="res://Scenes/player.tscn" id="1_jjgbg"]
 [ext_resource type="Texture2D" uid="uid://c6esu4gaqsvfq" path="res://Assets/Sprite-0002.png" id="2_bo1nx"]
-[ext_resource type="Script" uid="uid://bratauna38j21" path="res://Scenes/ui_manager.gd" id="2_d1ilt"]
+[ext_resource type="Script" uid="uid://bratauna38j21" path="res://Scripts/ui_manager.gd" id="2_d1ilt"]
 [ext_resource type="FontFile" uid="uid://be7opo235lcnt" path="res://Fonts/Jersey10-Regular.ttf" id="2_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://cwi2n7fauhcs2" path="res://Scenes/table.tscn" id="3_8gbba"]
 [ext_resource type="Script" uid="uid://dwfoxvobpphr4" path="res://Scripts/client_spawner.gd" id="3_kry3j"]
-[ext_resource type="Script" uid="uid://c84l60tq75667" path="res://Scenes/alert.gd" id="4_6iyac"]
+[ext_resource type="Script" uid="uid://c84l60tq75667" path="res://Scripts/alert.gd" id="4_6iyac"]
 [ext_resource type="Script" uid="uid://b5042h85utnlg" path="res://Scripts/exit.gd" id="4_jjvhh"]
 [ext_resource type="Script" uid="uid://8ir737pqx3h6" path="res://Scripts/items_spawner.gd" id="6_6bp64"]
 [ext_resource type="PackedScene" uid="uid://bdteynao3kpgl" path="res://Scenes/item.tscn" id="6_21xkr"]
-[ext_resource type="Script" uid="uid://b564k470aweeh" path="res://Scenes/pause.gd" id="10_hptm8"]
+[ext_resource type="Script" uid="uid://b564k470aweeh" path="res://Scripts/pause.gd" id="10_hptm8"]
+[ext_resource type="Texture2D" uid="uid://dstp0yn1de8ur" path="res://Assets/milk-glass.png" id="13_fdnlq"]
+[ext_resource type="Script" uid="uid://m3sfhplunygx" path="res://Scripts/shop_manager.gd" id="13_wsu2k"]
+[ext_resource type="Texture2D" uid="uid://wa2xk4gdg4vk" path="res://Assets/catpaw.png" id="14_jkdf5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hptm8"]
 font = ExtResource("2_ynf5e")
+font_size = 12
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
@@ -38,6 +42,7 @@ texture = ExtResource("2_bo1nx")
 0:3/0 = 0
 1:3/0 = 0
 2:3/0 = 0
+5:3/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_kry3j"]
 physics_layer_0/collision_layer = 1
@@ -118,6 +123,70 @@ size = Vector2(96, 48)
 font = ExtResource("2_ynf5e")
 font_size = 31
 
+[sub_resource type="Animation" id="Animation_jkdf5"]
+resource_name = "GiveItem"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-150, -45), Vector2(-136, -45)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CatPaw:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-17, 0), Vector2(-17, 0), Vector2(-39.425, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wsu2k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-136, -45)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CatPaw:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-17, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k12tt"]
+_data = {
+&"GiveItem": SubResource("Animation_jkdf5"),
+&"RESET": SubResource("Animation_wsu2k")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6iyac"]
+size = Vector2(16, 15)
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_344ge")
 
@@ -132,11 +201,14 @@ offset_bottom = 81.0
 script = ExtResource("2_d1ilt")
 
 [node name="Label" type="Label" parent="ui"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 139.0
-offset_right = 70.0
-offset_bottom = 162.0
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -14.0
+offset_right = 144.0
+grow_vertical = 0
 text = "Money: 0"
 label_settings = SubResource("LabelSettings_hptm8")
 
@@ -168,7 +240,7 @@ z_index = -1
 
 [node name="Furniture" type="TileMapLayer" parent="Tilemap"]
 z_index = -18
-tile_map_data = PackedByteArray("AAD8//v/AAADAAAAAAD8//z/AAADAAAAAAD8//3/AAADAAEAAAD6//3/AAADAAIAAAD5//3/AAADAAIAAAD3//3/AAADAAIAAAD7//3/AAADAAIAAAA=")
+tile_map_data = PackedByteArray("AAD8//v/AAADAAAAAAD8//z/AAADAAAAAAD8//3/AAADAAEAAAD6//3/AAADAAIAAAD5//3/AAADAAIAAAD3//3/AAADAAIAAAD7//3/AAADAAIAAAD3//z/AAAFAAMAAAA=")
 tile_set = SubResource("TileSet_kry3j")
 
 [node name="Floor" type="TileMapLayer" parent="Tilemap"]
@@ -309,11 +381,29 @@ text = "Play"
 layout_mode = 2
 text = "Exit"
 
-[node name="MilkSection" type="Node2D" parent="."]
+[node name="ShopSection" type="Node2D" parent="."]
+script = ExtResource("13_wsu2k")
 
-[node name="Sprite2D" type="Sprite2D" parent="MilkSection"]
+[node name="Item" type="Sprite2D" parent="ShopSection"]
+visible = false
+position = Vector2(-136, -45)
+texture = ExtResource("13_fdnlq")
 
-[node name="Area2D" type="Area2D" parent="MilkSection"]
+[node name="CatPaw" type="Sprite2D" parent="ShopSection/Item"]
+position = Vector2(-17, 0)
+texture = ExtResource("14_jkdf5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ShopSection/Item/CatPaw"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_k12tt")
+}
+
+[node name="TakeableItemArea" type="Area2D" parent="ShopSection"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShopSection/TakeableItemArea"]
+position = Vector2(-136, -24.5)
+shape = SubResource("RectangleShape2D_6iyac")
 
 [connection signal="timeout" from="ui/Alert/Timer" to="ui/Alert" method="_on_duration_time_out"]
 [connection signal="timeout" from="Tables/Client_Cooldown" to="Tables" method="_on_client_cooldown_timeout"]
@@ -323,3 +413,5 @@ text = "Exit"
 [connection signal="body_exited" from="Items/Items Area" to="Items" method="_on_items_area_body_exited"]
 [connection signal="pressed" from="Pause_ui/Control/CenterContainer/VBoxContainer/Play" to="Pause_ui" method="_on_play_pressed"]
 [connection signal="pressed" from="Pause_ui/Control/CenterContainer/VBoxContainer/Exit" to="Pause_ui" method="_on_exit_pressed"]
+[connection signal="body_entered" from="ShopSection/TakeableItemArea" to="ShopSection" method="_on_player_entered"]
+[connection signal="body_exited" from="ShopSection/TakeableItemArea" to="ShopSection" method="_on_takeable_item_area_body_exited"]

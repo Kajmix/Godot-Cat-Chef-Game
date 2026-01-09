@@ -6,13 +6,13 @@ extends StaticBody2D
 @onready var Order : Node2D = $Customer/Order
 @onready var Items : StaticBody2D = $"../../Items"
 @onready var player : CharacterBody2D = $"../../Player"
-@onready var label : Label = $"../../ui/Label"
+@onready var ui : Control = $"../../ui"
 @onready var arrow : Sprite2D = $Arrow
 @export var is_taken = false
 
 var is_player_nearby = false
 var default_modulate : Color
-var order_value = 0
+var order_value : int = 0
 
 func hide_customer():
 	is_taken = false
@@ -29,12 +29,12 @@ func show_customer(main_body : StaticBody2D):
 	if randi_range(1,30) == 1: #Buisness man
 		Customer_Sprite.frame = 4
 		if MainGameManager.money > 10:
-			order_value = randi_range(0, MainGameManager.money/2)
+			order_value = randi_range(40, round(MainGameManager.money/2))
 		else:
 			order_value = randi_range(40, 80)
 	else: #Normal customer
 		Customer_Sprite.frame = randi_range(0,3)
-		order_value = randi_range(10, 20) + MainGameManager.money / 10
+		order_value = randi_range(10, 20) + round(MainGameManager.money / 10)
 	var wanted_food = randi_range(0,2)
 	Items.order_handler(main_body, wanted_food)
 	Order_Item.frame = wanted_food
@@ -52,7 +52,7 @@ func _process(_delta: float) -> void:
 		player.hide_order_sprite()
 		MainGameManager.client_exit(order_value)
 		unselect_customer()
-		label.text = "Money: " + str(MainGameManager.money)
+		ui.update_label()
 
 func _on_order_area_body_entered(body) -> void:
 	if body.is_in_group("Player"):

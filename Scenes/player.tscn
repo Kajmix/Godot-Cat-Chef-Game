@@ -397,3 +397,8 @@ frame_progress = 0.71259207
 visible = false
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_8erm5")
+
+[node name="BoosterDuration" type="Timer" parent="."]
+wait_time = 30.0
+
+[connection signal="timeout" from="BoosterDuration" to="." method="_on_booster_duration_timeout"]
