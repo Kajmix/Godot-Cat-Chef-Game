@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var Player_sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var Order_Sprite : AnimatedSprite2D = $Order_Sprite
 @onready var Booster_Duration : Timer = $BoosterDuration
+@onready var Particle_Emiter: CPUParticles2D = $SpeedBoostParticleEmiter
 var SPEED = 75.0
 #exit key:
 var is_player_have_key = false
@@ -40,7 +41,9 @@ func hide_order_sprite():
 
 func speed_boost():
 	Booster_Duration.start()
+	Particle_Emiter.emitting = true
 	SPEED = 150.0
 
 func _on_booster_duration_timeout() -> void:
+	Particle_Emiter.emitting = false
 	SPEED = 75.0

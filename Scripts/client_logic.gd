@@ -6,8 +6,9 @@ extends StaticBody2D
 @onready var Order : Node2D = $Customer/Order
 @onready var Items : StaticBody2D = $"../../Items"
 @onready var player : CharacterBody2D = $"../../Player"
-@onready var ui : Control = $"../../ui"
+@onready var ui : Control = $"../../ui/ui"
 @onready var arrow : Sprite2D = $Arrow
+@onready var Money_Particle_Emiter : CPUParticles2D = $MoneyParticleEmiter
 @export var is_taken = false
 
 var is_player_nearby = false
@@ -53,6 +54,7 @@ func _process(_delta: float) -> void:
 		MainGameManager.client_exit(order_value)
 		unselect_customer()
 		ui.update_label()
+		Money_Particle_Emiter.emitting = true
 
 func _on_order_area_body_entered(body) -> void:
 	if body.is_in_group("Player"):

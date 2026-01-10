@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://bfsbomotj4qip"]
+[gd_scene load_steps=34 format=4 uid="uid://bfsbomotj4qip"]
 
 [ext_resource type="Script" uid="uid://dqvsmcl8igj5e" path="res://Scripts/main_game_manager.gd" id="1_344ge"]
 [ext_resource type="PackedScene" uid="uid://baisslgr622gk" path="res://Scenes/player.tscn" id="1_jjgbg"]
@@ -22,7 +22,7 @@ font_size = 12
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hptm8"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wsu2k"]
 texture = ExtResource("2_bo1nx")
 0:0/0 = 0
 1:0/0 = 0
@@ -46,9 +46,9 @@ texture = ExtResource("2_bo1nx")
 
 [sub_resource type="TileSet" id="TileSet_kry3j"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_hptm8")
+sources/0 = SubResource("TileSetAtlasSource_wsu2k")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6iyac"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k12tt"]
 texture = ExtResource("2_bo1nx")
 0:0/0 = 0
 1:0/0 = 0
@@ -78,9 +78,9 @@ texture = ExtResource("2_bo1nx")
 4:3/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_fdnlq"]
-sources/0 = SubResource("TileSetAtlasSource_6iyac")
+sources/0 = SubResource("TileSetAtlasSource_k12tt")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d1ilt"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h1bgf"]
 texture = ExtResource("2_bo1nx")
 0:0/0 = 0
 2:0/0 = 0
@@ -107,7 +107,7 @@ texture = ExtResource("2_bo1nx")
 
 [sub_resource type="TileSet" id="TileSet_jjvhh"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_d1ilt")
+sources/0 = SubResource("TileSetAtlasSource_h1bgf")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8gbba"]
 size = Vector2(30, 32)
@@ -187,20 +187,29 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6iyac"]
 size = Vector2(16, 15)
 
+[sub_resource type="Gradient" id="Gradient_wsu2k"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_k12tt"]
+gradient = SubResource("Gradient_wsu2k")
+fill_from = Vector2(1, 1)
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_344ge")
 
-[node name="ui" type="Control" parent="."]
+[node name="ui" type="CanvasLayer" parent="."]
+
+[node name="ui" type="Control" parent="ui"]
+light_mask = 2
+visibility_layer = 2
 z_index = 6
 layout_mode = 3
 anchors_preset = 0
-offset_left = -144.0
-offset_top = -81.0
-offset_right = 144.0
-offset_bottom = 81.0
+offset_top = 1.0
+offset_right = 288.0
+offset_bottom = 163.0
 script = ExtResource("2_d1ilt")
 
-[node name="Label" type="Label" parent="ui"]
+[node name="Label" type="Label" parent="ui/ui"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -212,7 +221,7 @@ grow_vertical = 0
 text = "Money: 0"
 label_settings = SubResource("LabelSettings_hptm8")
 
-[node name="Alert" type="Label" parent="ui"]
+[node name="Alert" type="Label" parent="ui/ui"]
 visible = false
 layout_mode = 1
 anchors_preset = 5
@@ -226,7 +235,7 @@ label_settings = SubResource("LabelSettings_hptm8")
 horizontal_alignment = 1
 script = ExtResource("4_6iyac")
 
-[node name="Timer" type="Timer" parent="ui/Alert"]
+[node name="Timer" type="Timer" parent="ui/ui/Alert"]
 wait_time = 3.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -375,10 +384,20 @@ label_settings = SubResource("LabelSettings_ynf5e")
 
 [node name="Play" type="Button" parent="Pause_ui/Control/CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ynf5e")
+theme_override_font_sizes/font_size = 8
 text = "Play"
+
+[node name="Exit to main menu" type="Button" parent="Pause_ui/Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ynf5e")
+theme_override_font_sizes/font_size = 8
+text = "Exit to main menu"
 
 [node name="Exit" type="Button" parent="Pause_ui/Control/CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ynf5e")
+theme_override_font_sizes/font_size = 8
 text = "Exit"
 
 [node name="ShopSection" type="Node2D" parent="."]
@@ -405,13 +424,27 @@ libraries = {
 position = Vector2(-136, -24.5)
 shape = SubResource("RectangleShape2D_6iyac")
 
-[connection signal="timeout" from="ui/Alert/Timer" to="ui/Alert" method="_on_duration_time_out"]
+[node name="Darkness" type="DirectionalLight2D" parent="."]
+energy = 0.4
+blend_mode = 1
+
+[node name="WorldLight" type="PointLight2D" parent="."]
+position = Vector2(0, -7.5)
+scale = Vector2(4.5, 2.765625)
+color = Color(0.7372549, 0.5254902, 0.36862746, 1)
+energy = 0.4
+shadow_filter = 1
+shadow_filter_smooth = 2.0
+texture = SubResource("GradientTexture2D_k12tt")
+
+[connection signal="timeout" from="ui/ui/Alert/Timer" to="ui/ui/Alert" method="_on_duration_time_out"]
 [connection signal="timeout" from="Tables/Client_Cooldown" to="Tables" method="_on_client_cooldown_timeout"]
 [connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
 [connection signal="body_exited" from="Exit" to="Exit" method="_on_body_exited"]
 [connection signal="body_entered" from="Items/Items Area" to="Items" method="_on_items_area_body_entered"]
 [connection signal="body_exited" from="Items/Items Area" to="Items" method="_on_items_area_body_exited"]
 [connection signal="pressed" from="Pause_ui/Control/CenterContainer/VBoxContainer/Play" to="Pause_ui" method="_on_play_pressed"]
+[connection signal="pressed" from="Pause_ui/Control/CenterContainer/VBoxContainer/Exit to main menu" to="Pause_ui" method="_on_exit_to_main_menu_pressed"]
 [connection signal="pressed" from="Pause_ui/Control/CenterContainer/VBoxContainer/Exit" to="Pause_ui" method="_on_exit_pressed"]
 [connection signal="body_entered" from="ShopSection/TakeableItemArea" to="ShopSection" method="_on_player_entered"]
 [connection signal="body_exited" from="ShopSection/TakeableItemArea" to="ShopSection" method="_on_takeable_item_area_body_exited"]

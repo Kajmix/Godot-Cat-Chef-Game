@@ -1,5 +1,5 @@
 extends Area2D
-@onready var Alert : Label = $"../ui/Alert"
+@onready var Alert : Label = $"../ui/ui/Alert"
 @onready var Player : CharacterBody2D = $"../Player"
 var is_player_in_exit_area : bool = false
 func _process(_delta: float) -> void:

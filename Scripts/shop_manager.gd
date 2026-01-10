@@ -1,9 +1,9 @@
 extends Node2D
 
-@onready var Alert : Label = $"../ui/Alert"
+@onready var Alert : Label = $"../ui/ui/Alert"
 @onready var ShopItem : Sprite2D = $Item
 @onready var animationPlayer : AnimationPlayer = $Item/CatPaw/AnimationPlayer
-@onready var ui : Control = $"../ui"
+@onready var ui : Control = $"../ui/ui"
 @onready var Player : CharacterBody2D = $"../Player"
 var is_player_in_shop_area = false
 var is_milk_bought = false

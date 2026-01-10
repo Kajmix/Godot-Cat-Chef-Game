@@ -1,62 +1,13 @@
-[gd_scene load_steps=11 format=4 uid="uid://cr55hp1fcbef"]
+[gd_scene load_steps=9 format=3 uid="uid://cr55hp1fcbef"]
 
-[ext_resource type="Texture2D" uid="uid://c6esu4gaqsvfq" path="res://Assets/Sprite-0002.png" id="1_1rerr"]
+[ext_resource type="Texture2D" uid="uid://egv3bacud0k1" path="res://Assets/Background.png" id="1_cayip"]
 [ext_resource type="Script" uid="uid://b7gx2mfveaqdn" path="res://Scripts/Menu.gd" id="2_xhh6f"]
+[ext_resource type="FontFile" uid="uid://be7opo235lcnt" path="res://Fonts/Jersey10-Regular.ttf" id="3_158mb"]
 [ext_resource type="Texture2D" uid="uid://bb5k45sakwdl5" path="res://Assets/Player Sprite.png" id="3_cayip"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xhh6f"]
-texture = ExtResource("1_1rerr")
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.967664, -8, 8, -8, 8, 8, -6.015026, 8)
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8.022593, -9.769447, 8.054919, -9.816933, 8, 8, -8, 8)
-0:3/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_cayip"]
-physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_xhh6f")
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_158mb"]
-texture = ExtResource("1_1rerr")
-0:0/0 = 0
-2:0/0 = 0
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-2:1/0 = 0
-1:1/0 = 0
-1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5.2793283, 8, -5.3957615, 8, -8, -8, -8)
-0:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5.2793283, 8, -5.3957615, 8, -8, -8, -8)
-2:2/0 = 0
-1:3/0 = 0
-1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5.2793283, 8, -5.3957615, 8, -8, -8, -8)
-0:3/0 = 0
-1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5.2793283, 8, -5.3957615, 8, -8, -8, -8)
-2:3/0 = 0
-2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
-3:2/0 = 0
-3:1/0 = 0
-3:0/0 = 0
-3:3/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_wwsa2"]
-physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_158mb")
+[sub_resource type="LabelSettings" id="LabelSettings_158mb"]
+font = ExtResource("3_158mb")
+font_size = 24
 
 [sub_resource type="Animation" id="Animation_158mb"]
 length = 0.001
@@ -114,19 +65,14 @@ grow_vertical = 2
 [node name="CanvasModulate" type="CanvasModulate" parent="CanvasLayer2/UI/Background"]
 color = Color(0.427493, 0.42749307, 0.42749307, 1)
 
-[node name="Tilemap" type="TileMapLayer" parent="CanvasLayer2/UI/Background"]
-z_index = -1146
-position = Vector2(144, 82)
-
-[node name="Furniture" type="TileMapLayer" parent="CanvasLayer2/UI/Background/Tilemap"]
-z_index = 1
-tile_map_data = PackedByteArray("AAD8//v/AAADAAAAAAD8//z/AAADAAAAAAD8//3/AAADAAEAAAD6//3/AAADAAIAAAD5//3/AAADAAIAAAD3//3/AAADAAIAAAD7//3/AAADAAIAAAA=")
-tile_set = SubResource("TileSet_cayip")
-
-[node name="Background" type="TileMapLayer" parent="CanvasLayer2/UI/Background/Tilemap"]
-use_parent_material = true
-tile_map_data = PackedByteArray("AAD2//r/AAACAAMAAAD2//v/AAACAAMAAAD2//z/AAACAAMAAAD2//3/AAACAAMAAAD2//7/AAACAAMAAAD2////AAACAAMAAAD2/wAAAAACAAMAAAD2/wEAAAACAAMAAAD2/wIAAAACAAMAAAD2/wMAAAACAAMAAAD2/wQAAAACAAMAAAD2/wUAAAACAAMAAAD3//r/AAACAAAAAAD3//v/AAABAAAAAAD3//z/AAADAAMAAAD3//3/AAADAAMAAAD3//7/AAAAAAEAAAD3////AAAAAAEAAAD3/wAAAAAAAAEAAAD3/wEAAAAAAAEAAAD3/wIAAAAAAAEAAAD3/wMAAAAAAAEAAAD3/wQAAAAAAAEAAAD3/wUAAAACAAMAAAD4//r/AAACAAAAAAD4//v/AAABAAAAAAD4//z/AAADAAMAAAD4//3/AAADAAMAAAD4//7/AAAAAAAAAAD4////AAAAAAAAAAD4/wAAAAAAAAAAAAD4/wEAAAAAAAAAAAD4/wIAAAAAAAAAAAD4/wMAAAAAAAAAAAD4/wQAAAAAAAEAAAD4/wUAAAACAAMAAAD5//r/AAACAAAAAAD5//v/AAABAAAAAAD5//z/AAADAAMAAAD5//3/AAADAAMAAAD5//7/AAAAAAAAAAD5////AAAAAAAAAAD5/wAAAAAAAAAAAAD5/wEAAAAAAAAAAAD5/wIAAAAAAAAAAAD5/wMAAAAAAAAAAAD5/wQAAAAAAAEAAAD5/wUAAAACAAMAAAD6//r/AAACAAAAAAD6//v/AAABAAAAAAD6//z/AAADAAMAAAD6//3/AAADAAMAAAD6//7/AAAAAAIAAAD6////AAAAAAIAAAD6/wAAAAAAAAIAAAD6/wEAAAAAAAIAAAD6/wIAAAAAAAIAAAD6/wMAAAAAAAAAAAD6/wQAAAAAAAEAAAD6/wUAAAACAAMAAAD7//r/AAACAAAAAAD7//v/AAABAAAAAAD7//z/AAADAAMAAAD7//3/AAADAAMAAAD7//7/AAAAAAIAAAD7////AAAAAAIAAAD7/wAAAAAAAAIAAAD7/wEAAAAAAAIAAAD7/wIAAAAAAAIAAAD7/wMAAAAAAAAAAAD7/wQAAAAAAAEAAAD7/wUAAAACAAMAAAD8//r/AAACAAAAAAD8//v/AAABAAAAAAD8//z/AAADAAMAAAD8//3/AAADAAMAAAD8//7/AAAAAAIAAAD8////AAAAAAIAAAD8/wAAAAAAAAIAAAD8/wEAAAAAAAIAAAD8/wIAAAAAAAIAAAD8/wMAAAAAAAAAAAD8/wQAAAAAAAEAAAD8/wUAAAACAAMAAAD9//r/AAACAAAAAAD9//v/AAABAAAAAAD9//z/AAAAAAAAAAD9//3/AAAAAAAAAAD9//7/AAAAAAAAAAD9////AAAAAAAAAAD9/wAAAAAAAAAAAAD9/wEAAAAAAAAAAAD9/wIAAAAAAAAAAAD9/wMAAAAAAAAAAAD9/wQAAAAAAAEAAAD9/wUAAAACAAMAAAD+//r/AAACAAAAAAD+//v/AAABAAAAAAD+//z/AAAAAAAAAAD+//3/AAAAAAAAAAD+//7/AAAAAAAAAAD+////AAAAAAAAAAD+/wAAAAAAAAAAAAD+/wEAAAAAAAAAAAD+/wIAAAAAAAAAAAD+/wMAAAAAAAAAAAD+/wQAAAAAAAEAAAD+/wUAAAACAAMAAAD///r/AAACAAAAAAD///v/AAABAAAAAAD///z/AAAAAAAAAAD///3/AAAAAAAAAAD///7/AAAAAAAAAAD/////AAAAAAAAAAD//wAAAAAAAAAAAAD//wEAAAAAAAAAAAD//wIAAAAAAAAAAAD//wMAAAAAAAAAAAD//wQAAAAAAAEAAAD//wUAAAACAAMAAAAAAPr/AAACAAAAAAAAAPv/AAABAAAAAAAAAPz/AAAAAAAAAAAAAP3/AAAAAAAAAAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAEAAAAAAAUAAAACAAMAAAABAPr/AAACAAAAAAABAPv/AAABAAAAAAABAPz/AAAAAAAAAAABAP3/AAAAAAAAAAABAP7/AAAAAAAAAAABAP//AAAAAAAAAAABAAAAAAAAAAAAAAABAAEAAAAAAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAAAAAABAAQAAAAAAAEAAAABAAUAAAACAAMAAAACAPr/AAACAAAAAAACAPv/AAABAAAAAAACAPz/AAAAAAAAAAACAP3/AAAAAAIAAAACAP7/AAAAAAIAAAACAP//AAAAAAIAAAACAAAAAAAAAAIAAAACAAEAAAAAAAIAAAACAAIAAAAAAAIAAAACAAMAAAAAAAAAAAACAAQAAAAAAAEAAAACAAUAAAACAAMAAAADAPr/AAACAAAAAAADAPv/AAABAAAAAAADAPz/AAAAAAAAAAADAP3/AAAAAAIAAAADAP7/AAAAAAIAAAADAP//AAAAAAIAAAADAAAAAAAAAAIAAAADAAEAAAAAAAIAAAADAAIAAAAAAAIAAAADAAMAAAAAAAAAAAADAAQAAAAAAAEAAAADAAUAAAACAAMAAAAEAPr/AAACAAEAAAAEAPv/AAABAAEAAAAEAPz/AAAAAAAAAAAEAP3/AAAAAAIAAAAEAP7/AAAAAAIAAAAEAP//AAAAAAIAAAAEAAAAAAAAAAIAAAAEAAEAAAAAAAIAAAAEAAIAAAAAAAIAAAAEAAMAAAAAAAAAAAAEAAQAAAAAAAEAAAAEAAUAAAACAAMAAAAFAPr/AAACAAIAAAAFAPv/AAABAAMAAAAFAPz/AAAAAAAAAAAFAP3/AAAAAAIAAAAFAP7/AAAAAAIAAAAFAP//AAAAAAIAAAAFAAAAAAAAAAIAAAAFAAEAAAAAAAIAAAAFAAIAAAAAAAIAAAAFAAMAAAAAAAAAAAAFAAQAAAAAAAEAAAAFAAUAAAACAAMAAAAGAPr/AAACAAAAAAAGAPv/AAABAAIAAAAGAPz/AAAAAAAAAAAGAP3/AAAAAAIAAAAGAP7/AAAAAAIAAAAGAP//AAAAAAIAAAAGAAAAAAAAAAIAAAAGAAEAAAAAAAIAAAAGAAIAAAAAAAIAAAAGAAMAAAAAAAAAAAAGAAQAAAAAAAEAAAAGAAUAAAACAAMAAAAHAPr/AAACAAAAAAAHAPv/AAABAAIAAAAHAPz/AAAAAAAAAAAHAP3/AAAAAAAAAAAHAP7/AAAAAAAAAAAHAP//AAAAAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAQAAAAAAAEAAAAHAAUAAAACAAMAAAAIAPr/AAACAAAAAAAIAPv/AAABAAIAAAAIAPz/AAAAAAEAAAAIAP3/AAAAAAEAAAAIAP7/AAAAAAEAAAAIAP//AAAAAAEAAAAIAAAAAAAAAAEAAAAIAAEAAAAAAAEAAAAIAAIAAAAAAAEAAAAIAAMAAAAAAAEAAAAIAAQAAAAAAAEAAAAIAAUAAAACAAMAAAAJAPr/AAACAAMAAAAJAPv/AAACAAMAAAAJAPz/AAACAAMAAAAJAP3/AAACAAMAAAAJAP7/AAACAAMAAAAJAP//AAACAAMAAAAJAAAAAAACAAMAAAAJAAEAAAACAAMAAAAJAAIAAAACAAMAAAAJAAMAAAACAAMAAAAJAAQAAAACAAMAAAAJAAUAAAACAAMAAAA=")
-tile_set = SubResource("TileSet_wwsa2")
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer2/UI/Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_cayip")
+expand_mode = 2
 
 [node name="UI" type="CanvasLayer" parent="CanvasLayer2/UI"]
 script = ExtResource("2_xhh6f")
@@ -142,19 +88,29 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/MarginContainer"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/VBoxContainer"]
+[node name="Title" type="Label" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Cat Chef Game"
+label_settings = SubResource("LabelSettings_158mb")
 
-[node name="Play" type="Button" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/VBoxContainer"]
+[node name="Play" type="Button" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_158mb")
+theme_override_font_sizes/font_size = 8
 text = "Play"
 
-[node name="Exit" type="Button" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/VBoxContainer"]
+[node name="Exit" type="Button" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_158mb")
+theme_override_font_sizes/font_size = 8
 text = "Exit"
 
 [node name="RightCenter" type="CenterContainer" parent="CanvasLayer2/UI/UI/HBoxContainer"]
@@ -183,5 +139,5 @@ autoplay = "spin"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[connection signal="pressed" from="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/VBoxContainer/Play" to="CanvasLayer2/UI/UI" method="_on_play_pressed"]
-[connection signal="pressed" from="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/VBoxContainer/Exit" to="CanvasLayer2/UI/UI" method="_on_exit_pressed"]
+[connection signal="pressed" from="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/MarginContainer/VBoxContainer/Play" to="CanvasLayer2/UI/UI" method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/MarginContainer/VBoxContainer/Exit" to="CanvasLayer2/UI/UI" method="_on_exit_pressed"]
