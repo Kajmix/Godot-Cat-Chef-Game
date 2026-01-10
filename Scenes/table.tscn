@@ -127,12 +127,12 @@ _data = {
 &"up and down": SubResource("Animation_o4lkm")
 }
 
-[sub_resource type="Gradient" id="Gradient_xexre"]
+[sub_resource type="Gradient" id="Gradient_4ntqo"]
 offsets = PackedFloat32Array(0, 0.7733333)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_4ntqo"]
-gradient = SubResource("Gradient_xexre")
+gradient = SubResource("Gradient_4ntqo")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
@@ -209,8 +209,8 @@ speed_scale = 2.0
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(0, -3)
-color = Color(0.7372701, 0.5238013, 0.3705766, 1)
-energy = 0.4
+color = Color(0.67674357, 0.5575295, 0.37626487, 1)
+energy = 0.2
 texture = SubResource("GradientTexture2D_4ntqo")
 
 [connection signal="body_entered" from="Order Area" to="." method="_on_order_area_body_entered"]

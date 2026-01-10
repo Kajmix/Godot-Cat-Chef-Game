@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://baisslgr622gk"]
+[gd_scene load_steps=59 format=3 uid="uid://baisslgr622gk"]
 
 [ext_resource type="Script" uid="uid://b4jy1fa0f48lj" path="res://Scripts/player_movement.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://t37ke1jauf03" path="res://Assets/dash.png" id="2_3smsa"]
@@ -380,6 +380,15 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_xexre"]
+offsets = PackedFloat32Array(0, 0.7733333)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3smsa"]
+gradient = SubResource("Gradient_xexre")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_cvnsp")
 
@@ -419,5 +428,10 @@ sprite_frames = SubResource("SpriteFrames_8erm5")
 
 [node name="BoosterDuration" type="Timer" parent="."]
 wait_time = 30.0
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -3)
+energy = 0.1
+texture = SubResource("GradientTexture2D_3smsa")
 
 [connection signal="timeout" from="BoosterDuration" to="." method="_on_booster_duration_timeout"]

@@ -27,15 +27,12 @@ func show_customer(main_body : StaticBody2D):
 	Customer_Colision.scale = Vector2(scale_value, scale_value)
 	Customer.show()
 	Customer_Colision.disabled = false
-	if randi_range(1,30) == 1: #Buisness man
+	if randi_range(1,50) == 1: #Buisness man
 		Customer_Sprite.frame = 4
-		if MainGameManager.money > 10:
-			order_value = randi_range(40, round(MainGameManager.money/2))
-		else:
-			order_value = randi_range(40, 80)
+		order_value = randi_range(15, 50)
 	else: #Normal customer
 		Customer_Sprite.frame = randi_range(0,3)
-		order_value = randi_range(10, 20) + round(MainGameManager.money / 10)
+		order_value = randi_range(8, 15)
 	var wanted_food = randi_range(0,2)
 	Items.order_handler(main_body, wanted_food)
 	Order_Item.frame = wanted_food
