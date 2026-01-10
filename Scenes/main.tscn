@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://bfsbomotj4qip"]
+[gd_scene load_steps=44 format=4 uid="uid://bfsbomotj4qip"]
 
 [ext_resource type="Script" uid="uid://dqvsmcl8igj5e" path="res://Scripts/main_game_manager.gd" id="1_344ge"]
 [ext_resource type="PackedScene" uid="uid://baisslgr622gk" path="res://Scenes/player.tscn" id="1_jjgbg"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://b5042h85utnlg" path="res://Scripts/exit.gd" id="4_jjvhh"]
 [ext_resource type="Script" uid="uid://8ir737pqx3h6" path="res://Scripts/items_spawner.gd" id="6_6bp64"]
 [ext_resource type="PackedScene" uid="uid://bdteynao3kpgl" path="res://Scenes/item.tscn" id="6_21xkr"]
+[ext_resource type="PackedScene" uid="uid://bk13ox3i31hmk" path="res://Scenes/monologue.tscn" id="7_hibaj"]
 [ext_resource type="Script" uid="uid://b564k470aweeh" path="res://Scripts/pause.gd" id="10_hptm8"]
 [ext_resource type="Texture2D" uid="uid://dstp0yn1de8ur" path="res://Assets/milk-glass.png" id="13_fdnlq"]
 [ext_resource type="Texture2D" uid="uid://cjws4wvym0n7y" path="res://Assets/button_background.png" id="13_k12tt"]
@@ -21,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://wa2xk4gdg4vk" path="res://Assets/catpaw.png" id="14_jkdf5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hptm8"]
+paragraph_spacing = 1.0
 font = ExtResource("2_ynf5e")
 font_size = 12
 outline_size = 4
@@ -326,6 +328,9 @@ script = ExtResource("4_6iyac")
 
 [node name="Timer" type="Timer" parent="ui/ui/Alert"]
 wait_time = 3.0
+
+[node name="Monologue" parent="ui/ui" instance=ExtResource("7_hibaj")]
+layout_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

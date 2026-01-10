@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=3 uid="uid://bk13ox3i31hmk"]
+
+[ext_resource type="Texture2D" uid="uid://cwr8ke26cghma" path="res://Assets/Monologue.png" id="1_lynht"]
+[ext_resource type="Script" uid="uid://ci8n42xy0gjpg" path="res://Scenes/monologue_logic.gd" id="1_n5vs8"]
+[ext_resource type="Texture2D" uid="uid://uqkq53wydn4n" path="res://Assets/Monologue Name.png" id="2_5hj3i"]
+[ext_resource type="FontFile" uid="uid://be7opo235lcnt" path="res://Fonts/Jersey10-Regular.ttf" id="2_72xkx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_72xkx"]
+font = ExtResource("2_72xkx")
+font_size = 8
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5hj3i"]
+line_spacing = -1.0
+font = ExtResource("2_72xkx")
+font_size = 14
+font_color = Color(0, 0, 0, 1)
+
+[node name="Monologue" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n5vs8")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -68.0
+offset_right = 128.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_lynht")
+
+[node name="Name_Background" type="TextureRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -113.0
+offset_top = -73.0
+offset_right = -49.0
+offset_bottom = -57.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_5hj3i")
+
+[node name="Name" type="Label" parent="Background/Name_Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -8.0
+offset_right = 27.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Mr. Meow"
+label_settings = SubResource("LabelSettings_72xkx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="Background"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 9.0
+offset_right = 247.0
+offset_bottom = 55.0
+text = "Hey! Are you winning son?
+Son?
+-_-"
+label_settings = SubResource("LabelSettings_5hj3i")
