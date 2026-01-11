@@ -4,6 +4,7 @@ extends Node2D
 @onready var ShopItem : Sprite2D = $Item
 @onready var animationPlayer : AnimationPlayer = $Item/CatPaw/AnimationPlayer
 @onready var ui : Control = $"../ui/ui"
+@onready var GulpSFX : AudioStreamPlayer = $GulpSFX
 @onready var Player : CharacterBody2D = $"../Player"
 var is_player_in_shop_area = false
 var is_milk_bought = false
@@ -22,6 +23,8 @@ func _process(_delta: float) -> void:
 			if is_milk_bought == true:
 				Alert.alert("Press 'E' to drink milk", false)
 				if Input.is_action_just_pressed("interact"):
+					GulpSFX.pitch_scale = randf_range(0.8, 1.2)
+					GulpSFX.play()
 					is_milk_bought = false
 					ShopItem.hide()
 					Player.speed_boost()

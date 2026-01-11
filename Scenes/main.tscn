@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://bfsbomotj4qip"]
+[gd_scene load_steps=46 format=4 uid="uid://bfsbomotj4qip"]
 
 [ext_resource type="Script" uid="uid://dqvsmcl8igj5e" path="res://Scripts/main_game_manager.gd" id="1_344ge"]
 [ext_resource type="PackedScene" uid="uid://baisslgr622gk" path="res://Scenes/player.tscn" id="1_jjgbg"]
@@ -20,6 +20,8 @@
 [ext_resource type="Script" uid="uid://m3sfhplunygx" path="res://Scripts/shop_manager.gd" id="13_wsu2k"]
 [ext_resource type="Texture2D" uid="uid://yhguhd81swgx" path="res://Assets/button_background_pressed.png" id="14_h1bgf"]
 [ext_resource type="Texture2D" uid="uid://wa2xk4gdg4vk" path="res://Assets/catpaw.png" id="14_jkdf5"]
+[ext_resource type="AudioStream" uid="uid://d1pqahmbu68un" path="res://audio/SFX/gulp.wav" id="21_pdsj5"]
+[ext_resource type="Script" uid="uid://bwmlm3orw5qsr" path="res://Scenes/auto_save.gd" id="22_ee4r6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hptm8"]
 paragraph_spacing = 1.0
@@ -312,6 +314,11 @@ grow_vertical = 0
 text = "Money: 0"
 label_settings = SubResource("LabelSettings_hptm8")
 
+[node name="AutoSave_Money" type="Timer" parent="ui/ui/Control/Money"]
+wait_time = 0.009999999999999998
+one_shot = true
+autostart = true
+
 [node name="Alert" type="Label" parent="ui/ui"]
 visible = false
 layout_mode = 1
@@ -563,6 +570,9 @@ libraries = {
 position = Vector2(-136, -24.5)
 shape = SubResource("RectangleShape2D_6iyac")
 
+[node name="GulpSFX" type="AudioStreamPlayer" parent="ShopSection"]
+stream = ExtResource("21_pdsj5")
+
 [node name="WorldLight" type="PointLight2D" parent="."]
 position = Vector2(0, -7.5)
 scale = Vector2(4.5, 2.765625)
@@ -579,6 +589,12 @@ energy = 0.4
 blend_mode = 1
 texture = SubResource("GradientTexture2D_h1bgf")
 
+[node name="AutoSave" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+script = ExtResource("22_ee4r6")
+
+[connection signal="timeout" from="ui/ui/Control/Money/AutoSave_Money" to="ui/ui" method="_on_auto_save_money_timeout"]
 [connection signal="timeout" from="ui/ui/Alert/Timer" to="ui/ui/Alert" method="_on_duration_time_out"]
 [connection signal="timeout" from="Tables/Client_Cooldown" to="Tables" method="_on_client_cooldown_timeout"]
 [connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
@@ -590,3 +606,4 @@ texture = SubResource("GradientTexture2D_h1bgf")
 [connection signal="pressed" from="Pause_ui/Control/CenterContainer/VBoxContainer/Exit" to="Pause_ui" method="_on_exit_pressed"]
 [connection signal="body_entered" from="ShopSection/TakeableItemArea" to="ShopSection" method="_on_player_entered"]
 [connection signal="body_exited" from="ShopSection/TakeableItemArea" to="ShopSection" method="_on_takeable_item_area_body_exited"]
+[connection signal="timeout" from="AutoSave" to="AutoSave" method="_on_auto_save_timeout"]
