@@ -1,4 +1,5 @@
 extends CanvasLayer
+@onready var Player : CharacterBody2D = $"../Player"
 var is_paused = false
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
@@ -14,14 +15,18 @@ func _physics_process(_delta: float) -> void:
 
 
 func _on_play_pressed() -> void:
+	Audio_Player.play_sound("click")
 	is_paused = false
 	hide()
 	Engine.time_scale = 1
 
 func _on_exit_pressed() -> void:
+	Audio_Player.play_sound("click")
 	get_tree().quit()
 
 
 func _on_exit_to_main_menu_pressed() -> void:
+	MainGameManager.autosave(Player)
+	Audio_Player.play_sound("click")
 	Engine.time_scale = 1
 	get_tree().change_scene_to_file("res://Scenes/menu.tscn")

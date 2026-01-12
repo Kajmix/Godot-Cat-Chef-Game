@@ -15,6 +15,17 @@ var is_player_nearby = false
 var default_modulate : Color
 var order_value : int = 0
 
+const normal_clients_animations_list = [
+	"ball_guy",
+	"green_guy",
+	"purple_ball_guy",
+	"purple_guy"
+]
+const special_clients_animations_list = [
+	"cat",
+	"businessman"
+]
+
 func hide_customer():
 	is_taken = false
 	Customer.hide()
@@ -27,11 +38,11 @@ func show_customer(main_body : StaticBody2D):
 	Customer_Colision.scale = Vector2(scale_value, scale_value)
 	Customer.show()
 	Customer_Colision.disabled = false
-	if randi_range(1,50) == 1: #Buisness man
-		Customer_Sprite.frame = 4
+	if randi_range(1,50) == 1: #Special Cats
+		Customer_Sprite.play(special_clients_animations_list[randi_range(0, special_clients_animations_list.size() - 1)])
 		order_value = randi_range(15, 50)
-	else: #Normal customer
-		Customer_Sprite.frame = randi_range(0,3)
+	else: #Normal customers
+		Customer_Sprite.play(normal_clients_animations_list[randi_range(0, normal_clients_animations_list.size() - 1)])
 		order_value = randi_range(8, 15)
 	var wanted_food = randi_range(0,2)
 	Items.order_handler(main_body, wanted_food)
@@ -52,6 +63,7 @@ func _process(_delta: float) -> void:
 		unselect_customer()
 		ui.update_label()
 		Money_Particle_Emiter.emitting = true
+		Audio_Player.play_sound("katching")
 
 func _on_order_area_body_entered(body) -> void:
 	if body.is_in_group("Player"):

@@ -18,6 +18,8 @@ config/icon="res://Godot-Cat-Cheff-Game/icon.svg"
 [autoload]
 
 MainGameManager="*res://Scripts/main_game_manager.gd"
+Audio_Player="*res://Scenes/Audio_Player.tscn"
+MusicPlayer="*res://Scenes/MusicPlayer.tscn"
 
 [display]
 

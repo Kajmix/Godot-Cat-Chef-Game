@@ -4,7 +4,6 @@ extends Node2D
 @onready var ShopItem : Sprite2D = $Item
 @onready var animationPlayer : AnimationPlayer = $Item/CatPaw/AnimationPlayer
 @onready var ui : Control = $"../ui/ui"
-@onready var GulpSFX : AudioStreamPlayer = $GulpSFX
 @onready var Player : CharacterBody2D = $"../Player"
 var is_player_in_shop_area = false
 var is_milk_bought = false
@@ -12,8 +11,8 @@ func _process(_delta: float) -> void:
 	if is_player_in_shop_area:
 		if Input.is_action_just_pressed("interact") && is_milk_bought == false:
 			if MainGameManager.money >= 50:
-				ShopItem.show()
 				animationPlayer.play("GiveItem")
+				ShopItem.show()
 				MainGameManager.sub_money(50)
 				ui.update_label()
 				is_milk_bought = true
@@ -23,9 +22,9 @@ func _process(_delta: float) -> void:
 			if is_milk_bought == true:
 				Alert.alert("Press 'E' to drink milk", false)
 				if Input.is_action_just_pressed("interact"):
-					GulpSFX.pitch_scale = randf_range(0.8, 1.2)
-					GulpSFX.play()
+					Audio_Player.play_sound("gulp")
 					is_milk_bought = false
+					animationPlayer.stop()
 					ShopItem.hide()
 					Player.speed_boost()
 func _on_player_entered(body: Node2D) -> void:

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bk13ox3i31hmk"]
 
 [ext_resource type="Texture2D" uid="uid://cwr8ke26cghma" path="res://Assets/Monologue.png" id="1_lynht"]
-[ext_resource type="Script" uid="uid://ci8n42xy0gjpg" path="res://Scenes/monologue_logic.gd" id="1_n5vs8"]
+[ext_resource type="Script" uid="uid://ci8n42xy0gjpg" path="res://Scripts/monologue_logic.gd" id="1_n5vs8"]
 [ext_resource type="Texture2D" uid="uid://uqkq53wydn4n" path="res://Assets/Monologue Name.png" id="2_5hj3i"]
 [ext_resource type="FontFile" uid="uid://be7opo235lcnt" path="res://Fonts/Jersey10-Regular.ttf" id="2_72xkx"]
 
