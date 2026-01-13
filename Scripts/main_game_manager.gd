@@ -9,6 +9,26 @@ func client_exit(order_value):
 func sub_money(value):
 	money -= value
 
+#Default:
+var default_save = {
+	"player_pos_x" : -120,
+	"player_pos_y" : -43,
+	"money" : 0,
+	"served_customers" : 0,
+	"is_monologue_never_played_before" : true,
+	"tables": [
+		{"id": 0, "is_not_bought": true},
+		{"id": 1, "is_not_bought": false},
+		{"id": 2, "is_not_bought": true},
+		{"id": 3, "is_not_bought": false},
+		{"id": 4, "is_not_bought": true},
+		{"id": 5, "is_not_bought": true},
+		{"id": 6, "is_not_bought": false},
+		{"id": 7, "is_not_bought": true}
+	]
+}
+
+
 # Autosave:
 func autosave(player):
 	var data = {
