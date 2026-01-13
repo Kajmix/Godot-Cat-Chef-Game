@@ -10,10 +10,16 @@ func _ready():
 	taken_tables = get_taken_tables()
 
 func get_free_tables():
-	return tables.filter(func(t): return t.is_taken == false)
+	return tables.filter(func(t): return t.is_taken == false && t.is_not_bought == false)
 
 func get_taken_tables():
-	return tables.filter(func(t): return t.is_taken == true)
+	return tables.filter(func(t): return t.is_taken == true && t.is_not_bought == false)
+
+func get_bought_tables():
+	return tables.filter(func(t): return t.is_not_bought == false)
+
+func get_not_bought_tables():
+	return tables.filter(func(t): return t.is_not_bought == true)
 
 func _on_client_cooldown_timeout() -> void:
 	free_tables = get_free_tables()

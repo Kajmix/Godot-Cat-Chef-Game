@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://cwi2n7fauhcs2"]
+[gd_scene load_steps=43 format=3 uid="uid://cwi2n7fauhcs2"]
 
 [ext_resource type="Texture2D" uid="uid://iky7etio4bnp" path="res://Assets/table.png" id="1_ix8et"]
 [ext_resource type="Script" uid="uid://b3e07v14iiaf2" path="res://Scripts/client_logic.gd" id="1_xqsq7"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bumybq7pcm2rf" path="res://Assets/arrow.png" id="8_o4lkm"]
 [ext_resource type="Texture2D" uid="uid://bvsir81uef4jq" path="res://Assets/pizza.png" id="8_xexre"]
 [ext_resource type="Texture2D" uid="uid://bf36yo0v1fi3g" path="res://Assets/cash.png" id="10_4ntqo"]
+[ext_resource type="Texture2D" uid="uid://b88be1l3glyht" path="res://Assets/lock.png" id="12_filji"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ppvu"]
 radius = 8.0
@@ -351,6 +352,11 @@ position = Vector2(0, -3)
 color = Color(0.67674357, 0.5575295, 0.37626487, 1)
 energy = 0.2
 texture = SubResource("GradientTexture2D_4ntqo")
+
+[node name="lock" type="Sprite2D" parent="."]
+z_index = 10
+position = Vector2(0, -10)
+texture = ExtResource("12_filji")
 
 [connection signal="body_entered" from="Order Area" to="." method="_on_order_area_body_entered"]
 [connection signal="body_exited" from="Order Area" to="." method="_on_order_area_body_exited"]

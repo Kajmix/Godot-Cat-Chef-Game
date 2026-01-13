@@ -3,16 +3,26 @@ extends StaticBody2D
 @onready var Customer_Colision : CollisionShape2D = $"Customer/Customer Colision"
 @onready var Customer_Sprite : AnimatedSprite2D = $Customer/AnimatedSprite2D
 @onready var Order_Item : AnimatedSprite2D = $"Customer/Order/Order Sprite"
+@onready var TableSprite : Sprite2D = $"Table Sprite"
 @onready var Order : Node2D = $Customer/Order
 @onready var Items : StaticBody2D = $"../../Items"
 @onready var player : CharacterBody2D = $"../../Player"
 @onready var ui : Control = $"../../ui/ui"
 @onready var arrow : Sprite2D = $Arrow
 @onready var Money_Particle_Emiter : CPUParticles2D = $MoneyParticleEmiter
+@onready var Lock : Sprite2D = $lock
 @export var is_taken = false
+@export var is_not_bought = true
+@export var price = 200
+@export var id : int
+
+signal set_alert(Text)
+signal hide_alert()
+signal bought_table()
 
 var is_player_nearby = false
-var default_modulate : Color
+var is_player_in_buy_area = false
+var TableSprite_modulate : Color
 var order_value : int = 0
 
 const normal_clients_animations_list = [
@@ -25,6 +35,12 @@ const special_clients_animations_list = [
 	"cat",
 	"businessman"
 ]
+
+func set_alert_signal():
+	SignalBus.emit_signal("set_alert", "Cost: $" + str(price) + "\n Press 'E' to buy")
+
+func set_hide_alert():
+	SignalBus.emit_signal("hide_alert")
 
 func hide_customer():
 	is_taken = false
@@ -50,11 +66,12 @@ func show_customer(main_body : StaticBody2D):
 	Order.show()
 	
 func _ready() -> void:
-	default_modulate = self.modulate
+	MainGameManager.loading_finished.connect(_on_loading_finished)
+	TableSprite_modulate = TableSprite.modulate
 	hide_customer()
 
 func _process(_delta: float) -> void:
-	if Input.is_action_pressed("interact") && is_player_nearby:
+	if Input.is_action_just_pressed("interact") && is_player_nearby:
 		hide_customer()
 		is_player_nearby = false
 		player.is_any_item_not_taken = true
@@ -63,19 +80,38 @@ func _process(_delta: float) -> void:
 		unselect_customer()
 		ui.update_label()
 		Money_Particle_Emiter.emitting = true
+		Audio_Player.play_sound("money")
+	if Input.is_action_just_pressed("interact") && is_player_in_buy_area == true && is_not_bought == true && MainGameManager.money >= price:
+		MainGameManager.sub_money(price)
+		is_not_bought = false
+		TableSprite.modulate = TableSprite_modulate
+		Lock.hide()
+		SignalBus.emit_signal("hide_alert")
+		SignalBus.emit_signal("bought_table")
 		Audio_Player.play_sound("katching")
 
 func _on_order_area_body_entered(body) -> void:
 	if body.is_in_group("Player"):
+		is_player_in_buy_area = true
 		if body.selected_order_item == Order_Item.frame && body.table == self:
 			is_player_nearby = true
-
+		if is_not_bought == true:
+			set_alert_signal()
 
 func _on_order_area_body_exited(body) -> void:
 	if body.is_in_group("Player"):
+		is_player_in_buy_area = false
 		is_player_nearby = false
+		if is_not_bought == true:
+			set_hide_alert()
 
 func select_customer():
 	arrow.show()
 func unselect_customer():
 	arrow.hide()
+func _on_loading_finished():
+	if is_not_bought == true:
+		TableSprite.modulate = Color(0,0,0)
+		Lock.show()
+	else:
+		Lock.hide()

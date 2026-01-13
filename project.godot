@@ -20,11 +20,15 @@ config/icon="res://Godot-Cat-Cheff-Game/icon.svg"
 MainGameManager="*res://Scripts/main_game_manager.gd"
 Audio_Player="*res://Scenes/Audio_Player.tscn"
 MusicPlayer="*res://Scenes/MusicPlayer.tscn"
+SignalBus="*res://Scripts/signalBus.gd"
+Fullscreen="*res://Scripts/fullscreen.gd"
 
 [display]
 
 window/size/viewport_width=288
 window/size/viewport_height=162
+window/size/mode=2
+window/size/resizable=false
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
@@ -71,6 +75,11 @@ interact={
 pause={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+toggle_fullscreen={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194342,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
 

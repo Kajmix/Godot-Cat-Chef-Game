@@ -5,4 +5,5 @@
 
 [node name="ClickAudioPlayer" type="AudioStreamPlayer"]
 stream = ExtResource("1_m2ixk")
+volume_db = -10.0
 script = ExtResource("2_m6kiv")

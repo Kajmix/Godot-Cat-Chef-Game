@@ -11,6 +11,7 @@ func _process(_delta: float) -> void:
 	if is_player_in_shop_area:
 		if Input.is_action_just_pressed("interact") && is_milk_bought == false:
 			if MainGameManager.money >= 50:
+				Audio_Player.play_sound("katching")
 				animationPlayer.play("GiveItem")
 				ShopItem.show()
 				MainGameManager.sub_money(50)
