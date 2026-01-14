@@ -43,7 +43,7 @@ func speed_boost():
 	%MilkIcon.texture = load("res://Assets/Milk boost icon.png")
 	Booster_Duration.start()
 	Particle_Emiter.emitting = true
-	SPEED = 150.0
+	SPEED = 110.0
 
 func _on_booster_duration_timeout() -> void:
 	%MilkIcon.texture = load("res://Assets/Without Milk boost icon.png")

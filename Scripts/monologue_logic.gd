@@ -30,10 +30,10 @@ func _input(_event: InputEvent) -> void:
 func _ready() -> void:
 	if MainGameManager.is_monologue_never_played_before:
 		start_monologue([
-			"Oh hi! \nDo you want a tutorial on how things work here? \n(Press 'E' to continue)",
+			"Oh hi! \nDo you want a tutorial on how things work here? \n(Press 'E', or 'Z' to continue)",
 			"We're in a restaurant and you're the chef.\nUnfortunately, all the waiters took the day off,\nso you'll have to be the waiter today.",
-			"Use WASD or arrow keys to move.\nPress 'E' to interact.",
-			"If you get tired, I have milk for $50.\nServe customers by delivering food to their \ntables.",
+			"Use WASD or arrow keys to move.\nPress 'E', or 'Z' to interact.",
+			"If you get tired, I have milk for $30.\nServe customers by delivering food to their \ntables.",
 			"You need to purchase some of tables\nto get more customers and deliver their food \nfaster.",
 			"You can pick up the ordered items\nfrom the spot near my shop :3"
 		], "Mr. Meow")

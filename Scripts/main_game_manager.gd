@@ -2,6 +2,8 @@ extends Node2D
 var money = 0
 var served_customers = 0
 var is_monologue_never_played_before : bool = true
+var music_volume = 50
+var sfx_volume = 75
 signal loading_finished()
 func client_exit(order_value):
 	money += order_value
@@ -16,6 +18,8 @@ var default_save = {
 	"money" : 0,
 	"served_customers" : 0,
 	"is_monologue_never_played_before" : true,
+	"music_volume" : music_volume,
+	"sfx_volume" : sfx_volume,
 	"tables": [
 		{"id": 0, "is_not_bought": true},
 		{"id": 1, "is_not_bought": false},
@@ -36,7 +40,9 @@ func autosave(player):
 		"player_pos_y" : player.position.y,
 		"money" : money,
 		"served_customers" : served_customers,
-		"is_monologue_never_played_before" : is_monologue_never_played_before
+		"is_monologue_never_played_before" : is_monologue_never_played_before,
+		"music_volume" : music_volume,
+		"sfx_volume" : sfx_volume
 	}
 	
 	var tables_state = []
@@ -65,6 +71,8 @@ func load_save(player):
 	money = autosave_file.get_value("SaveData", "money", 0)
 	served_customers = autosave_file.get_value("SaveData", "served_customers", 0)
 	is_monologue_never_played_before = autosave_file.get_value("SaveData", "is_monologue_never_played_before", true)
+	music_volume = autosave_file.get_value("SaveData", "music_volume", 50)
+	sfx_volume = autosave_file.get_value("SaveData", "sfx_volume", 75)
 	
 	var tables_loaded = autosave_file.get_value("SaveData", "tables", [])
 	

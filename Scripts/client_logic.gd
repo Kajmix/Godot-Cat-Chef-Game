@@ -37,7 +37,7 @@ const special_clients_animations_list = [
 ]
 
 func set_alert_signal():
-	SignalBus.emit_signal("set_alert", "Cost: $" + str(price) + "\n Press 'E' to buy")
+	SignalBus.emit_signal("set_alert", "Cost: $" + str(price) + "\n Press 'E', or 'Z' to buy")
 
 func set_hide_alert():
 	SignalBus.emit_signal("hide_alert")

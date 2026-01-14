@@ -1,6 +1,7 @@
 extends CanvasLayer
 @onready var Player : CharacterBody2D = $"../Player"
 var is_paused = false
+
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
 		is_paused = !is_paused
