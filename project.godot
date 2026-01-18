@@ -22,6 +22,7 @@ Audio_Player="*res://Scenes/Audio_Player.tscn"
 MusicPlayer="*res://Scenes/MusicPlayer.tscn"
 SignalBus="*res://Scripts/signalBus.gd"
 Fullscreen="*res://Scripts/fullscreen.gd"
+Fade="*res://Scenes/fade.tscn"
 
 [display]
 

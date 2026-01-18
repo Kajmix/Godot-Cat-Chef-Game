@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://bfsbomotj4qip"]
+[gd_scene load_steps=53 format=4 uid="uid://bfsbomotj4qip"]
 
 [ext_resource type="Script" uid="uid://dqvsmcl8igj5e" path="res://Scripts/main_game_manager.gd" id="1_344ge"]
 [ext_resource type="PackedScene" uid="uid://baisslgr622gk" path="res://Scenes/player.tscn" id="1_jjgbg"]
@@ -10,17 +10,19 @@
 [ext_resource type="Script" uid="uid://dwfoxvobpphr4" path="res://Scripts/client_spawner.gd" id="3_kry3j"]
 [ext_resource type="Texture2D" uid="uid://c4jrduj1qixc4" path="res://Assets/money.png" id="4_hibaj"]
 [ext_resource type="Script" uid="uid://b5042h85utnlg" path="res://Scripts/exit.gd" id="4_jjvhh"]
+[ext_resource type="Texture2D" uid="uid://daqjuy3xjibp3" path="res://Assets/key icon.png" id="4_u50mg"]
 [ext_resource type="Script" uid="uid://8ir737pqx3h6" path="res://Scripts/items_spawner.gd" id="6_6bp64"]
 [ext_resource type="PackedScene" uid="uid://bdteynao3kpgl" path="res://Scenes/item.tscn" id="6_21xkr"]
 [ext_resource type="PackedScene" uid="uid://bk13ox3i31hmk" path="res://Scenes/monologue.tscn" id="7_hibaj"]
 [ext_resource type="Script" uid="uid://c84l60tq75667" path="res://Scripts/alert.gd" id="7_pdsj5"]
+[ext_resource type="Script" uid="uid://dy3eljhnk7jn2" path="res://Scripts/door_open.gd" id="10_3pmx8"]
 [ext_resource type="Script" uid="uid://b564k470aweeh" path="res://Scripts/pause.gd" id="10_hptm8"]
 [ext_resource type="Texture2D" uid="uid://dstp0yn1de8ur" path="res://Assets/milk-glass.png" id="13_fdnlq"]
 [ext_resource type="Texture2D" uid="uid://cjws4wvym0n7y" path="res://Assets/button_background.png" id="13_k12tt"]
 [ext_resource type="Script" uid="uid://m3sfhplunygx" path="res://Scripts/shop_manager.gd" id="13_wsu2k"]
 [ext_resource type="Texture2D" uid="uid://yhguhd81swgx" path="res://Assets/button_background_pressed.png" id="14_h1bgf"]
 [ext_resource type="Texture2D" uid="uid://wa2xk4gdg4vk" path="res://Assets/catpaw.png" id="14_jkdf5"]
-[ext_resource type="Script" uid="uid://bfpqi2n6tyruc" path="res://Scenes/settings.gd" id="18_ee4r6"]
+[ext_resource type="Script" uid="uid://bfpqi2n6tyruc" path="res://Scripts/settings.gd" id="18_ee4r6"]
 [ext_resource type="LabelSettings" uid="uid://df46bpm8q6dki" path="res://LabelSettings/pause_label.tres" id="19_gt3je"]
 [ext_resource type="Script" uid="uid://bwmlm3orw5qsr" path="res://Scripts/auto_save.gd" id="22_ee4r6"]
 
@@ -37,6 +39,16 @@ font = ExtResource("2_ynf5e")
 font_size = 12
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gt3je"]
+texture = ExtResource("2_bo1nx")
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_3pmx8"]
+sources/0 = SubResource("TileSetAtlasSource_gt3je")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b3802"]
 texture = ExtResource("2_bo1nx")
@@ -310,6 +322,15 @@ grow_vertical = 0
 texture = ExtResource("3_fevyy")
 stretch_mode = 2
 
+[node name="KeyIcon" type="TextureRect" parent="ui/ui/Control"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 109.0
+offset_right = 125.0
+offset_bottom = 16.0
+texture = ExtResource("4_u50mg")
+
 [node name="Money" type="TextureRect" parent="ui/ui/Control"]
 layout_mode = 0
 offset_right = 64.0
@@ -357,6 +378,12 @@ position = Vector2(-120, -43)
 [node name="Tilemap" type="TileMapLayer" parent="."]
 z_index = -1
 
+[node name="Door_open" type="TileMapLayer" parent="Tilemap"]
+visible = false
+tile_map_data = PackedByteArray("AAAEAPv/AAAAAAQAAAAFAPv/AAABAAQAAAAEAPr/AAACAAQAAAAFAPr/AAADAAQAAAA=")
+tile_set = SubResource("TileSet_3pmx8")
+script = ExtResource("10_3pmx8")
+
 [node name="ShopSign" type="TileMapLayer" parent="Tilemap"]
 z_index = 10
 tile_map_data = PackedByteArray("AAD3//z/AAAFAAMAAAA=")
@@ -364,11 +391,11 @@ tile_set = SubResource("TileSet_fevyy")
 
 [node name="Furniture" type="TileMapLayer" parent="Tilemap"]
 z_index = -18
-tile_map_data = PackedByteArray("AAD8//v/AAADAAAAAAD8//z/AAADAAAAAAD8//3/AAADAAEAAAD6//3/AAADAAIAAAD5//3/AAADAAIAAAD3//3/AAADAAIAAAD7//3/AAADAAIAAAAIAPv/AAAHAAIAAAAIAPz/AAAHAAMAAAD9//z/AAAHAAMAAAD9//v/AAAHAAIAAAA=")
+tile_map_data = PackedByteArray("AAD8//z/AAADAAAAAAAIAPz/AAAHAAMAAAD9//z/AAAHAAMAAAD8//v/AAADAAAAAAD8//3/AAADAAEAAAD3//3/AAADAAIAAAD6//3/AAADAAIAAAD7//3/AAADAAIAAAD9//v/AAAHAAIAAAAIAPv/AAAHAAIAAAA=")
 tile_set = SubResource("TileSet_kry3j")
 
 [node name="Floor" type="TileMapLayer" parent="Tilemap"]
-tile_map_data = PackedByteArray("AAAFAPz/AAAFAAEAAAAEAPz/AAAFAAEAAAADAPz/AAAFAAEAAAACAPz/AAAFAAEAAAAAAPz/AAAFAAEAAAD///z/AAAFAAEAAAD///3/AAAFAAEAAAD+//z/AAAEAAEAAAD+//3/AAAEAAEAAAABAPz/AAAFAAEAAAAAAP3/AAAFAAEAAAAAAP7/AAAFAAEAAAAAAP//AAAFAAEAAAAAAAAAAAAFAAEAAAAAAAEAAAAFAAEAAAAAAAIAAAAFAAEAAAAAAAMAAAAFAAIAAAD//wMAAAAFAAIAAAD+/wMAAAAFAAIAAAD+/wIAAAAFAAEAAAD+/wEAAAAFAAEAAAD+/wAAAAAFAAEAAAD+////AAAEAAMAADD+//7/AAAEAAEAAAD///7/AAAFAAEAAAD/////AAAFAAEAAAD//wAAAAAFAAEAAAD//wEAAAAFAAEAAAD//wIAAAAFAAEAAAD9/wMAAAAFAAIAAAD8/wMAAAAFAAIAAAD7/wMAAAAFAAIAAAD6/wMAAAAFAAIAAAD5/wMAAAAEAAIAAAD5/wIAAAAEAAEAAAD5/wEAAAAEAAEAAAD5/wAAAAAEAAEAAAD5////AAAEAAAAAAD6////AAAFAAAAAAD7////AAAFAAAAAAD8////AAAFAAAAAAD9////AAAFAAAAAAD9/wAAAAAFAAEAAAD8/wAAAAAFAAEAAAD7/wAAAAAFAAEAAAD6/wAAAAAHAAEAAAD6/wEAAAAFAAEAAAD7/wEAAAAFAAEAAAD8/wEAAAAFAAEAAAD9/wEAAAAFAAEAAAD8/wIAAAAFAAEAAAD9/wIAAAAFAAEAAAD7/wIAAAAFAAEAAAD6/wIAAAAHAAEAAGABAP3/AAAFAAEAAAACAP3/AAAFAAEAAAACAP7/AAAFAAEAAAADAP3/AAAFAAEAAAADAP7/AAAFAAEAAAAEAP3/AAAFAAEAAAABAAIAAAAFAAEAAAACAAIAAAAFAAEAAAADAAIAAAAFAAEAAAAEAAIAAAAFAAEAAAABAAEAAAAFAAEAAAACAAEAAAAFAAEAAAADAAEAAAAFAAEAAAAEAAEAAAAFAAEAAAAEAAAAAAAFAAEAAAADAAAAAAAFAAEAAAACAAAAAAAFAAEAAAABAAAAAAAFAAEAAAADAP//AAAFAAEAAAACAP//AAAFAAEAAAABAP//AAAFAAEAAAABAP7/AAAFAAEAAAAEAP7/AAAFAAEAAAAEAP//AAAFAAEAAAAFAP3/AAAFAAEAAAAFAP7/AAAFAAEAAAAFAP//AAAFAAEAAAAFAAAAAAAFAAEAAAAFAAEAAAAFAAEAAAAFAAIAAAAFAAEAAAABAAMAAAAFAAIAAAACAAMAAAAFAAIAAAADAAMAAAAFAAIAAAAEAAMAAAAFAAIAAAAGAPz/AAAFAAEAAAAGAP3/AAAFAAEAAAAGAP7/AAAFAAEAAAAGAP//AAAFAAEAAAAGAAAAAAAFAAEAAAAGAAEAAAAFAAEAAAAGAAIAAAAHAAEAADAGAAMAAAAFAAIAAAAFAAMAAAAFAAIAAAAHAAIAAAAGAAEAAAAHAAEAAAAGAAEAAAAHAAAAAAAGAAEAAAAHAP//AAAGAAEAAAAHAP7/AAAGAAEAAAAHAP3/AAAGAAEAAAAHAPz/AAAGAAEAAAAHAAMAAAAGAAIAAAA=")
+tile_map_data = PackedByteArray("AAD///3/AAAFAAEAAAD+//3/AAAEAAEAAAAAAP3/AAAFAAEAAAAAAP7/AAAFAAEAAAAAAP//AAAFAAEAAAAAAAAAAAAFAAEAAAAAAAEAAAAFAAEAAAAAAAIAAAAFAAEAAAAAAAMAAAAFAAIAAAD//wMAAAAFAAIAAAD+/wMAAAAFAAIAAAD+/wIAAAAFAAEAAAD+/wEAAAAFAAEAAAD+/wAAAAAFAAEAAAD+////AAAEAAMAADD+//7/AAAEAAEAAAD///7/AAAFAAEAAAD/////AAAFAAEAAAD//wAAAAAFAAEAAAD//wEAAAAFAAEAAAD//wIAAAAFAAEAAAD9/wMAAAAFAAIAAAD8/wMAAAAFAAIAAAD7/wMAAAAFAAIAAAD6/wMAAAAFAAIAAAD5/wMAAAAEAAIAAAD5/wIAAAAEAAEAAAD5/wEAAAAEAAEAAAD5/wAAAAAEAAEAAAD5////AAAEAAAAAAD6////AAAFAAAAAAD7////AAAFAAAAAAD8////AAAFAAAAAAD9////AAAFAAAAAAD9/wAAAAAFAAEAAAD8/wAAAAAFAAEAAAD7/wAAAAAFAAEAAAD6/wAAAAAHAAEAAAD6/wEAAAAFAAEAAAD7/wEAAAAFAAEAAAD8/wEAAAAFAAEAAAD9/wEAAAAFAAEAAAD8/wIAAAAFAAEAAAD9/wIAAAAFAAEAAAD7/wIAAAAFAAEAAAD6/wIAAAAHAAEAAGABAP3/AAAFAAEAAAACAP3/AAAFAAEAAAACAP7/AAAFAAEAAAADAP3/AAAFAAEAAAADAP7/AAAFAAEAAAAEAP3/AAAFAAEAAAABAAIAAAAFAAEAAAACAAIAAAAFAAEAAAADAAIAAAAFAAEAAAAEAAIAAAAFAAEAAAABAAEAAAAFAAEAAAACAAEAAAAFAAEAAAADAAEAAAAFAAEAAAAEAAEAAAAFAAEAAAAEAAAAAAAFAAEAAAADAAAAAAAFAAEAAAACAAAAAAAFAAEAAAABAAAAAAAFAAEAAAADAP//AAAFAAEAAAACAP//AAAFAAEAAAABAP//AAAFAAEAAAABAP7/AAAFAAEAAAAEAP7/AAAFAAEAAAAEAP//AAAFAAEAAAAFAP3/AAAFAAEAAAAFAP7/AAAFAAEAAAAFAP//AAAFAAEAAAAFAAAAAAAFAAEAAAAFAAEAAAAFAAEAAAAFAAIAAAAFAAEAAAABAAMAAAAFAAIAAAACAAMAAAAFAAIAAAADAAMAAAAFAAIAAAAEAAMAAAAFAAIAAAAGAP3/AAAFAAEAAAAGAP7/AAAFAAEAAAAGAP//AAAFAAEAAAAGAAAAAAAFAAEAAAAGAAEAAAAFAAEAAAAGAAIAAAAHAAEAADAGAAMAAAAFAAIAAAAFAAMAAAAFAAIAAAAHAAIAAAAGAAEAAAAHAAEAAAAGAAEAAAAHAAAAAAAGAAEAAAAHAP//AAAGAAEAAAAHAP7/AAAGAAEAAAAHAP3/AAAGAAEAAAAHAAMAAAAGAAIAAAD+//z/AAAEAAEAAAD///z/AAAFAAEAAAAAAPz/AAAFAAEAAAABAPz/AAAFAAEAAAACAPz/AAAFAAEAAAADAPz/AAAFAAEAAAAEAPz/AAAFAAEAAAAFAPz/AAAFAAEAAAAGAPz/AAAFAAEAAAAHAPz/AAAGAAEAAAA=")
 tile_set = SubResource("TileSet_fdnlq")
 
 [node name="Background" type="TileMapLayer" parent="Tilemap"]
@@ -449,27 +476,28 @@ disabled = true
 [node name="Items Holder" type="Node2D" parent="Items"]
 
 [node name="Item1" parent="Items/Items Holder" instance=ExtResource("6_21xkr")]
+position = Vector2(-91, -46)
 
 [node name="Item2" parent="Items/Items Holder" instance=ExtResource("6_21xkr")]
-position = Vector2(-96, -45)
+position = Vector2(-82, -46)
 
 [node name="Item3" parent="Items/Items Holder" instance=ExtResource("6_21xkr")]
-position = Vector2(-86, -45)
+position = Vector2(-73, -46)
 
 [node name="Item4" parent="Items/Items Holder" instance=ExtResource("6_21xkr")]
-position = Vector2(-76, -45)
+position = Vector2(-64, -46)
 
 [node name="Item5" parent="Items/Items Holder" instance=ExtResource("6_21xkr")]
-position = Vector2(-66, -45)
+position = Vector2(-55, -46)
 
 [node name="Item6" parent="Items/Items Holder" instance=ExtResource("6_21xkr")]
-position = Vector2(-56, -45)
+position = Vector2(-55, -56)
 
 [node name="Item7" parent="Items/Items Holder" instance=ExtResource("6_21xkr")]
-position = Vector2(-56, -55)
+position = Vector2(-55, -66)
 
 [node name="Item8" parent="Items/Items Holder" instance=ExtResource("6_21xkr")]
-position = Vector2(-56, -65)
+position = Vector2(-55, -76)
 
 [node name="Pause_ui" type="CanvasLayer" parent="."]
 layer = 7

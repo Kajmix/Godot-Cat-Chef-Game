@@ -20,8 +20,8 @@ func hide_alert():
 func _on_duration_time_out() -> void:
 	hide()
 
-func _on_set_alert(Text):
-	alert(Text, false)
+func _on_set_alert(Text, _is_have_duration_time = false):
+	alert(Text, _is_have_duration_time)
 	
 func _on_hide_alert():
 	hide_alert()

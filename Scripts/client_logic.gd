@@ -17,6 +17,7 @@ extends StaticBody2D
 @export var id : int
 
 signal set_alert(Text)
+signal start_monologue_dev()
 signal hide_alert()
 signal bought_table()
 
@@ -24,6 +25,7 @@ var is_player_nearby = false
 var is_player_in_buy_area = false
 var TableSprite_modulate : Color
 var order_value : int = 0
+#var is_developer = false
 
 const normal_clients_animations_list = [
 	"ball_guy",
@@ -38,6 +40,9 @@ const special_clients_animations_list = [
 
 func set_alert_signal():
 	SignalBus.emit_signal("set_alert", "Cost: $" + str(price) + "\n Press 'E', or 'Z' to buy")
+
+func keys_found_alert():
+	SignalBus.emit_signal("set_alert", "You found the keys!", true)
 
 func set_hide_alert():
 	SignalBus.emit_signal("hide_alert")
@@ -69,6 +74,7 @@ func _ready() -> void:
 	MainGameManager.loading_finished.connect(_on_loading_finished)
 	TableSprite_modulate = TableSprite.modulate
 	hide_customer()
+	#SignalBus.monologue_ended.connect(_on_monologue_ended)
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("interact") && is_player_nearby:
@@ -77,6 +83,10 @@ func _process(_delta: float) -> void:
 		player.is_any_item_not_taken = true
 		player.hide_order_sprite()
 		MainGameManager.client_exit(order_value)
+		if MainGameManager.customer_with_keys == MainGameManager.served_customers:
+			keys_found_alert()
+			MainGameManager.is_have_keys = true
+			SignalBus.emit_signal("found_keys")
 		unselect_customer()
 		ui.update_label()
 		Money_Particle_Emiter.emitting = true
@@ -97,6 +107,8 @@ func _on_order_area_body_entered(body) -> void:
 			is_player_nearby = true
 		if is_not_bought == true:
 			set_alert_signal()
+		#if is_developer:
+			#SignalBus.emit_signal("start_monologue_dev")
 
 func _on_order_area_body_exited(body) -> void:
 	if body.is_in_group("Player"):
@@ -115,3 +127,9 @@ func _on_loading_finished():
 		Lock.show()
 	else:
 		Lock.hide()
+
+#func _on_monologue_ended():
+	#if is_developer:
+		#MainGameManager.is_have_keys = true
+		#is_developer = false
+		#hide_customer()

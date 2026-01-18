@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cr55hp1fcbef"]
+[gd_scene load_steps=13 format=3 uid="uid://cr55hp1fcbef"]
 
 [ext_resource type="Texture2D" uid="uid://egv3bacud0k1" path="res://Assets/Background.png" id="1_cayip"]
 [ext_resource type="Script" uid="uid://b7gx2mfveaqdn" path="res://Scripts/Menu.gd" id="2_xhh6f"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bb5k45sakwdl5" path="res://Assets/Player Sprite.png" id="3_cayip"]
 [ext_resource type="Texture2D" uid="uid://cjws4wvym0n7y" path="res://Assets/button_background.png" id="4_jsrd8"]
 [ext_resource type="Texture2D" uid="uid://yhguhd81swgx" path="res://Assets/button_background_pressed.png" id="5_wbdvm"]
+[ext_resource type="PackedScene" uid="uid://dyst57qom6ev2" path="res://Scenes/fade.tscn" id="7_wbdvm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_158mb"]
 font = ExtResource("3_158mb")
@@ -55,6 +56,8 @@ _data = {
 }
 
 [node name="Menu" type="Node2D"]
+
+[node name="Fade" parent="." instance=ExtResource("7_wbdvm")]
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 

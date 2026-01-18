@@ -16,12 +16,14 @@ func _physics_process(_delta: float) -> void:
 
 
 func _on_play_pressed() -> void:
+	MainGameManager.autosave(Player)
 	Audio_Player.play_sound("click")
 	is_paused = false
 	hide()
 	Engine.time_scale = 1
 
 func _on_exit_pressed() -> void:
+	MainGameManager.autosave(Player)
 	Audio_Player.play_sound("click")
 	get_tree().quit()
 
@@ -30,4 +32,7 @@ func _on_exit_to_main_menu_pressed() -> void:
 	MainGameManager.autosave(Player)
 	Audio_Player.play_sound("click")
 	Engine.time_scale = 1
-	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
+	Fade.play_transition_and_change("res://Scenes/menu.tscn")
+	
+func _exit_tree() -> void:
+	MainGameManager.autosave(Player)

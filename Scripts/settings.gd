@@ -3,6 +3,7 @@ extends CenterContainer
 @onready var SFX : Label = $VBoxContainer/SoundControl/SFXLabel
 @onready var MusicSLider : HSlider = $VBoxContainer/SoundControl/MusicSlider
 @onready var SFXSLider : HSlider = $VBoxContainer/SoundControl/SFXSlider
+@onready var Player = $"../../../../Player"
 func _ready() -> void:
 	Music.text = "Music Volume: " + str(int(MusicSLider.value))
 	SFX.text = "SFX Volume: " + str(int(SFXSLider.value))
@@ -16,9 +17,16 @@ func _on_reset_pressed() -> void:
 	save_file.set_value("SaveData", "is_monologue_never_played_before", MainGameManager.default_save.is_monologue_never_played_before)
 	save_file.set_value("SaveData", "music_volume", MainGameManager.default_save.music_volume)
 	save_file.set_value("SaveData", "sfx_volume", MainGameManager.default_save.sfx_volume)
+	save_file.set_value("SaveData", "is_have_keys", MainGameManager.default_save.is_have_keys)
+	save_file.set_value("SaveData", "is_door_open", MainGameManager.default_save.is_door_open)
+	var customer_with_keys_var = randi_range(200,250)
+	save_file.set_value("SaveData", "customer_with_keys", customer_with_keys_var)
 	save_file.set_value("SaveData", "tables", MainGameManager.default_save.tables)
-	save_file.save("user://save.cfg")
+	MainGameManager.customer_with_keys = customer_with_keys_var
 	MainGameManager.is_monologue_never_played_before = true
+	save_file.save("user://save.cfg")
+	MainGameManager.load_save(Player)
+	Engine.time_scale = 1
 	get_tree().reload_current_scene()
 
 func _on_music_slider_value_changed(value: int) -> void:
