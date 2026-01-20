@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://0pntelm8466q"]
+[gd_scene load_steps=20 format=4 uid="uid://0pntelm8466q"]
 
 [ext_resource type="Script" uid="uid://cip0rvuldcdk3" path="res://Scripts/ending.gd" id="1_5jm55"]
 [ext_resource type="Texture2D" uid="uid://lmbqj1wvl6m3" path="res://Assets/creator_table.png" id="2_kg0jb"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://baisslgr622gk" path="res://Scenes/player.tscn" id="4_bxiex"]
 [ext_resource type="Texture2D" uid="uid://c6esu4gaqsvfq" path="res://Assets/Sprite-0002.png" id="5_ib4ol"]
 [ext_resource type="PackedScene" uid="uid://bk13ox3i31hmk" path="res://Scenes/monologue.tscn" id="6_bfdlc"]
+[ext_resource type="Texture2D" uid="uid://cn7vf1h81lqxm" path="res://Assets/Title.png" id="7_8w7g3"]
+[ext_resource type="FontFile" uid="uid://be7opo235lcnt" path="res://Fonts/Jersey10-Regular.ttf" id="7_hv2aa"]
 
 [sub_resource type="Gradient" id="Gradient_ib4ol"]
 offsets = PackedFloat32Array(0, 0.68666667)
@@ -111,6 +113,12 @@ texture = ExtResource("5_ib4ol")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_8w7g3")
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_bfdlc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hv2aa"]
+font = ExtResource("7_hv2aa")
+font_size = 32
+
 [node name="Ending" type="Node2D"]
 script = ExtResource("1_5jm55")
 
@@ -185,4 +193,48 @@ anchor_top = 1.0
 anchor_right = 0.5
 grow_vertical = 0
 
+[node name="Ending_Canvas" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Background" type="TextureRect" parent="Ending_Canvas"]
+modulate = Color(0, 0, 0, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_bfdlc")
+
+[node name="Label" type="Label" parent="Ending_Canvas"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -11.5
+offset_right = 34.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "THE END"
+label_settings = SubResource("LabelSettings_hv2aa")
+horizontal_alignment = 1
+
+[node name="Logo" type="TextureRect" parent="Ending_Canvas"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+texture = ExtResource("7_8w7g3")
+expand_mode = 1
+
+[node name="Timer" type="Timer" parent="Ending_Canvas"]
+wait_time = 10.0
+one_shot = true
+
 [connection signal="body_entered" from="StaticBody2D/Creator_Table/Area2D" to="." method="_on_creator_area_2d_body_entered"]
+[connection signal="timeout" from="Ending_Canvas/Timer" to="." method="_on_ending_delay_timeout"]

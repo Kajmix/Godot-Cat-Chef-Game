@@ -3,6 +3,8 @@ extends Control
 @onready var Name : Label = $Background/Name_Background/Name
 @onready var MonologueText : Label = $Background/Text
 
+signal monologue_finished()
+
 var lines = []
 var index = 0
 
@@ -18,6 +20,7 @@ func print_line():
 	if index < lines.size():
 		MonologueText.text = lines[index]
 	else:
+		SignalBus.emit_signal("monologue_finished")
 		hide()
 		MainGameManager.is_monologue_never_played_before = false
 		MainGameManager.is_player_frozen = false
