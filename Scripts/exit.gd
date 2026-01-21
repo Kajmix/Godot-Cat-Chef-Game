@@ -12,7 +12,9 @@ func _process(_delta: float) -> void:
 		if Input.is_action_just_pressed("interact"):
 			if MainGameManager.is_have_keys:
 				%KeyIcon.hide()
+				MainGameManager.is_have_keys = false
 				MainGameManager.is_door_open = true
+				MainGameManager.autosave(Player)
 				Door_open.show()
 			else:
 				Alert.alert("The doors are locked!")

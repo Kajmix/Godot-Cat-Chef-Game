@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://be7opo235lcnt" path="res://Fonts/Jersey10-Regular.ttf" id="3_158mb"]
 [ext_resource type="Texture2D" uid="uid://bb5k45sakwdl5" path="res://Assets/Player Sprite.png" id="3_cayip"]
 [ext_resource type="Texture2D" uid="uid://cjws4wvym0n7y" path="res://Assets/button_background.png" id="4_jsrd8"]
-[ext_resource type="Texture2D" uid="uid://cn7vf1h81lqxm" path="res://Assets/Title.png" id="4_q3rjx"]
+[ext_resource type="Texture2D" uid="uid://cdids2l82n38h" path="res://Assets/titlev2.png" id="4_q3rjx"]
 [ext_resource type="Texture2D" uid="uid://yhguhd81swgx" path="res://Assets/button_background_pressed.png" id="5_wbdvm"]
 [ext_resource type="PackedScene" uid="uid://dyst57qom6ev2" path="res://Scenes/fade.tscn" id="7_wbdvm"]
 
@@ -95,48 +95,49 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_right = 10
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter"]
 layout_mode = 2
 
-[node name="Control" type="Control" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/MarginContainer/VBoxContainer"]
+[node name="Control" type="Control" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/VBoxContainer"]
 layout_mode = 2
 
-[node name="Title" type="TextureRect" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/MarginContainer/VBoxContainer/Control"]
+[node name="Title" type="TextureRect" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/VBoxContainer/Control"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -32.0
-offset_top = -32.0
-offset_right = 32.0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("4_q3rjx")
 expand_mode = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_right = 20
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/MarginContainer/VBoxContainer/MarginContainer"]
+[node name="Control2" type="Control" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/VBoxContainer"]
 layout_mode = 2
 
-[node name="Play" type="TextureButton" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/VBoxContainer/Control2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -31.5
+offset_top = 10.0
+offset_right = 32.5
+offset_bottom = 54.0
+grow_horizontal = 2
+
+[node name="Play" type="TextureButton" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/VBoxContainer/Control2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
 texture_normal = ExtResource("4_jsrd8")
 texture_hover = ExtResource("5_wbdvm")
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Play"]
+[node name="Label" type="Label" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/VBoxContainer/Control2/VBoxContainer/Play"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -148,14 +149,14 @@ label_settings = SubResource("LabelSettings_wwsa2")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Exit" type="TextureButton" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
+[node name="Exit" type="TextureButton" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/VBoxContainer/Control2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
 texture_normal = ExtResource("4_jsrd8")
 texture_hover = ExtResource("5_wbdvm")
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Exit"]
+[node name="Label" type="Label" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/VBoxContainer/Control2/VBoxContainer/Exit"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -193,5 +194,5 @@ autoplay = "spin"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[connection signal="pressed" from="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Play" to="CanvasLayer2/UI/UI" method="_on_play_pressed"]
-[connection signal="pressed" from="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Exit" to="CanvasLayer2/UI/UI" method="_on_exit_pressed"]
+[connection signal="pressed" from="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/VBoxContainer/Control2/VBoxContainer/Play" to="CanvasLayer2/UI/UI" method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/VBoxContainer/Control2/VBoxContainer/Exit" to="CanvasLayer2/UI/UI" method="_on_exit_pressed"]

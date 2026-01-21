@@ -44,8 +44,6 @@ var default_save = {
 # Autosave:
 func autosave(player):
 	var data = {
-		"player_pos_x" : player.position.x,
-		"player_pos_y" : player.position.y,
 		"money" : money,
 		"served_customers" : served_customers,
 		"is_monologue_never_played_before" : is_monologue_never_played_before,
@@ -55,7 +53,9 @@ func autosave(player):
 		"is_door_open" : is_door_open,
 		"customer_with_keys" : customer_with_keys
 	}
-	
+	if player != null:
+		data["player_pos_x"] = player.position.x
+		data["player_pos_y"] = player.position.y
 	var tables_state = []
 	
 	for table in get_tree().get_nodes_in_group("table"):
