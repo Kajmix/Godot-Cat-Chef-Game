@@ -29,6 +29,8 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func take_ordered_item_handler(table_body : StaticBody2D, sprite):
+	Audio_Player.play_sound("place-something")
+	Audio_Player.play()
 	Order_Sprite.frame=sprite
 	table = table_body
 	table.select_customer()
