@@ -40,6 +40,13 @@ var default_save = {
 	]
 }
 
+func set_door_open(value: bool):
+	var save_file = ConfigFile.new()
+	if save_file.load("user://save.cfg") != OK:
+		save_file = ConfigFile.new()
+	save_file.set_value("SaveData", "is_door_open", value)
+	save_file.save("user://save.cfg")
+	is_door_open = value
 
 # Autosave:
 func autosave(player):

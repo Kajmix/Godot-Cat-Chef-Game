@@ -11,8 +11,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_wwsa2"]
 font = ExtResource("3_158mb")
-font_size = 10
-font_color = Color(0, 0, 0, 1)
+font_size = 7
 
 [sub_resource type="Animation" id="Animation_158mb"]
 length = 0.001

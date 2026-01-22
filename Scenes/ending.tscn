@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://baisslgr622gk" path="res://Scenes/player.tscn" id="4_bxiex"]
 [ext_resource type="Texture2D" uid="uid://c6esu4gaqsvfq" path="res://Assets/Sprite-0002.png" id="5_ib4ol"]
 [ext_resource type="PackedScene" uid="uid://bk13ox3i31hmk" path="res://Scenes/monologue.tscn" id="6_bfdlc"]
-[ext_resource type="Texture2D" uid="uid://cn7vf1h81lqxm" path="res://Assets/Title.png" id="7_8w7g3"]
 [ext_resource type="FontFile" uid="uid://be7opo235lcnt" path="res://Fonts/Jersey10-Regular.ttf" id="7_hv2aa"]
+[ext_resource type="Texture2D" uid="uid://cdids2l82n38h" path="res://Assets/titlev2.png" id="8_hv2aa"]
 
 [sub_resource type="Gradient" id="Gradient_ib4ol"]
 offsets = PackedFloat32Array(0, 0.68666667)
@@ -194,7 +194,6 @@ anchor_right = 0.5
 grow_vertical = 0
 
 [node name="Ending_Canvas" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Background" type="TextureRect" parent="Ending_Canvas"]
 modulate = Color(0, 0, 0, 1)
@@ -229,7 +228,7 @@ offset_left = -64.0
 offset_right = 64.0
 offset_bottom = 64.0
 grow_horizontal = 2
-texture = ExtResource("7_8w7g3")
+texture = ExtResource("8_hv2aa")
 expand_mode = 1
 
 [node name="Timer" type="Timer" parent="Ending_Canvas"]
