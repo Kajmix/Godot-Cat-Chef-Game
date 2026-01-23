@@ -194,6 +194,7 @@ anchor_right = 0.5
 grow_vertical = 0
 
 [node name="Ending_Canvas" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Background" type="TextureRect" parent="Ending_Canvas"]
 modulate = Color(0, 0, 0, 1)

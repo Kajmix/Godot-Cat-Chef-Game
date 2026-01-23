@@ -189,7 +189,6 @@ metadata/_edit_use_anchors_ = true
 libraries = {
 &"": SubResource("AnimationLibrary_wwsa2")
 }
-autoplay = "spin"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
