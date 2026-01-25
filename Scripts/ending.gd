@@ -28,7 +28,7 @@ func _on_monologue_finished():
 	Ending_delay.start()
 
 func _on_ending_delay_timeout() -> void:
-	MainGameManager.set_door_open(false)
+	MainGameManager.after_ending(false, true)
 	MusicPlayer.stream = load("res://audio/music/jazz-cafe-restaurant-music-372190.mp3")
 	MusicPlayer.play()
 	Fade.play_transition_and_change("res://Scenes/menu.tscn")

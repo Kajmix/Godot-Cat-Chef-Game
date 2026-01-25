@@ -20,10 +20,11 @@ func print_line():
 	if index < lines.size():
 		MonologueText.text = lines[index]
 	else:
-		SignalBus.emit_signal("monologue_finished")
 		hide()
 		MainGameManager.is_monologue_never_played_before = false
 		MainGameManager.is_player_frozen = false
+		SignalBus.emit_signal("monologue_finished")
+		Engine.time_scale = 1
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact"):

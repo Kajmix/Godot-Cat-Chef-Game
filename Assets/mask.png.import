@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcxoxmvijb83t"
-path="res://.godot/imported/Milk boost icon.png-934b3a3252c8fb04b079b0feeabe574d.ctex"
+uid="uid://n8lw0suq7t5f"
+path="res://.godot/imported/mask.png-0c5a436be4eaa2a8acc155423a50b507.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Milk boost icon.png"
-dest_files=["res://.godot/imported/Milk boost icon.png-934b3a3252c8fb04b079b0feeabe574d.ctex"]
+source_file="res://Assets/mask.png"
+dest_files=["res://.godot/imported/mask.png-0c5a436be4eaa2a8acc155423a50b507.ctex"]
 
 [params]
 

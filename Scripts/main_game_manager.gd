@@ -9,6 +9,7 @@ var sfx_volume = 75
 var customer_with_keys : int
 var is_have_keys = false
 var is_player_frozen = false
+var is_after_ending = false
 signal loading_finished()
 func client_exit(order_value):
 	money += order_value
@@ -27,6 +28,7 @@ var default_save = {
 	"sfx_volume" : sfx_volume,
 	"is_have_keys" : is_have_keys,
 	"is_door_open" : is_door_open,
+	"is_after_ending" : is_after_ending,
 	"customer_with_keys" : randi_range(200, 250),
 	"tables": [
 		{"id": 0, "is_not_bought": true},
@@ -40,13 +42,15 @@ var default_save = {
 	]
 }
 
-func set_door_open(value: bool):
+func after_ending(value_door: bool, value_mask : bool):
 	var save_file = ConfigFile.new()
 	if save_file.load("user://save.cfg") != OK:
 		save_file = ConfigFile.new()
-	save_file.set_value("SaveData", "is_door_open", value)
+	save_file.set_value("SaveData", "is_door_open", value_door)
+	save_file.set_value("SaveData", "is_after_ending", value_mask)
 	save_file.save("user://save.cfg")
-	is_door_open = value
+	is_door_open = value_door
+	is_after_ending = value_mask
 
 # Autosave:
 func autosave(player):
@@ -58,7 +62,8 @@ func autosave(player):
 		"sfx_volume" : sfx_volume,
 		"is_have_keys" : is_have_keys,
 		"is_door_open" : is_door_open,
-		"customer_with_keys" : customer_with_keys
+		"customer_with_keys" : customer_with_keys,
+		"is_after_ending" : is_after_ending
 	}
 	if player != null:
 		data["player_pos_x"] = player.position.x
@@ -94,6 +99,7 @@ func load_save(player):
 	is_have_keys = autosave_file.get_value("SaveData", "is_have_keys", false)
 	is_door_open = autosave_file.get_value("SaveData", "is_door_open", false)
 	customer_with_keys = autosave_file.get_value("SaveData", "customer_with_keys", randi_range(200,250))
+	is_after_ending = autosave_file.get_value("SaveData", "is_after_ending", false)
 	
 	var tables_loaded = autosave_file.get_value("SaveData", "tables", [])
 	

@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dj076ghs5a7or"]
+
+[ext_resource type="Script" uid="uid://8v1bn6d2cnl7" path="res://Scripts/mask.gd" id="1_daowh"]
+[ext_resource type="Texture2D" uid="uid://n8lw0suq7t5f" path="res://Assets/mask.png" id="1_nr6xi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_daowh"]
+radius = 7.0
+
+[node name="Mask" type="StaticBody2D"]
+script = ExtResource("1_daowh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_nr6xi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_daowh")

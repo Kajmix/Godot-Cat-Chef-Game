@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://bfsbomotj4qip"]
+[gd_scene load_steps=54 format=4 uid="uid://bfsbomotj4qip"]
 
 [ext_resource type="Script" uid="uid://dqvsmcl8igj5e" path="res://Scripts/main_game_manager.gd" id="1_344ge"]
 [ext_resource type="PackedScene" uid="uid://baisslgr622gk" path="res://Scenes/player.tscn" id="1_jjgbg"]
@@ -25,6 +25,7 @@
 [ext_resource type="Script" uid="uid://bfpqi2n6tyruc" path="res://Scripts/settings.gd" id="18_ee4r6"]
 [ext_resource type="LabelSettings" uid="uid://df46bpm8q6dki" path="res://LabelSettings/pause_label.tres" id="19_gt3je"]
 [ext_resource type="Script" uid="uid://bwmlm3orw5qsr" path="res://Scripts/auto_save.gd" id="22_ee4r6"]
+[ext_resource type="PackedScene" uid="uid://dj076ghs5a7or" path="res://Scenes/mask.tscn" id="26_cbgmd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hptm8"]
 paragraph_spacing = 1.0
@@ -205,8 +206,7 @@ font_size = 9
 
 [sub_resource type="LabelSettings" id="LabelSettings_ee4r6"]
 font = ExtResource("2_ynf5e")
-font_size = 6
-font_color = Color(0, 0, 0, 1)
+font_size = 5
 
 [sub_resource type="Animation" id="Animation_jkdf5"]
 resource_name = "GiveItem"
@@ -647,7 +647,6 @@ layout_mode = 2
 value = 75.0
 
 [node name="Reset" type="TextureButton" parent="Pause_ui/Control/HSplitContainer/Settings/VBoxContainer"]
-modulate = Color(0.8476603, 0, 0.09703805, 1)
 custom_minimum_size = Vector2(39, 14)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -713,6 +712,9 @@ texture = SubResource("GradientTexture2D_h1bgf")
 wait_time = 10.0
 autostart = true
 script = ExtResource("22_ee4r6")
+
+[node name="Mask" parent="." instance=ExtResource("26_cbgmd")]
+position = Vector2(132, -62)
 
 [connection signal="timeout" from="Tables/Client_Cooldown" to="Tables" method="_on_client_cooldown_timeout"]
 [connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
