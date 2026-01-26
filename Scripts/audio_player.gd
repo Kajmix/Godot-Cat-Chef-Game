@@ -5,7 +5,8 @@ const sound_effects = {
 	"katching" : "res://audio/SFX/katching.wav",
 	"money" : "res://audio/SFX/money.mp3",
 	"cinematic-boom" : "res://audio/SFX/cinematic-boom.mp3",
-	"place-something" : "res://audio/SFX/place-something.mp3"
+	"place-something" : "res://audio/SFX/place-something.mp3",
+	"bush" : "res://audio/SFX/bush.mp3"
 }
 
 func play_sound(sound):

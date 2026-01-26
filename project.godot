@@ -8,11 +8,15 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Cat Chef Game"
 run/main_scene="uid://cr55hp1fcbef"
-config/features=PackedStringArray("4.5", "Mobile")
+config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://Godot-Cat-Cheff-Game/icon.svg"
 
 [autoload]

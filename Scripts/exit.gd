@@ -17,7 +17,7 @@ func _process(_delta: float) -> void:
 				MainGameManager.autosave(Player)
 				Door_open.show()
 			else:
-				Alert.alert("The doors are locked!")
+				Alert.alert("The doors are locked!", true)
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
