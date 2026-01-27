@@ -4,7 +4,7 @@ extends Area2D
 @onready var Door_open : TileMapLayer = $"../Tilemap/Door_open"
 
 var is_player_in_exit_area : bool = false
-func _process(_delta: float) -> void:
+func _input(event: InputEvent) -> void:
 	if is_player_in_exit_area:
 		if Input.is_action_just_pressed("interact") && MainGameManager.is_door_open:
 			Fade.play_transition_and_change("res://Scenes/ending.tscn")

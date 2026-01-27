@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+@onready var MilkIconBoosted = preload("res://Assets/Milk boost icon.png")
+@onready var WithoutMilkIconBoosted = preload("res://Assets/Without Milk boost icon.png")
+
 @onready var Player_sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var Order_Sprite : AnimatedSprite2D = $Order_Sprite
 @onready var Booster_Duration : Timer = $BoosterDuration
@@ -14,16 +17,17 @@ func _physics_process(_delta: float) -> void:
 	if MainGameManager.is_player_frozen:
 		return
 	var dir = Input.get_vector("left", "right", "up", "down")
+	var animation = "Idle"
 	if Input.is_action_pressed("up"):
-		Player_sprite.play("UpWalk")
+		animation = "UpWalk"
 	elif Input.is_action_pressed("down"):
-		Player_sprite.play("DownWalk")
+		animation = "DownWalk"
 	elif Input.is_action_pressed("left"):
-		Player_sprite.play("LeftWalk")
+		animation = "LeftWalk"
 	elif Input.is_action_pressed("right"):
-		Player_sprite.play("RightWalk")
-	else:
-		Player_sprite.play("Idle")
+		animation = "RightWalk"
+	if Player_sprite.animation != animation:
+		Player_sprite.play(animation)
 	var target = dir.normalized() * SPEED
 	velocity = velocity.lerp(target, 1.0 - exp(-15 * _delta))
 	move_and_slide()
@@ -42,12 +46,12 @@ func hide_order_sprite():
 	Order_Sprite.hide()
 
 func speed_boost():
-	%MilkIcon.texture = load("res://Assets/Milk boost icon.png")
+	%MilkIcon.texture = MilkIconBoosted
 	Booster_Duration.start()
 	Particle_Emiter.emitting = true
 	SPEED = 110.0
 
 func _on_booster_duration_timeout() -> void:
-	%MilkIcon.texture = load("res://Assets/Without Milk boost icon.png")
+	%MilkIcon.texture = WithoutMilkIconBoosted
 	Particle_Emiter.emitting = false
 	SPEED = 75.0

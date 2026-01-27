@@ -45,7 +45,7 @@ func shift_taken_items_left():
 	var last = taken_order_items[taken_order_items.size() -1]
 	last.is_taken = false
 	last.hide()
-func _process(_delta: float) -> void:
+func _input(event: InputEvent) -> void:
 	if is_player_in_items_area && Input.is_action_pressed("interact") && Player.is_any_item_not_taken:
 		take_ordered_item()
 

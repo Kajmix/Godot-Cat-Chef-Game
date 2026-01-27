@@ -76,29 +76,30 @@ func _ready() -> void:
 	hide_customer()
 	#SignalBus.monologue_ended.connect(_on_monologue_ended)
 
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("interact") && is_player_nearby:
-		hide_customer()
-		is_player_nearby = false
-		player.is_any_item_not_taken = true
-		player.hide_order_sprite()
-		MainGameManager.client_exit(order_value)
-		if MainGameManager.customer_with_keys == MainGameManager.served_customers:
-			keys_found_alert()
-			MainGameManager.is_have_keys = true
-			SignalBus.emit_signal("found_keys")
-		unselect_customer()
-		ui.update_label()
-		Money_Particle_Emiter.emitting = true
-		Audio_Player.play_sound("money")
-	if Input.is_action_just_pressed("interact") && is_player_in_buy_area == true && is_not_bought == true && MainGameManager.money >= price:
-		MainGameManager.sub_money(price)
-		is_not_bought = false
-		TableSprite.modulate = TableSprite_modulate
-		Lock.hide()
-		SignalBus.emit_signal("hide_alert")
-		SignalBus.emit_signal("bought_table")
-		Audio_Player.play_sound("katching")
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("interact"):
+		if is_player_nearby:
+			hide_customer()
+			is_player_nearby = false
+			player.is_any_item_not_taken = true
+			player.hide_order_sprite()
+			MainGameManager.client_exit(order_value)
+			if MainGameManager.customer_with_keys == MainGameManager.served_customers:
+				keys_found_alert()
+				MainGameManager.is_have_keys = true
+				SignalBus.emit_signal("found_keys")
+			unselect_customer()
+			ui.update_label()
+			Money_Particle_Emiter.emitting = true
+			Audio_Player.play_sound("money")
+		elif Input.is_action_just_pressed("interact") && is_player_in_buy_area == true && is_not_bought == true && MainGameManager.money >= price:
+			MainGameManager.sub_money(price)
+			is_not_bought = false
+			TableSprite.modulate = TableSprite_modulate
+			Lock.hide()
+			SignalBus.emit_signal("hide_alert")
+			SignalBus.emit_signal("bought_table")
+			Audio_Player.play_sound("katching")
 
 func _on_order_area_body_entered(body) -> void:
 	if body.is_in_group("Player"):
