@@ -11,6 +11,7 @@ func _input(event: InputEvent) -> void:
 			return
 		if Input.is_action_just_pressed("interact"):
 			if MainGameManager.is_have_keys:
+				Audio_Player.play_sound("door")
 				%KeyIcon.hide()
 				MainGameManager.is_have_keys = false
 				MainGameManager.is_door_open = true

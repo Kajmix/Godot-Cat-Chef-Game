@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://0pntelm8466q"]
+[gd_scene format=4 uid="uid://0pntelm8466q"]
 
 [ext_resource type="Script" uid="uid://cip0rvuldcdk3" path="res://Scripts/ending.gd" id="1_5jm55"]
 [ext_resource type="Texture2D" uid="uid://lmbqj1wvl6m3" path="res://Assets/creator_table.png" id="2_kg0jb"]
@@ -119,65 +119,65 @@ sources/0 = SubResource("TileSetAtlasSource_8w7g3")
 font = ExtResource("7_hv2aa")
 font_size = 32
 
-[node name="Ending" type="Node2D"]
+[node name="Ending" type="Node2D" unique_id=765040603]
 script = ExtResource("1_5jm55")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=196132885]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=780430003]
 
-[node name="Creator_Table" type="Sprite2D" parent="StaticBody2D"]
+[node name="Creator_Table" type="Sprite2D" parent="StaticBody2D" unique_id=1332738730]
 z_index = 2
 position = Vector2(114, -19)
 texture = ExtResource("2_kg0jb")
 
-[node name="Creator" type="Sprite2D" parent="StaticBody2D/Creator_Table"]
+[node name="Creator" type="Sprite2D" parent="StaticBody2D/Creator_Table" unique_id=1140540899]
 position = Vector2(-15, 1)
 texture = ExtResource("3_6u0w7")
 
-[node name="PointLight2D2" type="PointLight2D" parent="StaticBody2D/Creator_Table"]
+[node name="PointLight2D2" type="PointLight2D" parent="StaticBody2D/Creator_Table" unique_id=833569656]
 energy = 5.0
 range_z_max = 0
 texture = SubResource("GradientTexture2D_bfdlc")
 
-[node name="Area2D" type="Area2D" parent="StaticBody2D/Creator_Table"]
+[node name="Area2D" type="Area2D" parent="StaticBody2D/Creator_Table" unique_id=1336634022]
 position = Vector2(-7, 4)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/Creator_Table/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/Creator_Table/Area2D" unique_id=2135111759]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_ib4ol")
 debug_color = Color(0.8639367, 0.0006141484, 0.86717606, 0.41960785)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1651054733]
 position = Vector2(114, -12)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_bfdlc")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=863508709]
 position = Vector2(99, -16)
 shape = SubResource("CapsuleShape2D_8w7g3")
 
-[node name="Player" parent="." instance=ExtResource("4_bxiex")]
+[node name="Player" parent="." unique_id=1485555034 instance=ExtResource("4_bxiex")]
 z_index = 2
 position = Vector2(-107, 0)
 
-[node name="PointLight2D2" type="PointLight2D" parent="Player"]
+[node name="PointLight2D2" type="PointLight2D" parent="Player" unique_id=669146846]
 energy = 4.0
 range_z_max = 0
 texture = SubResource("GradientTexture2D_bfdlc")
 
-[node name="Background" type="TileMapLayer" parent="."]
+[node name="Background" type="TileMapLayer" parent="." unique_id=1965856808]
 z_index = -5
 tile_map_data = PackedByteArray("AAD2//r/AAACAAMAAAD2//v/AAACAAMAAAD2//z/AAACAAMAAAD2//3/AAACAAMAAAD2//7/AAACAAMAAAD2////AAACAAMAAAD2/wAAAAACAAMAAAD2/wEAAAACAAMAAAD2/wIAAAACAAMAAAD2/wMAAAACAAMAAAD2/wQAAAACAAMAAAD2/wUAAAACAAMAAAD3//r/AAACAAMAAAD3//v/AAACAAMAAAD3//z/AAACAAMAAAD3//3/AAACAAMAAAD3//7/AAACAAMAAAD3////AAACAAMAAAD3/wAAAAACAAMAAAD3/wEAAAACAAMAAAD3/wIAAAACAAMAAAD3/wMAAAACAAMAAAD3/wQAAAACAAMAAAD3/wUAAAACAAMAAAD4//r/AAACAAMAAAD4//v/AAACAAMAAAD4//z/AAACAAMAAAD4//3/AAACAAMAAAD4//7/AAACAAMAAAD4////AAACAAMAAAD4/wAAAAACAAMAAAD4/wEAAAACAAMAAAD4/wIAAAACAAMAAAD4/wMAAAACAAMAAAD4/wQAAAACAAMAAAD4/wUAAAACAAMAAAD5//r/AAACAAMAAAD5//v/AAACAAMAAAD5//z/AAACAAMAAAD5//3/AAACAAMAAAD5//7/AAACAAMAAAD5////AAACAAMAAAD5/wAAAAACAAMAAAD5/wEAAAACAAMAAAD5/wIAAAACAAMAAAD5/wMAAAACAAMAAAD5/wQAAAACAAMAAAD5/wUAAAACAAMAAAD6//r/AAACAAMAAAD6//v/AAACAAMAAAD6//z/AAACAAMAAAD6//3/AAACAAMAAAD6//7/AAACAAMAAAD6////AAACAAMAAAD6/wAAAAACAAMAAAD6/wEAAAACAAMAAAD6/wIAAAACAAMAAAD6/wMAAAACAAMAAAD6/wQAAAACAAMAAAD6/wUAAAACAAMAAAD7//r/AAACAAMAAAD7//v/AAACAAMAAAD7//z/AAACAAMAAAD7//3/AAACAAMAAAD7//7/AAACAAMAAAD7////AAACAAMAAAD7/wAAAAACAAMAAAD7/wEAAAACAAMAAAD7/wIAAAACAAMAAAD7/wMAAAACAAMAAAD7/wQAAAACAAMAAAD7/wUAAAACAAMAAAD8//r/AAACAAMAAAD8//v/AAACAAMAAAD8//z/AAACAAMAAAD8//3/AAACAAMAAAD8//7/AAACAAMAAAD8////AAACAAMAAAD8/wAAAAACAAMAAAD8/wEAAAACAAMAAAD8/wIAAAACAAMAAAD8/wMAAAACAAMAAAD8/wQAAAACAAMAAAD8/wUAAAACAAMAAAD9//r/AAACAAMAAAD9//v/AAACAAMAAAD9//z/AAACAAMAAAD9//3/AAACAAMAAAD9//7/AAACAAMAAAD9////AAACAAMAAAD9/wAAAAACAAMAAAD9/wEAAAACAAMAAAD9/wIAAAACAAMAAAD9/wMAAAACAAMAAAD9/wQAAAACAAMAAAD9/wUAAAACAAMAAAD+//r/AAACAAMAAAD+//v/AAACAAMAAAD+//z/AAACAAMAAAD+//3/AAACAAMAAAD+//7/AAACAAMAAAD+////AAACAAMAAAD+/wAAAAACAAMAAAD+/wEAAAACAAMAAAD+/wIAAAACAAMAAAD+/wMAAAACAAMAAAD+/wQAAAACAAMAAAD+/wUAAAACAAMAAAD///r/AAACAAMAAAD///v/AAACAAMAAAD///z/AAACAAMAAAD///3/AAACAAMAAAD///7/AAACAAMAAAD/////AAACAAMAAAD//wAAAAACAAMAAAD//wEAAAACAAMAAAD//wIAAAACAAMAAAD//wMAAAACAAMAAAD//wQAAAACAAMAAAD//wUAAAACAAMAAAAAAPr/AAACAAMAAAAAAPv/AAACAAMAAAAAAPz/AAACAAMAAAAAAP3/AAACAAMAAAAAAP7/AAACAAMAAAAAAP//AAACAAMAAAAAAAAAAAACAAMAAAAAAAEAAAACAAMAAAAAAAIAAAACAAMAAAAAAAMAAAACAAMAAAAAAAQAAAACAAMAAAAAAAUAAAACAAMAAAABAPr/AAACAAMAAAABAPv/AAACAAMAAAABAPz/AAACAAMAAAABAP3/AAACAAMAAAABAP7/AAACAAMAAAABAP//AAACAAMAAAABAAAAAAACAAMAAAABAAEAAAACAAMAAAABAAIAAAACAAMAAAABAAMAAAACAAMAAAABAAQAAAACAAMAAAABAAUAAAACAAMAAAACAPr/AAACAAMAAAACAPv/AAACAAMAAAACAPz/AAACAAMAAAACAP3/AAACAAMAAAACAP7/AAACAAMAAAACAP//AAACAAMAAAACAAAAAAACAAMAAAACAAEAAAACAAMAAAACAAIAAAACAAMAAAACAAMAAAACAAMAAAACAAQAAAACAAMAAAACAAUAAAACAAMAAAADAPr/AAACAAMAAAADAPv/AAACAAMAAAADAPz/AAACAAMAAAADAP3/AAACAAMAAAADAP7/AAACAAMAAAADAP//AAACAAMAAAADAAAAAAACAAMAAAADAAEAAAACAAMAAAADAAIAAAACAAMAAAADAAMAAAACAAMAAAADAAQAAAACAAMAAAADAAUAAAACAAMAAAAEAPr/AAACAAMAAAAEAPv/AAACAAMAAAAEAPz/AAACAAMAAAAEAP3/AAACAAMAAAAEAP7/AAACAAMAAAAEAP//AAACAAMAAAAEAAAAAAACAAMAAAAEAAEAAAACAAMAAAAEAAIAAAACAAMAAAAEAAMAAAACAAMAAAAEAAQAAAACAAMAAAAEAAUAAAACAAMAAAAFAPr/AAACAAMAAAAFAPv/AAACAAMAAAAFAPz/AAACAAMAAAAFAP3/AAACAAMAAAAFAP7/AAACAAMAAAAFAP//AAACAAMAAAAFAAAAAAACAAMAAAAFAAEAAAACAAMAAAAFAAIAAAACAAMAAAAFAAMAAAACAAMAAAAFAAQAAAACAAMAAAAFAAUAAAACAAMAAAAGAPr/AAACAAMAAAAGAPv/AAACAAMAAAAGAPz/AAACAAMAAAAGAP3/AAACAAMAAAAGAP7/AAACAAMAAAAGAP//AAACAAMAAAAGAAAAAAACAAMAAAAGAAEAAAACAAMAAAAGAAIAAAACAAMAAAAGAAMAAAACAAMAAAAGAAQAAAACAAMAAAAGAAUAAAACAAMAAAAHAPr/AAACAAMAAAAHAPv/AAACAAMAAAAHAPz/AAACAAMAAAAHAP3/AAACAAMAAAAHAP7/AAACAAMAAAAHAP//AAACAAMAAAAHAAAAAAACAAMAAAAHAAEAAAACAAMAAAAHAAIAAAACAAMAAAAHAAMAAAACAAMAAAAHAAQAAAACAAMAAAAHAAUAAAACAAMAAAAIAPr/AAACAAMAAAAIAPv/AAACAAMAAAAIAPz/AAACAAMAAAAIAP3/AAACAAMAAAAIAP7/AAACAAMAAAAIAP//AAACAAMAAAAIAAAAAAACAAMAAAAIAAEAAAACAAMAAAAIAAIAAAACAAMAAAAIAAMAAAACAAMAAAAIAAQAAAACAAMAAAAIAAUAAAACAAMAAAAJAPr/AAACAAMAAAAJAPv/AAACAAMAAAAJAPz/AAACAAMAAAAJAP3/AAACAAMAAAAJAP7/AAACAAMAAAAJAP//AAACAAMAAAAJAAAAAAACAAMAAAAJAAEAAAACAAMAAAAJAAIAAAACAAMAAAAJAAMAAAACAAMAAAAJAAQAAAACAAMAAAAJAAUAAAACAAMAAAA=")
 tile_set = SubResource("TileSet_bfdlc")
 
-[node name="Barrier" type="TileMapLayer" parent="."]
+[node name="Barrier" type="TileMapLayer" parent="." unique_id=98120442]
 tile_map_data = PackedByteArray("AAD2//r/AAACAAMAAAD2//v/AAACAAMAAAD2//z/AAACAAMAAAD2//3/AAACAAMAAAD2//7/AAACAAMAAAD2////AAACAAMAAAD2/wAAAAACAAMAAAD2/wEAAAACAAMAAAD2/wIAAAACAAMAAAD2/wMAAAACAAMAAAD2/wQAAAACAAMAAAD2/wUAAAACAAMAAAD3/wUAAAACAAMAAAD4/wUAAAACAAMAAAD5/wUAAAACAAMAAAD6/wUAAAACAAMAAAD7/wUAAAACAAMAAAD8/wUAAAACAAMAAAD9/wUAAAACAAMAAAD+/wUAAAACAAMAAAD//wUAAAACAAMAAAAAAAUAAAACAAMAAAABAAUAAAACAAMAAAACAAUAAAACAAMAAAADAAUAAAACAAMAAAAEAAUAAAACAAMAAAAFAAUAAAACAAMAAAAGAAUAAAACAAMAAAAHAAUAAAACAAMAAAAIAAUAAAACAAMAAAAJAAUAAAACAAMAAAAJAAQAAAACAAMAAAAJAAMAAAACAAMAAAAJAAIAAAACAAMAAAAJAAEAAAACAAMAAAAJAAAAAAACAAMAAAAJAP//AAACAAMAAAAJAP7/AAACAAMAAAAJAP3/AAACAAMAAAAJAPz/AAACAAMAAAAJAPv/AAACAAMAAAAJAPr/AAACAAMAAAAIAPr/AAACAAMAAAAHAPr/AAACAAMAAAAGAPr/AAACAAMAAAAFAPr/AAACAAMAAAAEAPr/AAACAAMAAAADAPr/AAACAAMAAAACAPr/AAACAAMAAAABAPr/AAACAAMAAAAAAPr/AAACAAMAAAD///r/AAACAAMAAAD+//r/AAACAAMAAAD9//r/AAACAAMAAAD8//r/AAACAAMAAAD7//r/AAACAAMAAAD6//r/AAACAAMAAAD5//r/AAACAAMAAAD4//r/AAACAAMAAAD3//r/AAACAAMAAAA=")
 tile_set = SubResource("TileSet_hv2aa")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1013601585]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=865204998]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -185,7 +185,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Monologue" parent="CanvasLayer/Control" instance=ExtResource("6_bfdlc")]
+[node name="Monologue" parent="CanvasLayer/Control" unique_id=17322406 instance=ExtResource("6_bfdlc")]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -193,10 +193,10 @@ anchor_top = 1.0
 anchor_right = 0.5
 grow_vertical = 0
 
-[node name="Ending_Canvas" type="CanvasLayer" parent="."]
+[node name="Ending_Canvas" type="CanvasLayer" parent="." unique_id=955581180]
 visible = false
 
-[node name="Background" type="TextureRect" parent="Ending_Canvas"]
+[node name="Background" type="TextureRect" parent="Ending_Canvas" unique_id=1976810617]
 modulate = Color(0, 0, 0, 1)
 anchors_preset = 15
 anchor_right = 1.0
@@ -205,7 +205,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("CanvasTexture_bfdlc")
 
-[node name="Label" type="Label" parent="Ending_Canvas"]
+[node name="Label" type="Label" parent="Ending_Canvas" unique_id=498229160]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -221,7 +221,7 @@ text = "THE END"
 label_settings = SubResource("LabelSettings_hv2aa")
 horizontal_alignment = 1
 
-[node name="Logo" type="TextureRect" parent="Ending_Canvas"]
+[node name="Logo" type="TextureRect" parent="Ending_Canvas" unique_id=1996992399]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -232,7 +232,7 @@ grow_horizontal = 2
 texture = ExtResource("8_hv2aa")
 expand_mode = 1
 
-[node name="Timer" type="Timer" parent="Ending_Canvas"]
+[node name="Timer" type="Timer" parent="Ending_Canvas" unique_id=1156584788]
 wait_time = 10.0
 one_shot = true
 

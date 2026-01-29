@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8n658w0l500m"]
+[gd_scene format=3 uid="uid://c8n658w0l500m"]
 
 [ext_resource type="AudioStream" uid="uid://0flc5oboyki2" path="res://audio/music/jazz-cafe-restaurant-music-372190.mp3" id="1_5psdy"]
 
-[node name="MusicPlayer" type="AudioStreamPlayer"]
+[node name="MusicPlayer" type="AudioStreamPlayer" unique_id=71535612]
 stream = ExtResource("1_5psdy")
 volume_db = -20.0
 autoplay = true
