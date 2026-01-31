@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://baisslgr622gk"]
+[gd_scene format=3 uid="uid://baisslgr622gk"]
 
 [ext_resource type="Script" uid="uid://b4jy1fa0f48lj" path="res://Scripts/player_movement.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://t37ke1jauf03" path="res://Assets/dash.png" id="2_3smsa"]
@@ -389,10 +389,10 @@ gradient = SubResource("Gradient_xexre")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1076392677 groups=["Player"]]
 script = ExtResource("1_cvnsp")
 
-[node name="SpeedBoostParticleEmiter" type="CPUParticles2D" parent="."]
+[node name="SpeedBoostParticleEmiter" type="CPUParticles2D" parent="." unique_id=1569473423]
 position = Vector2(0, 4)
 emitting = false
 amount = 16
@@ -410,26 +410,26 @@ tangential_accel_max = 10.0
 scale_amount_min = 0.5
 scale_amount_max = 1.1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1632716802]
 shape = SubResource("CircleShape2D_v0iea")
 debug_color = Color(0.22053057, 0.6392518, 0, 0.41960785)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=618734765]
 sprite_frames = SubResource("SpriteFrames_3smsa")
 animation = &"Idle"
 autoplay = "Idle"
 frame = 5
 frame_progress = 0.71259207
 
-[node name="Order_Sprite" type="AnimatedSprite2D" parent="."]
+[node name="Order_Sprite" type="AnimatedSprite2D" parent="." unique_id=1161511066]
 visible = false
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_8erm5")
 
-[node name="BoosterDuration" type="Timer" parent="."]
+[node name="BoosterDuration" type="Timer" parent="." unique_id=499784519]
 wait_time = 30.0
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=960562341]
 position = Vector2(0, -3)
 energy = 0.1
 texture = SubResource("GradientTexture2D_3smsa")

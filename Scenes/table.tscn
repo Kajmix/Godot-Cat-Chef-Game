@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://cwi2n7fauhcs2"]
+[gd_scene format=3 uid="uid://cwi2n7fauhcs2"]
 
 [ext_resource type="Texture2D" uid="uid://iky7etio4bnp" path="res://Assets/table.png" id="1_ix8et"]
 [ext_resource type="Script" uid="uid://b3e07v14iiaf2" path="res://Scripts/client_logic.gd" id="1_xqsq7"]
@@ -57,14 +57,6 @@ region = Rect2(32, 0, 16, 16)
 atlas = ExtResource("3_usajj")
 region = Rect2(48, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ssv1w"]
-atlas = ExtResource("4_filji")
-region = Rect2(32, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6cc7k"]
-atlas = ExtResource("4_filji")
-region = Rect2(96, 16, 16, 16)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_k47uh"]
 atlas = ExtResource("4_filji")
 region = Rect2(0, 0, 16, 16)
@@ -76,6 +68,14 @@ region = Rect2(64, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_pxje1"]
 atlas = ExtResource("4_filji")
 region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssv1w"]
+atlas = ExtResource("4_filji")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6cc7k"]
+atlas = ExtResource("4_filji")
+region = Rect2(96, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5kx35"]
 atlas = ExtResource("4_filji")
@@ -153,17 +153,6 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ssv1w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6cc7k")
-}],
-"loop": true,
-"name": &"developer",
-"speed": 3.0
-}, {
-"frames": [{
 "duration": 3.0,
 "texture": SubResource("AtlasTexture_k47uh")
 }, {
@@ -179,6 +168,17 @@ animations = [{
 "loop": true,
 "name": &"green_guy",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssv1w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6cc7k")
+}],
+"loop": true,
+"name": &"meow",
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -291,10 +291,10 @@ gradient = SubResource("Gradient_4ntqo")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[node name="Table" type="StaticBody2D"]
+[node name="Table" type="StaticBody2D" unique_id=7478127]
 script = ExtResource("1_xqsq7")
 
-[node name="MoneyParticleEmiter" type="CPUParticles2D" parent="."]
+[node name="MoneyParticleEmiter" type="CPUParticles2D" parent="." unique_id=1349265052]
 z_index = 2
 position = Vector2(0, -6)
 emitting = false
@@ -308,71 +308,69 @@ angular_velocity_min = -50.0
 angular_velocity_max = 50.0
 radial_accel_max = 20.0
 
-[node name="Table Sprite" type="Sprite2D" parent="."]
+[node name="Table Sprite" type="Sprite2D" parent="." unique_id=1105520341]
 z_index = 1
 texture = ExtResource("1_ix8et")
 
-[node name="Table Colision" type="CollisionShape2D" parent="."]
+[node name="Table Colision" type="CollisionShape2D" parent="." unique_id=767569672]
 z_index = 1
 shape = SubResource("CapsuleShape2D_4ppvu")
 debug_color = Color(0.6092286, 0.53980887, 0, 0.41960785)
 
-[node name="Customer" type="StaticBody2D" parent="."]
+[node name="Customer" type="StaticBody2D" parent="." unique_id=1557709506]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Customer"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Customer" unique_id=1620397920]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_xqsq7")
-animation = &"cat"
+animation = &"meow"
 autoplay = "cat"
 
-[node name="Customer Colision" type="CollisionShape2D" parent="Customer"]
+[node name="Customer Colision" type="CollisionShape2D" parent="Customer" unique_id=2139501625]
 position = Vector2(0, -7)
 shape = SubResource("CapsuleShape2D_r4jc3")
 debug_color = Color(0.7703563, 0.44520456, 0, 0.41960785)
 
-[node name="Order" type="Node2D" parent="Customer"]
+[node name="Order" type="Node2D" parent="Customer" unique_id=879360760]
 visible = false
 z_index = 11
 position = Vector2(3, -6)
 
-[node name="Order Background Sprite" type="Sprite2D" parent="Customer/Order"]
+[node name="Order Background Sprite" type="Sprite2D" parent="Customer/Order" unique_id=84049080]
 z_index = 1
 position = Vector2(6, -16)
 texture = ExtResource("3_r4jc3")
 
-[node name="Order Sprite" type="AnimatedSprite2D" parent="Customer/Order"]
+[node name="Order Sprite" type="AnimatedSprite2D" parent="Customer/Order" unique_id=507740744]
 z_index = 1
 position = Vector2(6, -16)
 sprite_frames = SubResource("SpriteFrames_xexre")
 
-[node name="Order Area" type="Area2D" parent="."]
+[node name="Order Area" type="Area2D" parent="." unique_id=1120271372]
 
-[node name="Order Colision" type="CollisionShape2D" parent="Order Area"]
+[node name="Order Colision" type="CollisionShape2D" parent="Order Area" unique_id=1328292300]
 position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_o4lkm")
 debug_color = Color(0.50419766, 0.4267885, 1, 0.41960785)
 
-[node name="Arrow" type="Sprite2D" parent="."]
+[node name="Arrow" type="Sprite2D" parent="." unique_id=1515879806]
 visible = false
 light_mask = 2
 z_index = 2565
 position = Vector2(0, -24)
 texture = ExtResource("8_o4lkm")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Arrow"]
-libraries = {
-&"": SubResource("AnimationLibrary_4ntqo")
-}
-autoplay = "up and down"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Arrow" unique_id=776997453]
+libraries/ = SubResource("AnimationLibrary_4ntqo")
+autoplay = &"up and down"
 speed_scale = 2.0
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=60316169]
 position = Vector2(0, -3)
 color = Color(0.67674357, 0.5575295, 0.37626487, 1)
 energy = 0.2
 texture = SubResource("GradientTexture2D_4ntqo")
 
-[node name="lock" type="Sprite2D" parent="."]
+[node name="lock" type="Sprite2D" parent="." unique_id=421911923]
 z_index = 10
 position = Vector2(0, -10)
 texture = ExtResource("12_filji")

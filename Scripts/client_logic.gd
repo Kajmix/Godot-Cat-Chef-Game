@@ -31,7 +31,8 @@ const normal_clients_animations_list = [
 	"ball_guy",
 	"green_guy",
 	"purple_ball_guy",
-	"purple_guy"
+	"purple_guy",
+	"meow"
 ]
 const special_clients_animations_list = [
 	"cat",

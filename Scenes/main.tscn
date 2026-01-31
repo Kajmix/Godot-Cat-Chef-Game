@@ -42,7 +42,7 @@ font_size = 12
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gt3je"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1w6v2"]
 texture = ExtResource("2_bo1nx")
 0:4/0 = 0
 1:4/0 = 0
@@ -50,9 +50,9 @@ texture = ExtResource("2_bo1nx")
 3:4/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_3pmx8"]
-sources/0 = SubResource("TileSetAtlasSource_gt3je")
+sources/0 = SubResource("TileSetAtlasSource_1w6v2")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b3802"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ueoa1"]
 texture = ExtResource("2_bo1nx")
 0:0/0 = 0
 1:0/0 = 0
@@ -83,9 +83,9 @@ texture = ExtResource("2_bo1nx")
 5:3/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_fevyy"]
-sources/0 = SubResource("TileSetAtlasSource_b3802")
+sources/0 = SubResource("TileSetAtlasSource_ueoa1")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wsu2k"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6vcvc"]
 texture = ExtResource("2_bo1nx")
 0:0/0 = 0
 1:0/0 = 0
@@ -121,9 +121,9 @@ texture = ExtResource("2_bo1nx")
 
 [sub_resource type="TileSet" id="TileSet_kry3j"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_wsu2k")
+sources/0 = SubResource("TileSetAtlasSource_6vcvc")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k12tt"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7k868"]
 texture = ExtResource("2_bo1nx")
 0:0/0 = 0
 1:0/0 = 0
@@ -154,9 +154,9 @@ texture = ExtResource("2_bo1nx")
 7:1/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_fdnlq"]
-sources/0 = SubResource("TileSetAtlasSource_k12tt")
+sources/0 = SubResource("TileSetAtlasSource_7k868")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h1bgf"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hpc6h"]
 texture = ExtResource("2_bo1nx")
 0:0/0 = 0
 2:0/0 = 0
@@ -183,7 +183,7 @@ texture = ExtResource("2_bo1nx")
 
 [sub_resource type="TileSet" id="TileSet_jjvhh"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_h1bgf")
+sources/0 = SubResource("TileSetAtlasSource_hpc6h")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8gbba"]
 size = Vector2(30, 32)

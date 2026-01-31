@@ -1,6 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://cr55hp1fcbef"]
+[gd_scene format=3 uid="uid://cr55hp1fcbef"]
 
-[ext_resource type="Texture2D" uid="uid://egv3bacud0k1" path="res://Assets/Background.png" id="1_cayip"]
+[ext_resource type="Texture2D" uid="uid://drj7ofmswjf74" path="res://Assets/Background.png" id="1_cayip"]
 [ext_resource type="Script" uid="uid://b7gx2mfveaqdn" path="res://Scripts/Menu.gd" id="2_xhh6f"]
 [ext_resource type="FontFile" uid="uid://be7opo235lcnt" path="res://Fonts/Jersey10-Regular.ttf" id="3_158mb"]
 [ext_resource type="Texture2D" uid="uid://bb5k45sakwdl5" path="res://Assets/Player Sprite.png" id="3_cayip"]
@@ -51,13 +51,13 @@ _data = {
 &"spin": SubResource("Animation_cayip")
 }
 
-[node name="Menu" type="Node2D"]
+[node name="Menu" type="Node2D" unique_id=238169020]
 
-[node name="Fade" parent="." instance=ExtResource("7_wbdvm")]
+[node name="Fade" parent="." unique_id=2024684543 instance=ExtResource("7_wbdvm")]
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=497591122]
 
-[node name="UI" type="Control" parent="CanvasLayer2"]
+[node name="UI" type="Control" parent="CanvasLayer2" unique_id=1250048052]
 z_index = 1025
 layout_mode = 3
 anchors_preset = 15
@@ -66,41 +66,41 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Background" type="CanvasLayer" parent="CanvasLayer2/UI"]
+[node name="Background" type="CanvasLayer" parent="CanvasLayer2/UI" unique_id=1196982356]
 
-[node name="CanvasModulate" type="CanvasModulate" parent="CanvasLayer2/UI/Background"]
+[node name="CanvasModulate" type="CanvasModulate" parent="CanvasLayer2/UI/Background" unique_id=924869031]
 color = Color(0.427493, 0.42749307, 0.42749307, 1)
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer2/UI/Background"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer2/UI/Background" unique_id=397552115]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_cayip")
-expand_mode = 2
+expand_mode = 1
 
-[node name="UI" type="CanvasLayer" parent="CanvasLayer2/UI"]
+[node name="UI" type="CanvasLayer" parent="CanvasLayer2/UI" unique_id=150409104]
 script = ExtResource("2_xhh6f")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer2/UI/UI"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer2/UI/UI" unique_id=1668490367]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="LeftCenter" type="CenterContainer" parent="CanvasLayer2/UI/UI/HBoxContainer"]
+[node name="LeftCenter" type="CenterContainer" parent="CanvasLayer2/UI/UI/HBoxContainer" unique_id=993734653]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter" unique_id=365425883]
 layout_mode = 2
 
-[node name="Control" type="Control" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/VBoxContainer"]
+[node name="Control" type="Control" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/VBoxContainer" unique_id=1818609596]
 layout_mode = 2
 
-[node name="Title" type="TextureRect" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/VBoxContainer/Control"]
+[node name="Title" type="TextureRect" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/VBoxContainer/Control" unique_id=815034112]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -115,10 +115,10 @@ grow_vertical = 0
 texture = ExtResource("4_q3rjx")
 expand_mode = 1
 
-[node name="Control2" type="Control" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/VBoxContainer"]
+[node name="Control2" type="Control" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/VBoxContainer" unique_id=1475464448]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/VBoxContainer/Control2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/VBoxContainer/Control2" unique_id=419982153]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -129,14 +129,14 @@ offset_right = 32.5
 offset_bottom = 54.0
 grow_horizontal = 2
 
-[node name="Play" type="TextureButton" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/VBoxContainer/Control2/VBoxContainer"]
+[node name="Play" type="TextureButton" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/VBoxContainer/Control2/VBoxContainer" unique_id=200387035]
 custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
 texture_normal = ExtResource("4_jsrd8")
 texture_hover = ExtResource("5_wbdvm")
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/VBoxContainer/Control2/VBoxContainer/Play"]
+[node name="Label" type="Label" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/VBoxContainer/Control2/VBoxContainer/Play" unique_id=616880620]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -148,14 +148,14 @@ label_settings = SubResource("LabelSettings_wwsa2")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Exit" type="TextureButton" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/VBoxContainer/Control2/VBoxContainer"]
+[node name="Exit" type="TextureButton" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/VBoxContainer/Control2/VBoxContainer" unique_id=1100958052]
 custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
 texture_normal = ExtResource("4_jsrd8")
 texture_hover = ExtResource("5_wbdvm")
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/VBoxContainer/Control2/VBoxContainer/Exit"]
+[node name="Label" type="Label" parent="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/VBoxContainer/Control2/VBoxContainer/Exit" unique_id=948667891]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -167,14 +167,14 @@ label_settings = SubResource("LabelSettings_wwsa2")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RightCenter" type="CenterContainer" parent="CanvasLayer2/UI/UI/HBoxContainer"]
+[node name="RightCenter" type="CenterContainer" parent="CanvasLayer2/UI/UI/HBoxContainer" unique_id=1762206140]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Control" type="Control" parent="CanvasLayer2/UI/UI/HBoxContainer/RightCenter"]
+[node name="Control" type="Control" parent="CanvasLayer2/UI/UI/HBoxContainer/RightCenter" unique_id=96082386]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer2/UI/UI/HBoxContainer/RightCenter/Control"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer2/UI/UI/HBoxContainer/RightCenter/Control" unique_id=1906173795]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 0
 offset_left = -50.000008
@@ -185,13 +185,11 @@ pivot_offset = Vector2(50, 50)
 texture = ExtResource("3_cayip")
 metadata/_edit_use_anchors_ = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer2/UI/UI/HBoxContainer/RightCenter/Control/TextureRect"]
-libraries = {
-&"": SubResource("AnimationLibrary_wwsa2")
-}
-autoplay = "spin"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer2/UI/UI/HBoxContainer/RightCenter/Control/TextureRect" unique_id=588819650]
+libraries/ = SubResource("AnimationLibrary_wwsa2")
+autoplay = &"spin"
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1565859662]
 
 [connection signal="pressed" from="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/VBoxContainer/Control2/VBoxContainer/Play" to="CanvasLayer2/UI/UI" method="_on_play_pressed"]
 [connection signal="pressed" from="CanvasLayer2/UI/UI/HBoxContainer/LeftCenter/VBoxContainer/Control2/VBoxContainer/Exit" to="CanvasLayer2/UI/UI" method="_on_exit_pressed"]
