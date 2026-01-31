@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://dy3eljhnk7jn2" path="res://Scripts/door_open.gd" id="10_3pmx8"]
 [ext_resource type="Script" uid="uid://b564k470aweeh" path="res://Scripts/pause.gd" id="10_hptm8"]
 [ext_resource type="PackedScene" uid="uid://cjjsc30bnu5h6" path="res://Scenes/bush.tscn" id="12_1w6v2"]
+[ext_resource type="PackedScene" uid="uid://te1xd4tjdc71" path="res://Scenes/cat_bed.tscn" id="13_6vcvc"]
 [ext_resource type="Texture2D" uid="uid://dstp0yn1de8ur" path="res://Assets/milk-glass.png" id="13_fdnlq"]
 [ext_resource type="Texture2D" uid="uid://cjws4wvym0n7y" path="res://Assets/button_background.png" id="13_k12tt"]
 [ext_resource type="Texture2D" uid="uid://yhguhd81swgx" path="res://Assets/button_background_pressed.png" id="14_h1bgf"]
@@ -27,6 +28,7 @@
 [ext_resource type="Script" uid="uid://bwmlm3orw5qsr" path="res://Scripts/auto_save.gd" id="22_ee4r6"]
 [ext_resource type="Script" uid="uid://m3sfhplunygx" path="res://Scripts/shop_manager.gd" id="23_1w6v2"]
 [ext_resource type="PackedScene" uid="uid://dj076ghs5a7or" path="res://Scenes/mask.tscn" id="26_cbgmd"]
+[ext_resource type="Texture2D" uid="uid://dkn6owr1dii5l" path="res://Assets/cat_toy.png" id="28_ueoa1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hptm8"]
 paragraph_spacing = 1.0
@@ -118,9 +120,15 @@ texture = ExtResource("2_bo1nx")
 5:5/0 = 0
 6:5/0 = 0
 6:4/0 = 0
+7:4/size_in_atlas = Vector2i(1, 2)
+7:4/0 = 0
+7:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-1.9289856, 12.8937435, 4.9747505, 13.096796, 6.3961086, 11.878489, 6.0915318, 10.96476, 4.873226, 9.949504, 3.1472912, 9.949504, 3.1472912, 4.061022, 5.076277, 3.9594965, 5.177803, 0.20305157, 6.0915318, 0, 6.0915318, -0.81220436, 2.2335615, -4.6701746, 0.81220436, -5.076277, -2.9442415, -1.3198318, -2.74119, -0.40610218, -2.1320372, -0.10152531, -2.0305119, 2.9442406, -8, 2.8427153, -8, 3.756445, -6.193059, 3.8579712, -7.0052633, 8, -5.888482, 9.949504, -5.0762777, 9.949504, -4.162548, 8, -4.9747524, 8, -4.9747524, 4.061022, -0.10152626, 3.756445, -0.10152626, 9.746452, -2.0305119, 9.644927, -2.2335625, 10.863234, -3.0457668, 10.96476, -3.0457668, 11.573912, -2.1320372, 11.878489)
+3:5/0 = 0
+3:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -3.4173155, -6.115196, -1.2590103, 5.5756207, -0.8992939, 8, -3.7770329, 8, -5.036044, 8, -8, 5.215904, -8, 2.8777409, -8, -3.2374573, -8, -5.935338, -8)
 
 [sub_resource type="TileSet" id="TileSet_kry3j"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 3
+physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_6vcvc")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7k868"]
@@ -182,7 +190,8 @@ texture = ExtResource("2_bo1nx")
 3:3/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_jjvhh"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 3
+physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_hpc6h")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8gbba"]
@@ -287,6 +296,13 @@ gradient = SubResource("Gradient_k12tt")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6vcvc"]
+friction = 0.5
+bounce = 0.63
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7k868"]
+radius = 4.0
+
 [node name="Main" type="Node2D" unique_id=40129807]
 script = ExtResource("1_344ge")
 
@@ -382,6 +398,7 @@ wait_time = 3.0
 [node name="Player" parent="." unique_id=713604756 instance=ExtResource("1_jjgbg")]
 z_index = 5
 position = Vector2(-120, -43)
+collision_layer = 3
 
 [node name="Tilemap" type="TileMapLayer" parent="." unique_id=742977614]
 z_index = -1
@@ -399,14 +416,21 @@ tile_set = SubResource("TileSet_fevyy")
 
 [node name="Furniture" type="TileMapLayer" parent="Tilemap" unique_id=1092468018]
 z_index = -12
-tile_map_data = PackedByteArray("AAD8//z/AAADAAAAAAD9//z/AAAHAAMAAAD8//v/AAADAAAAAAD8//3/AAADAAEAAAD3//3/AAADAAIAAAD6//3/AAADAAIAAAD7//3/AAADAAIAAAD9//v/AAAHAAIAAAABAPv/AAAEAAQAABABAPz/AAAEAAUAABD///v/AAAEAAQAAAD///z/AAAEAAUAAAAAAPv/AAAFAAQAAAAAAPz/AAAFAAUAAAADAPv/AAAHAAIAAAADAPz/AAAHAAMAAAA=")
+tile_map_data = PackedByteArray("AAD8//z/AAADAAAAAAD9//z/AAAHAAMAAAD8//v/AAADAAAAAAD8//3/AAADAAEAAAD3//3/AAADAAIAAAD6//3/AAADAAIAAAD7//3/AAADAAIAAAD9//v/AAAHAAIAAAABAPv/AAAEAAQAABABAPz/AAAEAAUAABD///v/AAAEAAQAAAD///z/AAAEAAUAAAAAAPv/AAAFAAQAAAAAAPz/AAAFAAUAAAADAPv/AAAHAAIAAAADAPz/AAAHAAMAAAAIAPz/AAADAAUAAAA=")
 tile_set = SubResource("TileSet_kry3j")
 
 [node name="Bush" parent="Tilemap/Furniture" unique_id=1316669827 instance=ExtResource("12_1w6v2")]
 position = Vector2(-40, -68)
+collision_layer = 3
+collision_mask = 3
 
 [node name="Bush2" parent="Tilemap/Furniture" unique_id=571529620 instance=ExtResource("12_1w6v2")]
 position = Vector2(56, -68)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CatBed" parent="Tilemap/Furniture" unique_id=831681791 instance=ExtResource("13_6vcvc")]
+position = Vector2(136, -61)
 
 [node name="Floor" type="TileMapLayer" parent="Tilemap" unique_id=1766561568]
 z_index = -18
@@ -424,40 +448,56 @@ script = ExtResource("3_kry3j")
 
 [node name="Table1" parent="Tables" unique_id=1276846209 groups=["table"] instance=ExtResource("3_8gbba")]
 position = Vector2(31, 40)
+collision_layer = 3
+collision_mask = 3
 price = 300
 
 [node name="Table2" parent="Tables" unique_id=234501819 groups=["table"] instance=ExtResource("3_8gbba")]
 position = Vector2(100, 40)
+collision_layer = 3
+collision_mask = 3
 is_not_bought = false
 id = 1
 
 [node name="Table3" parent="Tables" unique_id=1869998364 groups=["table"] instance=ExtResource("3_8gbba")]
 position = Vector2(-89, 39)
+collision_layer = 3
+collision_mask = 3
 price = 1200
 id = 2
 
 [node name="Table4" parent="Tables" unique_id=1884076697 groups=["table"] instance=ExtResource("3_8gbba")]
 position = Vector2(60, -1)
+collision_layer = 3
+collision_mask = 3
 is_not_bought = false
 id = 3
 
 [node name="Table5" parent="Tables" unique_id=2108932859 groups=["table"] instance=ExtResource("3_8gbba")]
 position = Vector2(-20, 39)
+collision_layer = 3
+collision_mask = 3
 price = 900
 id = 4
 
 [node name="Table6" parent="Tables" unique_id=781702333 groups=["table"] instance=ExtResource("3_8gbba")]
 position = Vector2(-5, -30)
+collision_layer = 3
+collision_mask = 3
 price = 600
 id = 5
 
 [node name="Table7" parent="Tables" unique_id=938874375 groups=["table"] instance=ExtResource("3_8gbba")]
 position = Vector2(100, -30)
+collision_layer = 3
+collision_mask = 3
 is_not_bought = false
 id = 6
 
 [node name="Table8" parent="Tables" unique_id=31042094 groups=["table"] instance=ExtResource("3_8gbba")]
 position = Vector2(-54, 0)
+collision_layer = 3
+collision_mask = 3
 price = 1500
 id = 7
 
@@ -718,7 +758,47 @@ autostart = true
 script = ExtResource("22_ee4r6")
 
 [node name="Mask" parent="." unique_id=406283174 instance=ExtResource("26_cbgmd")]
-position = Vector2(132, -62)
+position = Vector2(41, -66)
+
+[node name="CatToyColisonBorder" type="StaticBody2D" parent="." unique_id=255866975]
+position = Vector2(-120, 39)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CatToyColisonBorder" unique_id=1437566943]
+polygon = PackedVector2Array(-39, -117, -38, 57, 286, 59, 287, -130, -40, -122, -24, -103, 72, -103, 75, -101, 85, -101, 87, -103, 106, -103, 109, -100, 147, -100, 150, -103, 169, -103, 171, -101, 181, -101, 183, -103, 264, -103, 264, 42, -24, 42, -24, -103, -40, -122)
+
+[node name="CatToy2" type="RigidBody2D" parent="." unique_id=2032213194]
+position = Vector2(-134, 28)
+collision_layer = 2
+collision_mask = 2
+mass = 1000.0
+physics_material_override = SubResource("PhysicsMaterial_6vcvc")
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="CatToy2" unique_id=276190678]
+position = Vector2(-1.9073486e-06, 3.8146973e-06)
+scale = Vector2(1.03125, 1.03125)
+texture = ExtResource("28_ueoa1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CatToy2" unique_id=535461639]
+shape = SubResource("CircleShape2D_7k868")
+
+[node name="CatToy" type="RigidBody2D" parent="." unique_id=1221844171]
+position = Vector2(-120, 39)
+collision_layer = 2
+collision_mask = 2
+mass = 1000.0
+physics_material_override = SubResource("PhysicsMaterial_6vcvc")
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="CatToy" unique_id=708948336]
+position = Vector2(-1.9073486e-06, 3.8146973e-06)
+scale = Vector2(1.03125, 1.03125)
+texture = ExtResource("28_ueoa1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CatToy" unique_id=616549127]
+shape = SubResource("CircleShape2D_7k868")
 
 [connection signal="timeout" from="ui/ui/Alert/Timer" to="ui/ui/Alert" method="_on_duration_time_out"]
 [connection signal="timeout" from="Tables/Client_Cooldown" to="Tables" method="_on_client_cooldown_timeout"]

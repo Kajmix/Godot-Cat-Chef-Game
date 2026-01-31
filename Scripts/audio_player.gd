@@ -7,7 +7,8 @@ const sound_effects = {
 	"cinematic-boom" : preload("res://audio/SFX/cinematic-boom.mp3"),
 	"place-something" : preload("res://audio/SFX/place-something.mp3"),
 	"bush" : preload("res://audio/SFX/bush.mp3"),
-	"door" : preload("res://audio/SFX/opening-door.mp3")
+	"door" : preload("res://audio/SFX/opening-door.mp3"),
+	"fabric" : preload("res://audio/SFX/fabric.wav")
 }
 
 func play_sound(sound):

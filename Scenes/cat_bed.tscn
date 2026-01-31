@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://te1xd4tjdc71"]
+
+[ext_resource type="Script" uid="uid://day0o51h22d1i" path="res://Scripts/cat_bed.gd" id="1_xpn62"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_80lr0"]
+radius = 12.0415945
+
+[node name="CatBed" type="Area2D" unique_id=831681791]
+script = ExtResource("1_xpn62")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1030733859]
+shape = SubResource("CircleShape2D_80lr0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
