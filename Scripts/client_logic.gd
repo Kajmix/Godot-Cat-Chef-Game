@@ -39,8 +39,11 @@ const special_clients_animations_list = [
 	"businessman"
 ]
 
-func set_alert_signal():
-	SignalBus.emit_signal("set_alert", "Cost: $" + str(price) + "\n Press 'E', or 'Z' to buy")
+func set_alert_signal(type = "enought"):
+	if type == "enought":
+		SignalBus.emit_signal("set_alert", "Cost: $" + str(price) + "\n Press 'E', or 'Z' to buy")
+	elif type == "not enought":
+		SignalBus.emit_signal("set_alert", "You have not enought money!", true)
 
 func keys_found_alert():
 	SignalBus.emit_signal("set_alert", "You found the keys!", true)
@@ -78,6 +81,8 @@ func _ready() -> void:
 	#SignalBus.monologue_ended.connect(_on_monologue_ended)
 
 func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("interact") && is_not_bought == true && MainGameManager.money < price:
+		set_alert_signal("not enought")
 	if Input.is_action_just_pressed("interact"):
 		if is_player_nearby:
 			hide_customer()

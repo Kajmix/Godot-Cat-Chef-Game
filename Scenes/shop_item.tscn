@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://pmg3dyh2qwnn"]
+
+[ext_resource type="Script" uid="uid://cdsupc665ff21" path="res://Scripts/shop_item.gd" id="1_tga60"]
+[ext_resource type="Texture2D" uid="uid://bll3ewy0j5dhq" path="res://Assets/shop_item2.png" id="1_wmysf"]
+[ext_resource type="Texture2D" uid="uid://dstp0yn1de8ur" path="res://Assets/milk-glass.png" id="2_ewy27"]
+[ext_resource type="Texture2D" uid="uid://undgrvueec3" path="res://Assets/Without Milk boost icon.png" id="2_idtay"]
+[ext_resource type="FontFile" uid="uid://be7opo235lcnt" path="res://Fonts/Jersey10-Regular.ttf" id="3_idtay"]
+[ext_resource type="Texture2D" uid="uid://dyak600jv8res" path="res://Assets/buy_button.png" id="5_asrp6"]
+[ext_resource type="Texture2D" uid="uid://dauafspm5htha" path="res://Assets/buy_button_hover2.png" id="7_7wnaf"]
+[ext_resource type="Texture2D" uid="uid://tsxcm6v5342q" path="res://Assets/but_button_hover.png" id="7_xscri"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xscri"]
+font = ExtResource("3_idtay")
+font_size = 12
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_asrp6"]
+font = ExtResource("3_idtay")
+font_size = 6
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tga60"]
+font = ExtResource("3_idtay")
+font_size = 8
+font_color = Color(0, 0, 0, 1)
+
+[node name="ShopItem" type="CenterContainer" unique_id=100393785]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_tga60")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1764257109]
+layout_mode = 2
+texture = ExtResource("1_wmysf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background" unique_id=757975016]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_stretch_ratio = 0.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/VBoxContainer" unique_id=767440447]
+layout_mode = 2
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_bottom = 0
+
+[node name="ItemIconHolder" type="CenterContainer" parent="Background/VBoxContainer/MarginContainer" unique_id=1610358258]
+layout_mode = 2
+
+[node name="ItemBackground" type="TextureRect" parent="Background/VBoxContainer/MarginContainer/ItemIconHolder" unique_id=1010954523]
+layout_mode = 2
+texture = ExtResource("2_idtay")
+
+[node name="Item" type="TextureRect" parent="Background/VBoxContainer/MarginContainer/ItemIconHolder" unique_id=324361600]
+layout_mode = 2
+texture = ExtResource("2_ewy27")
+
+[node name="Title" type="Label" parent="Background/VBoxContainer" unique_id=1118965681]
+layout_mode = 2
+text = "title"
+label_settings = SubResource("LabelSettings_xscri")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Price" type="Label" parent="Background/VBoxContainer" unique_id=1554421146]
+layout_mode = 2
+text = "Price: 1"
+label_settings = SubResource("LabelSettings_asrp6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BuyButton" type="TextureButton" parent="Background/VBoxContainer" unique_id=1245462280]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("5_asrp6")
+texture_pressed = ExtResource("7_xscri")
+texture_hover = ExtResource("7_7wnaf")
+
+[node name="Label" type="Label" parent="Background/VBoxContainer/BuyButton" unique_id=174747118]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Buy"
+label_settings = SubResource("LabelSettings_tga60")
+horizontal_alignment = 1
+vertical_alignment = 1

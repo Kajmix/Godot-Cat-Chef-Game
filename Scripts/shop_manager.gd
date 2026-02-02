@@ -7,16 +7,12 @@ extends Node2D
 @onready var Player : CharacterBody2D = $"../Player"
 var is_player_in_shop_area = false
 var is_milk_bought = false
+@export var milk_price = 30
 func _process(_delta: float) -> void:
 	if is_player_in_shop_area:
 		if Input.is_action_just_pressed("interact") && is_milk_bought == false:
-			if MainGameManager.money >= 30:
-				Audio_Player.play_sound("katching")
-				animationPlayer.play("GiveItem")
-				ShopItem.show()
-				MainGameManager.sub_money(30)
-				ui.update_label()
-				is_milk_bought = true
+			if MainGameManager.money >= milk_price:
+				buy_milk()
 			else:
 				Alert.alert("You have not enought money to buy milk!", false)
 		else:
@@ -36,4 +32,12 @@ func _on_player_entered(body: Node2D) -> void:
 func _on_takeable_item_area_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		Alert.hide_alert()
-		is_player_in_shop_area = false
+		is_player_in_shop_area = false	
+
+func buy_milk():
+	Audio_Player.play_sound("katching")
+	animationPlayer.play("GiveItem")
+	ShopItem.show()
+	MainGameManager.sub_money(milk_price)
+	ui.update_label()
+	is_milk_bought = true

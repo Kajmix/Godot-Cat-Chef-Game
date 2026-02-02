@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjjsc30bnu5h6"]
+[gd_scene format=3 uid="uid://cjjsc30bnu5h6"]
 
-[ext_resource type="Script" uid="uid://di37jp7mq77ql" path="res://bush.gd" id="1_tld8b"]
+[ext_resource type="Script" uid="uid://di37jp7mq77ql" path="res://Scripts/bush.gd" id="1_tld8b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vkqrk"]
 radius = 11.0
