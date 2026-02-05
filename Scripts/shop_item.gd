@@ -7,15 +7,34 @@ extends CenterContainer
 
 @export var title = "Milk"
 @export var is_bought = false
-@export var tier = 1
 @export var price = 30
 @export var icon : Texture2D
+@export var is_one_time_buy = false
 
-func _ready() -> void:
+func refresh_ui():
 	titleLabel.text = title
-	priceLabel.text = "$" + str(price)
+	if MainGameManager.table_upgrade_tier >= 1:
+		priceLabel.text = "Tier: " + str(MainGameManager.table_upgrade_tier) + "\n"+ "$" + str(price)
+	else:
+		priceLabel.text = "\n$" + str(price)
 	iconTextureRect.texture = icon
 	if is_bought == true:
-		buyButton.disabled == true
+		buyButton.disabled = true
 	else:
-		buyButton.disabled == false
+		buyButton.disabled = false
+
+func _ready() -> void:
+	MainGameManager.loading_finished.connect(on_loading_finished)
+	refresh_ui()
+
+func on_loading_finished():
+	refresh_ui()
+
+func _on_buy_button_down() -> void:
+	if MainGameManager.money >= price:
+		MainGameManager.sub_money(price)
+		Audio_Player.play_sound("katching")
+		SignalBus.emit_signal("buy_item", title)
+		is_bought = false
+		refresh_ui()
+	

@@ -7,10 +7,16 @@ var is_monologue_never_played_before : bool = true
 var music_volume = 50
 var sfx_volume = 75
 var customer_with_keys : int
+var table_upgrade_tier = 1
 var is_have_keys = false
 var is_player_frozen = false
 var is_after_ending = false
+
 signal loading_finished()
+
+
+func table_upgrade_tier_up():
+	table_upgrade_tier += 1
 func client_exit(order_value):
 	money += order_value
 	served_customers += 1
@@ -30,6 +36,7 @@ var default_save = {
 	"is_door_open" : is_door_open,
 	"is_after_ending" : is_after_ending,
 	"customer_with_keys" : randi_range(200, 250),
+	"table_upgrade_tier" : table_upgrade_tier,
 	"tables": [
 		{"id": 0, "is_not_bought": true},
 		{"id": 1, "is_not_bought": false},
@@ -63,7 +70,8 @@ func autosave(player):
 		"is_have_keys" : is_have_keys,
 		"is_door_open" : is_door_open,
 		"customer_with_keys" : customer_with_keys,
-		"is_after_ending" : is_after_ending
+		"is_after_ending" : is_after_ending,
+		"table_upgrade_tier" : table_upgrade_tier
 	}
 	if player != null:
 		data["player_pos_x"] = player.position.x
@@ -100,6 +108,7 @@ func load_save(player):
 	is_door_open = autosave_file.get_value("SaveData", "is_door_open", false)
 	customer_with_keys = autosave_file.get_value("SaveData", "customer_with_keys", randi_range(200,250))
 	is_after_ending = autosave_file.get_value("SaveData", "is_after_ending", false)
+	table_upgrade_tier = autosave_file.get_value("SaveData", "table_upgrade_tier", 1)
 	
 	var tables_loaded = autosave_file.get_value("SaveData", "tables", [])
 	

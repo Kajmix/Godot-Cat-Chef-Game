@@ -39,11 +39,11 @@ const special_clients_animations_list = [
 	"businessman"
 ]
 
-func set_alert_signal(type = "enought"):
-	if type == "enought":
+func set_alert_signal(type = "enough"):
+	if type == "enough":
 		SignalBus.emit_signal("set_alert", "Cost: $" + str(price) + "\n Press 'E', or 'Z' to buy")
-	elif type == "not enought":
-		SignalBus.emit_signal("set_alert", "You have not enought money!", true)
+	elif type == "not enough":
+		SignalBus.emit_signal("set_alert", "You have not enough money!", true)
 
 func keys_found_alert():
 	SignalBus.emit_signal("set_alert", "You found the keys!", true)
@@ -69,6 +69,7 @@ func show_customer(main_body : StaticBody2D):
 	else: #Normal customers
 		Customer_Sprite.play(normal_clients_animations_list[randi_range(0, normal_clients_animations_list.size() - 1)])
 		order_value = randi_range(8, 15)
+	order_value *= 1 + (MainGameManager.table_upgrade_tier/100)
 	var wanted_food = randi_range(0,2)
 	Items.order_handler(main_body, wanted_food)
 	Order_Item.frame = wanted_food
@@ -81,8 +82,8 @@ func _ready() -> void:
 	#SignalBus.monologue_ended.connect(_on_monologue_ended)
 
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("interact") && is_not_bought == true && MainGameManager.money < price:
-		set_alert_signal("not enought")
+	#if Input.is_action_just_pressed("interact") && is_not_bought == true && MainGameManager.money < price:
+		#set_alert_signal("not enough")
 	if Input.is_action_just_pressed("interact"):
 		if is_player_nearby:
 			hide_customer()

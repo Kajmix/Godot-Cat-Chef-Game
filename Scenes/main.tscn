@@ -18,13 +18,10 @@
 [ext_resource type="PackedScene" uid="uid://pmg3dyh2qwnn" path="res://Scenes/shop_item.tscn" id="9_hpc6h"]
 [ext_resource type="Script" uid="uid://dy3eljhnk7jn2" path="res://Scripts/door_open.gd" id="10_3pmx8"]
 [ext_resource type="Script" uid="uid://b564k470aweeh" path="res://Scripts/pause.gd" id="10_hptm8"]
-[ext_resource type="Texture2D" uid="uid://bnoylmctuywbj" path="res://Assets/buisnessman.png" id="10_r33sp"]
 [ext_resource type="Texture2D" uid="uid://b88be1l3glyht" path="res://Assets/lock.png" id="11_hdf80"]
 [ext_resource type="PackedScene" uid="uid://cjjsc30bnu5h6" path="res://Scenes/bush.tscn" id="12_1w6v2"]
-[ext_resource type="Texture2D" uid="uid://n8lw0suq7t5f" path="res://Assets/mask.png" id="12_jwpg7"]
 [ext_resource type="PackedScene" uid="uid://te1xd4tjdc71" path="res://Scenes/cat_bed.tscn" id="13_6vcvc"]
 [ext_resource type="Texture2D" uid="uid://dstp0yn1de8ur" path="res://Assets/milk-glass.png" id="13_fdnlq"]
-[ext_resource type="Texture2D" uid="uid://bvsir81uef4jq" path="res://Assets/pizza.png" id="13_k2e45"]
 [ext_resource type="Texture2D" uid="uid://cjws4wvym0n7y" path="res://Assets/button_background.png" id="13_k12tt"]
 [ext_resource type="Texture2D" uid="uid://yhguhd81swgx" path="res://Assets/button_background_pressed.png" id="14_h1bgf"]
 [ext_resource type="Texture2D" uid="uid://wa2xk4gdg4vk" path="res://Assets/catpaw.png" id="14_jkdf5"]
@@ -441,6 +438,7 @@ script = ExtResource("7_pdsj5")
 wait_time = 3.0
 
 [node name="Shop" type="Control" parent="ui" unique_id=1354083863]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -455,34 +453,26 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_right = 20
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
 
 [node name="ItemsList" type="HBoxContainer" parent="ui/Shop/MarginContainer" unique_id=1200274889]
 layout_mode = 2
 
 [node name="ShopItem" parent="ui/Shop/MarginContainer/ItemsList" unique_id=100393785 instance=ExtResource("9_hpc6h")]
 layout_mode = 2
-is_bought = true
-icon = ExtResource("10_r33sp")
+icon = ExtResource("13_fdnlq")
 
 [node name="ShopItem2" parent="ui/Shop/MarginContainer/ItemsList" unique_id=571338172 instance=ExtResource("9_hpc6h")]
 layout_mode = 2
+title = "Tables Upgrade"
 icon = ExtResource("11_hdf80")
-
-[node name="ShopItem3" parent="ui/Shop/MarginContainer/ItemsList" unique_id=553871232 instance=ExtResource("9_hpc6h")]
-layout_mode = 2
-is_bought = true
-icon = ExtResource("12_jwpg7")
-
-[node name="ShopItem4" parent="ui/Shop/MarginContainer/ItemsList" unique_id=925602583 instance=ExtResource("9_hpc6h")]
-layout_mode = 2
-icon = ExtResource("13_k2e45")
+is_one_time_buy = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1362744785]
 
 [node name="Player" parent="." unique_id=713604756 instance=ExtResource("1_jjgbg")]
-z_index = 5
+z_index = 8
 position = Vector2(-120, -43)
 collision_layer = 3
 
@@ -533,12 +523,14 @@ tile_set = SubResource("TileSet_jjvhh")
 script = ExtResource("3_kry3j")
 
 [node name="Table1" parent="Tables" unique_id=1276846209 groups=["table"] instance=ExtResource("3_8gbba")]
+z_index = 6
 position = Vector2(31, 39)
 collision_layer = 3
 collision_mask = 3
 price = 300
 
 [node name="Table2" parent="Tables" unique_id=234501819 groups=["table"] instance=ExtResource("3_8gbba")]
+z_index = 6
 position = Vector2(100, 39)
 collision_layer = 3
 collision_mask = 3
@@ -546,6 +538,7 @@ is_not_bought = false
 id = 1
 
 [node name="Table3" parent="Tables" unique_id=1869998364 groups=["table"] instance=ExtResource("3_8gbba")]
+z_index = 6
 position = Vector2(-89, 39)
 collision_layer = 3
 collision_mask = 3
@@ -553,6 +546,7 @@ price = 1200
 id = 2
 
 [node name="Table4" parent="Tables" unique_id=1884076697 groups=["table"] instance=ExtResource("3_8gbba")]
+z_index = 6
 position = Vector2(60, -1)
 collision_layer = 3
 collision_mask = 3
@@ -560,6 +554,7 @@ is_not_bought = false
 id = 3
 
 [node name="Table5" parent="Tables" unique_id=2108932859 groups=["table"] instance=ExtResource("3_8gbba")]
+z_index = 6
 position = Vector2(-20, 39)
 collision_layer = 3
 collision_mask = 3
@@ -567,6 +562,7 @@ price = 900
 id = 4
 
 [node name="Table6" parent="Tables" unique_id=781702333 groups=["table"] instance=ExtResource("3_8gbba")]
+z_index = 6
 position = Vector2(-5, -30)
 collision_layer = 3
 collision_mask = 3
@@ -574,6 +570,7 @@ price = 600
 id = 5
 
 [node name="Table7" parent="Tables" unique_id=938874375 groups=["table"] instance=ExtResource("3_8gbba")]
+z_index = 6
 position = Vector2(100, -30)
 collision_layer = 3
 collision_mask = 3
@@ -581,6 +578,7 @@ is_not_bought = false
 id = 6
 
 [node name="Table8" parent="Tables" unique_id=31042094 groups=["table"] instance=ExtResource("3_8gbba")]
+z_index = 6
 position = Vector2(-54, 0)
 collision_layer = 3
 collision_mask = 3
@@ -884,7 +882,8 @@ collision_mask = 2
 polygon = PackedVector2Array(-39, -117, -38, 57, 286, 59, 287, -130, -40, -122, -24, -103, 72, -103, 75, -101, 85, -101, 87, -103, 106, -103, 109, -100, 147, -100, 150, -103, 169, -103, 171, -101, 181, -101, 183, -103, 264, -103, 264, 42, -24, 42, -24, -103, -40, -122)
 
 [node name="CatToy2" type="RigidBody2D" parent="." unique_id=2032213194]
-position = Vector2(119, -58)
+position = Vector2(134, 73)
+scale = Vector2(0.84000003, 0.84000003)
 collision_layer = 2
 collision_mask = 2
 mass = 1000.0
@@ -900,7 +899,7 @@ texture = ExtResource("28_ueoa1")
 shape = SubResource("CircleShape2D_7k868")
 
 [node name="CatToy" type="RigidBody2D" parent="." unique_id=1221844171]
-position = Vector2(133, -47)
+position = Vector2(136, 62)
 collision_layer = 2
 collision_mask = 2
 mass = 1000.0
@@ -916,7 +915,8 @@ texture = ExtResource("28_ueoa1")
 shape = SubResource("CircleShape2D_7k868")
 
 [node name="CatToy3" type="RigidBody2D" parent="." unique_id=1183841035]
-position = Vector2(123, -49)
+position = Vector2(126, 67)
+scale = Vector2(1.1199902, 1.1199902)
 collision_layer = 2
 collision_mask = 2
 mass = 1000.0

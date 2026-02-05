@@ -6,17 +6,20 @@
 [ext_resource type="Texture2D" uid="uid://undgrvueec3" path="res://Assets/Without Milk boost icon.png" id="2_idtay"]
 [ext_resource type="FontFile" uid="uid://be7opo235lcnt" path="res://Fonts/Jersey10-Regular.ttf" id="3_idtay"]
 [ext_resource type="Texture2D" uid="uid://dyak600jv8res" path="res://Assets/buy_button.png" id="5_asrp6"]
+[ext_resource type="FontFile" uid="uid://dgnpswabd1uik" path="res://Fonts/PressStart2P-Regular.ttf" id="5_i6hie"]
 [ext_resource type="Texture2D" uid="uid://dauafspm5htha" path="res://Assets/buy_button_hover2.png" id="7_7wnaf"]
 [ext_resource type="Texture2D" uid="uid://tsxcm6v5342q" path="res://Assets/but_button_hover.png" id="7_xscri"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xscri"]
-font = ExtResource("3_idtay")
-font_size = 12
+line_spacing = 0.0
+font = ExtResource("5_i6hie")
+font_size = 4
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_asrp6"]
-font = ExtResource("3_idtay")
-font_size = 6
+line_spacing = 0.0
+font = ExtResource("5_i6hie")
+font_size = 4
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_tga60"]
@@ -47,6 +50,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 5
 
 [node name="MarginContainer" type="MarginContainer" parent="Background/VBoxContainer" unique_id=767440447]
 layout_mode = 2
@@ -73,7 +77,9 @@ vertical_alignment = 1
 
 [node name="Price" type="Label" parent="Background/VBoxContainer" unique_id=1554421146]
 layout_mode = 2
-text = "Price: 1"
+text = "Description:
+Price: 1
+Tier 1"
 label_settings = SubResource("LabelSettings_asrp6")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -96,3 +102,5 @@ text = "Buy"
 label_settings = SubResource("LabelSettings_tga60")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="button_down" from="Background/VBoxContainer/BuyButton" to="." method="_on_buy_button_down"]

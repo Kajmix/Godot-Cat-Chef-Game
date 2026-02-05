@@ -5,39 +5,51 @@ extends Node2D
 @onready var animationPlayer : AnimationPlayer = $Item/CatPaw/AnimationPlayer
 @onready var ui : Control = $"../ui/ui"
 @onready var Player : CharacterBody2D = $"../Player"
+
+@onready var Shop = $"../ui/Shop"
+
 var is_player_in_shop_area = false
 var is_milk_bought = false
 @export var milk_price = 30
+
+func _ready() -> void:
+	SignalBus.buy_item.connect(on_buy_item)
+
 func _process(_delta: float) -> void:
 	if is_player_in_shop_area:
-		if Input.is_action_just_pressed("interact") && is_milk_bought == false:
-			if MainGameManager.money >= milk_price:
-				buy_milk()
-			else:
-				Alert.alert("You have not enought money to buy milk!", false)
+		if is_milk_bought == true:
+			Shop.hide()
+			Alert.alert("Press 'E' to drink milk", false)
+			if Input.is_action_just_pressed("interact"):
+				Audio_Player.play_sound("gulp")
+				is_milk_bought = false
+				animationPlayer.stop()
+				ShopItem.hide()
+				Player.speed_boost()
 		else:
-			if is_milk_bought == true:
-				Alert.alert("Press 'E' to drink milk", false)
-				if Input.is_action_just_pressed("interact"):
-					Audio_Player.play_sound("gulp")
-					is_milk_bought = false
-					animationPlayer.stop()
-					ShopItem.hide()
-					Player.speed_boost()
+			Shop.show()
 func _on_player_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-		Alert.alert("Are you want to buy some milk? \n Price: $30 (Press 'E', or 'Z' to buy)", false)
 		is_player_in_shop_area = true
 
 func _on_takeable_item_area_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Player"):
+		Shop.hide()
 		Alert.hide_alert()
 		is_player_in_shop_area = false	
 
 func buy_milk():
-	Audio_Player.play_sound("katching")
 	animationPlayer.play("GiveItem")
 	ShopItem.show()
-	MainGameManager.sub_money(milk_price)
-	ui.update_label()
 	is_milk_bought = true
+
+func buy_tables_upgrade():
+	MainGameManager.table_upgrade_tier_up()
+
+func on_buy_item(item):
+	if item == "Milk":
+		Shop.hide()
+		buy_milk()
+	if item == "Tables Upgrade":
+		buy_tables_upgrade()
+	ui.update_label()
