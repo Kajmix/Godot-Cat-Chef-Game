@@ -340,6 +340,9 @@ _data = {
 &"spin": SubResource("Animation_e08e2")
 }
 
+[sub_resource type="Gradient" id="Gradient_kltya"]
+colors = PackedColorArray(0.7176471, 0.25490198, 0.8, 1, 0.627451, 0.07058824, 0.827451, 1)
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6vcvc"]
 friction = 0.5
 bounce = 0.63
@@ -873,6 +876,22 @@ autoplay = &"spin"
 [node name="Mask" parent="." unique_id=406283174 instance=ExtResource("26_cbgmd")]
 position = Vector2(41, -66)
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Mask" unique_id=13148119]
+amount = 5
+randomness = 0.44
+lifetime_randomness = 0.1
+emission_shape = 1
+emission_sphere_radius = 7.0
+gravity = Vector2(0, -15)
+orbit_velocity_min = -0.1
+orbit_velocity_max = 0.1
+scale_amount_min = 0.8
+scale_amount_max = 1.2
+color = Color(0.7176471, 0.25490198, 0.8, 1)
+color_ramp = SubResource("Gradient_kltya")
+hue_variation_min = -0.48
+hue_variation_max = 0.31
+
 [node name="CatToyColisonBorder" type="StaticBody2D" parent="." unique_id=255866975]
 position = Vector2(-120, 39)
 collision_layer = 2
@@ -882,8 +901,7 @@ collision_mask = 2
 polygon = PackedVector2Array(-39, -117, -38, 57, 286, 59, 287, -130, -40, -122, -24, -103, 72, -103, 75, -101, 85, -101, 87, -103, 106, -103, 109, -100, 147, -100, 150, -103, 169, -103, 171, -101, 181, -101, 183, -103, 264, -103, 264, 42, -24, 42, -24, -103, -40, -122)
 
 [node name="CatToy2" type="RigidBody2D" parent="." unique_id=2032213194]
-position = Vector2(-35.99997, -22.999992)
-scale = Vector2(0.84000003, 0.84000003)
+position = Vector2(129.00003, 71.00001)
 collision_layer = 2
 collision_mask = 2
 mass = 1000.0
@@ -899,7 +917,7 @@ texture = ExtResource("28_ueoa1")
 shape = SubResource("CircleShape2D_7k868")
 
 [node name="CatToy" type="RigidBody2D" parent="." unique_id=1221844171]
-position = Vector2(-33.999985, -34)
+position = Vector2(131.00002, 60)
 collision_layer = 2
 collision_mask = 2
 mass = 1000.0
@@ -915,8 +933,7 @@ texture = ExtResource("28_ueoa1")
 shape = SubResource("CircleShape2D_7k868")
 
 [node name="CatToy3" type="RigidBody2D" parent="." unique_id=1183841035]
-position = Vector2(-44, -29.000008)
-scale = Vector2(1.1199902, 1.1199902)
+position = Vector2(121, 64.99999)
 collision_layer = 2
 collision_mask = 2
 mass = 1000.0

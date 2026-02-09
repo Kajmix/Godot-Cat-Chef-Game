@@ -23,6 +23,7 @@ func _on_creator_area_2d_body_entered(body: Node2D) -> void:
 		)
 
 func _on_monologue_finished():
+	Monologue.hide()
 	Audio_Player.play_sound("cinematic-boom")
 	Ending_Canvas.show()
 	Ending_delay.start()
