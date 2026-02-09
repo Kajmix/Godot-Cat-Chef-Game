@@ -874,7 +874,7 @@ libraries/ = SubResource("AnimationLibrary_neg2b")
 autoplay = &"spin"
 
 [node name="Mask" parent="." unique_id=406283174 instance=ExtResource("26_cbgmd")]
-position = Vector2(41, -66)
+position = Vector2(39, -63)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Mask" unique_id=13148119]
 amount = 5
