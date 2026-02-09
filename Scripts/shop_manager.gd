@@ -22,9 +22,9 @@ func _process(_delta: float) -> void:
 			Alert.alert("Press 'E' to drink milk", false)
 			if Input.is_action_just_pressed("interact"):
 				Audio_Player.play_sound("gulp")
-				is_milk_bought = false
 				animationPlayer.stop()
 				ShopItem.hide()
+				is_milk_bought = false
 				Player.speed_boost()
 		else:
 			Shop.show()

@@ -8,12 +8,15 @@ extends CenterContainer
 @export var title = "Milk"
 @export var is_bought = false
 @export var price = 30
+@export var basedprice = 30
 @export var icon : Texture2D
 @export var is_one_time_buy = false
 
 func refresh_ui():
+	if title == "Tables Upgrade":
+		price = int(basedprice * pow(1.1,MainGameManager.table_upgrade_tier))
 	titleLabel.text = title
-	if MainGameManager.table_upgrade_tier >= 1:
+	if title != "Milk":
 		priceLabel.text = "Tier: " + str(MainGameManager.table_upgrade_tier) + "\n"+ "$" + str(price)
 	else:
 		priceLabel.text = "\n$" + str(price)

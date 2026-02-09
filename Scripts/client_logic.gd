@@ -69,7 +69,7 @@ func show_customer(main_body : StaticBody2D):
 	else: #Normal customers
 		Customer_Sprite.play(normal_clients_animations_list[randi_range(0, normal_clients_animations_list.size() - 1)])
 		order_value = randi_range(8, 15)
-	order_value *= 1 + (MainGameManager.table_upgrade_tier/100)
+	order_value *= (1 + (MainGameManager.table_upgrade_tier/10))
 	var wanted_food = randi_range(0,2)
 	Items.order_handler(main_body, wanted_food)
 	Order_Item.frame = wanted_food
