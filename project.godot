@@ -17,7 +17,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="Cat Chef Game"
 run/main_scene="uid://cr55hp1fcbef"
 config/features=PackedStringArray("4.6", "Mobile")
-config/icon="uid://d2vbjnrxx4now"
+config/icon="uid://drv3uqxm0yvqv"
 
 [autoload]
 
@@ -32,9 +32,8 @@ Fade="*res://Scenes/fade.tscn"
 
 window/size/viewport_width=288
 window/size/viewport_height=162
-window/size/resizable=false
+window/size/mode=2
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
 
 [editor_plugins]
 
