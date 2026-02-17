@@ -57,6 +57,14 @@ region = Rect2(32, 0, 16, 16)
 atlas = ExtResource("3_usajj")
 region = Rect2(48, 0, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_1r26c"]
+atlas = ExtResource("4_filji")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fq15h"]
+atlas = ExtResource("4_filji")
+region = Rect2(112, 16, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_k47uh"]
 atlas = ExtResource("4_filji")
 region = Rect2(0, 0, 16, 16)
@@ -151,6 +159,17 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1r26c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fq15h")
+}],
+"loop": true,
+"name": &"dog",
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 3.0,
@@ -323,7 +342,7 @@ debug_color = Color(0.6092286, 0.53980887, 0, 0.41960785)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Customer" unique_id=1620397920]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_xqsq7")
-animation = &"meow"
+animation = &"dog"
 autoplay = "cat"
 
 [node name="Customer Colision" type="CollisionShape2D" parent="Customer" unique_id=2139501625]
