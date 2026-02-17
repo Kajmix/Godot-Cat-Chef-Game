@@ -119,6 +119,9 @@ sources/0 = SubResource("TileSetAtlasSource_8w7g3")
 font = ExtResource("7_hv2aa")
 font_size = 32
 
+[sub_resource type="Gradient" id="Gradient_hv2aa"]
+colors = PackedColorArray(0.46489513, 0.0004113254, 0.5340908, 1, 0.8498405, 0.5923681, 1, 1)
+
 [node name="Ending" type="Node2D" unique_id=765040603]
 script = ExtResource("1_5jm55")
 
@@ -235,6 +238,14 @@ expand_mode = 1
 [node name="Timer" type="Timer" parent="Ending_Canvas" unique_id=1156584788]
 wait_time = 10.0
 one_shot = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1128446716]
+lifetime = 3.4799999999999995
+randomness = 0.35
+emission_shape = 3
+emission_rect_extents = Vector2(144, 80)
+gravity = Vector2(0, -20)
+color_ramp = SubResource("Gradient_hv2aa")
 
 [connection signal="body_entered" from="StaticBody2D/Creator_Table/Area2D" to="." method="_on_creator_area_2d_body_entered"]
 [connection signal="timeout" from="Ending_Canvas/Timer" to="." method="_on_ending_delay_timeout"]

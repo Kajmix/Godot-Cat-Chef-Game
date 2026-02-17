@@ -75,7 +75,7 @@ func show_customer(main_body : StaticBody2D):
 	Items.order_handler(main_body, wanted_food)
 	Order_Item.frame = wanted_food
 	Order.show()
-	
+
 func _ready() -> void:
 	MainGameManager.loading_finished.connect(_on_loading_finished)
 	TableSprite_modulate = TableSprite.modulate

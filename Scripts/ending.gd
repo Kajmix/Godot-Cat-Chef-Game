@@ -2,6 +2,8 @@ extends Node2D
 @onready var Monologue : Control = $CanvasLayer/Control/Monologue
 @onready var Ending_Canvas = $Ending_Canvas
 @onready var Ending_delay = $Ending_Canvas/Timer
+var monologue_done: bool = false
+
 func _ready() -> void:
 	MusicPlayer.stream = load("res://audio/music/into-the-void-380585.mp3")
 	MusicPlayer.play()
@@ -23,6 +25,9 @@ func _on_creator_area_2d_body_entered(body: Node2D) -> void:
 		)
 
 func _on_monologue_finished():
+	if monologue_done:
+		return
+	monologue_done = true
 	Monologue.hide()
 	Audio_Player.play_sound("cinematic-boom")
 	Ending_Canvas.show()

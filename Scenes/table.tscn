@@ -17,6 +17,12 @@
 radius = 8.0
 height = 16.0
 
+[sub_resource type="Shader" id="Shader_filji"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oi710"]
+render_priority = 0
+shader = SubResource("Shader_filji")
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_llvxf"]
 atlas = ExtResource("4_filji")
 region = Rect2(16, 0, 16, 16)
@@ -340,6 +346,7 @@ debug_color = Color(0.6092286, 0.53980887, 0, 0.41960785)
 [node name="Customer" type="StaticBody2D" parent="." unique_id=1557709506]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Customer" unique_id=1620397920]
+material = SubResource("ShaderMaterial_oi710")
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_xqsq7")
 animation = &"dog"

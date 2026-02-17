@@ -589,7 +589,7 @@ price = 1500
 id = 7
 
 [node name="Client_Cooldown" type="Timer" parent="Tables" unique_id=2028260804]
-wait_time = 3.0
+wait_time = 0.001
 autostart = true
 
 [node name="Exit" type="Area2D" parent="." unique_id=326032753]
