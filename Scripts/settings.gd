@@ -9,7 +9,7 @@ func _ready() -> void:
 	SFX.text = "SFX Volume: " + str(int(SFXSLider.value))
 	MainGameManager.loading_finished.connect(_on_loading_finished)
 func _on_reset_pressed() -> void:
-	MainGameManager.default_save["customer_with_keys"] = randi_range(200, 250)
+	MainGameManager.default_save["customer_with_keys"] = randi_range(150, 200)
 	
 	var save_file = ConfigFile.new()
 	for key in MainGameManager.default_save.keys():

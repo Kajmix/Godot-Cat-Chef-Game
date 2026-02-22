@@ -4,7 +4,6 @@ var taken_tables : Array = []
 var free_tables : Array = []
 
 func _ready():
-	# Get all nodes in the "table" group
 	tables = get_tree().get_nodes_in_group("table")
 	free_tables = get_free_tables()
 	taken_tables = get_taken_tables()

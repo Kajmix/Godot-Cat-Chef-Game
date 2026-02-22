@@ -40,6 +40,6 @@ func _ready() -> void:
 				"Use WASD or arrow keys to move.\nPress 'E', or 'Z' to interact.",
 				"If you get tired, I have milk for $30.\nServe customers by delivering food to their \ntables.",
 				"Oh, I almost forgot to mention! \nYou can buy upgrades for tables.\nCustomers will then pay more.",
-				"You need to purchase some of tables\nto get more customers and deliver their food \nfaster.",
+				"You need to purchase some tables\nto get more customers and deliver their food \nfaster.",
 				"You can pick up the ordered items\nfrom the spot near my shop :3"
 			], "Mr. Meow")

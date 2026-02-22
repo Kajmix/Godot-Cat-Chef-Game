@@ -6,6 +6,7 @@ var monologue_done: bool = false
 
 func _ready() -> void:
 	MusicPlayer.stream = load("res://audio/music/into-the-void-380585.mp3")
+	MusicPlayer.volume_db = 0
 	MusicPlayer.play()
 	SignalBus.monologue_finished.connect(_on_monologue_finished)
 

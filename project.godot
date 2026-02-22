@@ -17,6 +17,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="Cat Chef Game"
 run/main_scene="uid://cr55hp1fcbef"
 config/features=PackedStringArray("4.6", "Mobile")
+run/max_fps=60
 config/icon="uid://drv3uqxm0yvqv"
 
 [autoload]

@@ -35,7 +35,7 @@ var default_save = {
 	"is_have_keys" : is_have_keys,
 	"is_door_open" : is_door_open,
 	"is_after_ending" : is_after_ending,
-	"customer_with_keys" : randi_range(200, 250),
+	"customer_with_keys" : randi_range(150, 200),
 	"table_upgrade_tier" : table_upgrade_tier,
 	"tables": [
 		{"id": 0, "is_not_bought": true},
@@ -86,6 +86,9 @@ func autosave(player):
 	data["tables"] = tables_state
 	
 	var autosave_file = ConfigFile.new()
+	if autosave_file.load("user://save.cfg") != OK:
+		var r = randi_range(150, 200)
+		autosave_file.set_value("SaveData", "customer_with_keys", r)
 	for key in data.keys():
 		autosave_file.set_value("SaveData", key, data[key])
 	autosave_file.save("user://save.cfg")
@@ -95,6 +98,7 @@ func load_save(player):
 	var autosave_file = ConfigFile.new()
 	var err = autosave_file.load("user://save.cfg")
 	if err != OK:
+		customer_with_keys = randi_range(150, 200)
 		return
 	if player != null:
 		player.position.x = autosave_file.get_value("SaveData", "player_pos_x", 0)
@@ -106,7 +110,7 @@ func load_save(player):
 	sfx_volume = autosave_file.get_value("SaveData", "sfx_volume", 75)
 	is_have_keys = autosave_file.get_value("SaveData", "is_have_keys", false)
 	is_door_open = autosave_file.get_value("SaveData", "is_door_open", false)
-	customer_with_keys = autosave_file.get_value("SaveData", "customer_with_keys", randi_range(200,250))
+	customer_with_keys = autosave_file.get_value("SaveData", "customer_with_keys", randi_range(150,200))
 	is_after_ending = autosave_file.get_value("SaveData", "is_after_ending", false)
 	table_upgrade_tier = autosave_file.get_value("SaveData", "table_upgrade_tier", 1)
 	

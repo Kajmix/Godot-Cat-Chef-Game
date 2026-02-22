@@ -349,7 +349,7 @@ debug_color = Color(0.6092286, 0.53980887, 0, 0.41960785)
 material = SubResource("ShaderMaterial_oi710")
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_xqsq7")
-animation = &"dog"
+animation = &"ball_guy"
 autoplay = "cat"
 
 [node name="Customer Colision" type="CollisionShape2D" parent="Customer" unique_id=2139501625]
