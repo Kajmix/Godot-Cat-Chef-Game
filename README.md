@@ -2,7 +2,7 @@
 <img src="https://i.ibb.co/nsBTHqMD/Baner-1.png">
 Flavortown project ^^
 <h3>Description:</h3>
-2D pixel art style game, where u serve customers by giving them their orders and buying upgrades in the restaurant.
+2D pixel art style game, where you serve customers by giving them their orders and buying upgrades in the restaurant.
 <h3>Keymap:</h3>
 <ul>
 <li>W/up arrow - move up</li>
