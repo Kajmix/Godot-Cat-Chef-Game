@@ -27,4 +27,14 @@ Flavortown project ^^
 <h3>How to play?:</h3>
 <p>Go to <a href="itch.io">itch.io</a> of my game, download for your operating system and play it!</p>
 <br>
+
+### License
+
+This project is © 2026 Kajmix. All Rights Reserved.  
+Source code is available for viewing only. No part may be used, copied, or modified without permission.
+
+### Third-party assets
+
+- Sound effects and music from [Pixabay](https://pixabay.com), used under the Pixabay Content License.  
+- These assets are NOT covered by this project's "All Rights Reserved" license and cannot be redistributed as standalone files.
 <h6>Made in Godot, by Kajmix</h6>
