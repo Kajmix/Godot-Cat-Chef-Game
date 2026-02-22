@@ -10,6 +10,7 @@ Flavortown project ^^
 <li>A/left arrow - move left</li>
 <li>D/right arrow - move right</li>
 <li>E/Z - interact</li>
+<li>ESC - pause</li>
 </ul>
 <h3>Game Mechanics:</h3>
 <ul>
@@ -25,7 +26,7 @@ Flavortown project ^^
 <li>Music, SFX, particles, fade transitions</li>
 </ul>
 <h3>How to play?:</h3>
-<p>Go to <a href="itch.io">itch.io</a> of my game, download for your operating system and play it!</p>
+<p>Go to <a href="https://kajmix.itch.io/cat-chef-restaurant">itch.io</a> of my game, download for your operating system and play it!</p>
 <br>
 
 ### License
