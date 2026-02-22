@@ -27,6 +27,10 @@ Flavortown project ^^
 </ul>
 <h3>How to play?:</h3>
 <p>Go to <a href="https://kajmix.itch.io/cat-chef-restaurant">itch.io</a> of my game, download for your operating system and play it!</p>
+<h3>Where I used AI?</h3>
+<p>It’s my first biggest project yet, so I used chatgpt to learn how things work in godot,
+if I doesn’t understood how to write some code, I told to just give me examples how to use it, I read it and try do it myself.
+</p>
 <br>
 
 ### License
